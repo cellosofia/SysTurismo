@@ -25,16 +25,16 @@ Partial Class frmPrincipal
         Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalirToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ABMsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasMenoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ArchivoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ABMsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasMenoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SalirToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -56,6 +56,12 @@ Partial Class frmPrincipal
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(71, 24)
         Me.ArchivoToolStripMenuItem.Text = "&Archivo"
+        '
+        'SalirToolStripMenuItem1
+        '
+        Me.SalirToolStripMenuItem1.Name = "SalirToolStripMenuItem1"
+        Me.SalirToolStripMenuItem1.Size = New System.Drawing.Size(113, 26)
+        Me.SalirToolStripMenuItem1.Text = "&Salir"
         '
         'ABMsToolStripMenuItem
         '
@@ -97,6 +103,12 @@ Partial Class frmPrincipal
         Me.ArchivoToolStripMenuItem1.Size = New System.Drawing.Size(180, 24)
         Me.ArchivoToolStripMenuItem1.Text = "&Archivo"
         '
+        'SalirToolStripMenuItem
+        '
+        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(113, 26)
+        Me.SalirToolStripMenuItem.Text = "&Salir"
+        '
         'ABMsToolStripMenuItem1
         '
         Me.ABMsToolStripMenuItem1.Name = "ABMsToolStripMenuItem1"
@@ -108,18 +120,6 @@ Partial Class frmPrincipal
         Me.TablasMenoresToolStripMenuItem1.Name = "TablasMenoresToolStripMenuItem1"
         Me.TablasMenoresToolStripMenuItem1.Size = New System.Drawing.Size(180, 24)
         Me.TablasMenoresToolStripMenuItem1.Text = "&Tablas Menores"
-        '
-        'SalirToolStripMenuItem
-        '
-        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
-        Me.SalirToolStripMenuItem.Text = "&Salir"
-        '
-        'SalirToolStripMenuItem1
-        '
-        Me.SalirToolStripMenuItem1.Name = "SalirToolStripMenuItem1"
-        Me.SalirToolStripMenuItem1.Size = New System.Drawing.Size(181, 26)
-        Me.SalirToolStripMenuItem1.Text = "&Salir"
         '
         'ToolStrip1
         '

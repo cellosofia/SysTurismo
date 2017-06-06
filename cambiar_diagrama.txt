@@ -1,0 +1,2 @@
+estado civil como atributo
+estado sistema en tabla cliente como atributo
