@@ -73,6 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="acceso_datos.vb" />
+    <Compile Include="frmEmpleado.Designer.vb">
+      <DependentUpon>frmEmpleado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpleado.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmEmpleado.resx">
+      <DependentUpon>frmEmpleado.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
     </EmbeddedResource>
