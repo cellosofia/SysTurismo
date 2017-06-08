@@ -24,7 +24,7 @@ Partial Class frmEmpleado
     Private Sub InitializeComponent()
         Me.tbcEmpleado = New System.Windows.Forms.TabControl()
         Me.tbpempleado = New System.Windows.Forms.TabPage()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.gpbEstado = New System.Windows.Forms.GroupBox()
         Me.rdbDeshabilidado = New System.Windows.Forms.RadioButton()
         Me.rdbHabilitado = New System.Windows.Forms.RadioButton()
         Me.gpbEstadoCivil = New System.Windows.Forms.GroupBox()
@@ -32,8 +32,8 @@ Partial Class frmEmpleado
         Me.rdbDivorciado = New System.Windows.Forms.RadioButton()
         Me.rdbCasado = New System.Windows.Forms.RadioButton()
         Me.rdbSoltero = New System.Windows.Forms.RadioButton()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtTelefono = New System.Windows.Forms.TextBox()
+        Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.cboSucursal = New System.Windows.Forms.ComboBox()
         Me.txtDocumento = New System.Windows.Forms.TextBox()
         Me.cboCargo = New System.Windows.Forms.ComboBox()
@@ -64,7 +64,7 @@ Partial Class frmEmpleado
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.tbcEmpleado.SuspendLayout()
         Me.tbpempleado.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.gpbEstado.SuspendLayout()
         Me.gpbEstadoCivil.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.nudAntiguedad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,10 +86,10 @@ Partial Class frmEmpleado
         'tbpempleado
         '
         Me.tbpempleado.Controls.Add(Me.DateTimePicker1)
-        Me.tbpempleado.Controls.Add(Me.GroupBox2)
+        Me.tbpempleado.Controls.Add(Me.gpbEstado)
         Me.tbpempleado.Controls.Add(Me.gpbEstadoCivil)
-        Me.tbpempleado.Controls.Add(Me.TextBox2)
-        Me.tbpempleado.Controls.Add(Me.TextBox1)
+        Me.tbpempleado.Controls.Add(Me.txtTelefono)
+        Me.tbpempleado.Controls.Add(Me.txtDireccion)
         Me.tbpempleado.Controls.Add(Me.cboSucursal)
         Me.tbpempleado.Controls.Add(Me.txtDocumento)
         Me.tbpempleado.Controls.Add(Me.cboCargo)
@@ -120,15 +120,15 @@ Partial Class frmEmpleado
         Me.tbpempleado.Text = "ABMEmpleado"
         Me.tbpempleado.UseVisualStyleBackColor = True
         '
-        'GroupBox2
+        'gpbEstado
         '
-        Me.GroupBox2.Controls.Add(Me.rdbDeshabilidado)
-        Me.GroupBox2.Controls.Add(Me.rdbHabilitado)
-        Me.GroupBox2.Location = New System.Drawing.Point(97, 355)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(281, 31)
-        Me.GroupBox2.TabIndex = 43
-        Me.GroupBox2.TabStop = False
+        Me.gpbEstado.Controls.Add(Me.rdbDeshabilidado)
+        Me.gpbEstado.Controls.Add(Me.rdbHabilitado)
+        Me.gpbEstado.Location = New System.Drawing.Point(97, 355)
+        Me.gpbEstado.Name = "gpbEstado"
+        Me.gpbEstado.Size = New System.Drawing.Size(281, 31)
+        Me.gpbEstado.TabIndex = 43
+        Me.gpbEstado.TabStop = False
         '
         'rdbDeshabilidado
         '
@@ -208,19 +208,19 @@ Partial Class frmEmpleado
         Me.rdbSoltero.Text = "Soltero"
         Me.rdbSoltero.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'txtTelefono
         '
-        Me.TextBox2.Location = New System.Drawing.Point(98, 233)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(127, 20)
-        Me.TextBox2.TabIndex = 50
+        Me.txtTelefono.Location = New System.Drawing.Point(98, 233)
+        Me.txtTelefono.Name = "txtTelefono"
+        Me.txtTelefono.Size = New System.Drawing.Size(127, 20)
+        Me.txtTelefono.TabIndex = 50
         '
-        'TextBox1
+        'txtDireccion
         '
-        Me.TextBox1.Location = New System.Drawing.Point(98, 262)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(225, 20)
-        Me.TextBox1.TabIndex = 49
+        Me.txtDireccion.Location = New System.Drawing.Point(98, 262)
+        Me.txtDireccion.Name = "txtDireccion"
+        Me.txtDireccion.Size = New System.Drawing.Size(225, 20)
+        Me.txtDireccion.TabIndex = 49
         '
         'cboSucursal
         '
@@ -481,8 +481,8 @@ Partial Class frmEmpleado
         Me.tbcEmpleado.ResumeLayout(False)
         Me.tbpempleado.ResumeLayout(False)
         Me.tbpempleado.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
+        Me.gpbEstado.ResumeLayout(False)
+        Me.gpbEstado.PerformLayout()
         Me.gpbEstadoCivil.ResumeLayout(False)
         Me.gpbEstadoCivil.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -495,7 +495,7 @@ Partial Class frmEmpleado
 
     Friend WithEvents tbcEmpleado As TabControl
     Friend WithEvents tbpempleado As TabPage
-    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents gpbEstado As GroupBox
     Friend WithEvents rdbDeshabilidado As RadioButton
     Friend WithEvents rdbHabilitado As RadioButton
     Friend WithEvents gpbEstadoCivil As GroupBox
@@ -503,8 +503,8 @@ Partial Class frmEmpleado
     Friend WithEvents rdbDivorciado As RadioButton
     Friend WithEvents rdbCasado As RadioButton
     Friend WithEvents rdbSoltero As RadioButton
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtTelefono As TextBox
+    Friend WithEvents txtDireccion As TextBox
     Friend WithEvents cboSucursal As ComboBox
     Friend WithEvents txtDocumento As TextBox
     Friend WithEvents cboCargo As ComboBox
