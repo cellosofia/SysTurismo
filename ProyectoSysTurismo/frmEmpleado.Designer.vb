@@ -24,7 +24,23 @@ Partial Class frmEmpleado
     Private Sub InitializeComponent()
         Me.tbcEmpleado = New System.Windows.Forms.TabControl()
         Me.tbpempleado = New System.Windows.Forms.TabPage()
-        Me.tbpConsultaEmp = New System.Windows.Forms.TabPage()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.rdbDeshabilidado = New System.Windows.Forms.RadioButton()
+        Me.rdbHabilitado = New System.Windows.Forms.RadioButton()
+        Me.gpbEstadoCivil = New System.Windows.Forms.GroupBox()
+        Me.rdbViudo = New System.Windows.Forms.RadioButton()
+        Me.rdbDivorciado = New System.Windows.Forms.RadioButton()
+        Me.rdbCasado = New System.Windows.Forms.RadioButton()
+        Me.rdbSoltero = New System.Windows.Forms.RadioButton()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.cboSucursal = New System.Windows.Forms.ComboBox()
+        Me.txtDocumento = New System.Windows.Forms.TextBox()
+        Me.cboCargo = New System.Windows.Forms.ComboBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtApellido = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnConfirmar = New System.Windows.Forms.Button()
         Me.btnEliminar = New System.Windows.Forms.Button()
@@ -43,29 +59,17 @@ Partial Class frmEmpleado
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCodEmpleado = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtApellido = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.cboCargo = New System.Windows.Forms.ComboBox()
-        Me.txtDocumento = New System.Windows.Forms.TextBox()
-        Me.cboSucursal = New System.Windows.Forms.ComboBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.gpbEstadoCivil = New System.Windows.Forms.GroupBox()
-        Me.rdbSoltero = New System.Windows.Forms.RadioButton()
-        Me.rdbCasado = New System.Windows.Forms.RadioButton()
-        Me.rdbDivorciado = New System.Windows.Forms.RadioButton()
-        Me.rdbViudo = New System.Windows.Forms.RadioButton()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.rdbDeshabilidado = New System.Windows.Forms.RadioButton()
-        Me.rdbHabilitado = New System.Windows.Forms.RadioButton()
+        Me.tbpConsultaEmp = New System.Windows.Forms.TabPage()
+        Me.dgvConsultaEmp = New System.Windows.Forms.DataGridView()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.tbcEmpleado.SuspendLayout()
         Me.tbpempleado.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.gpbEstadoCivil.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.nudAntiguedad, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gpbEstadoCivil.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.tbpConsultaEmp.SuspendLayout()
+        CType(Me.dgvConsultaEmp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbcEmpleado
@@ -81,6 +85,7 @@ Partial Class frmEmpleado
         '
         'tbpempleado
         '
+        Me.tbpempleado.Controls.Add(Me.DateTimePicker1)
         Me.tbpempleado.Controls.Add(Me.GroupBox2)
         Me.tbpempleado.Controls.Add(Me.gpbEstadoCivil)
         Me.tbpempleado.Controls.Add(Me.TextBox2)
@@ -115,22 +120,173 @@ Partial Class frmEmpleado
         Me.tbpempleado.Text = "ABMEmpleado"
         Me.tbpempleado.UseVisualStyleBackColor = True
         '
-        'tbpConsultaEmp
+        'GroupBox2
         '
-        Me.tbpConsultaEmp.Location = New System.Drawing.Point(4, 22)
-        Me.tbpConsultaEmp.Name = "tbpConsultaEmp"
-        Me.tbpConsultaEmp.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbpConsultaEmp.Size = New System.Drawing.Size(838, 460)
-        Me.tbpConsultaEmp.TabIndex = 1
-        Me.tbpConsultaEmp.Text = "Consulta Empleado"
-        Me.tbpConsultaEmp.UseVisualStyleBackColor = True
+        Me.GroupBox2.Controls.Add(Me.rdbDeshabilidado)
+        Me.GroupBox2.Controls.Add(Me.rdbHabilitado)
+        Me.GroupBox2.Location = New System.Drawing.Point(97, 355)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(281, 31)
+        Me.GroupBox2.TabIndex = 43
+        Me.GroupBox2.TabStop = False
+        '
+        'rdbDeshabilidado
+        '
+        Me.rdbDeshabilidado.AutoSize = True
+        Me.rdbDeshabilidado.Location = New System.Drawing.Point(89, 11)
+        Me.rdbDeshabilidado.Name = "rdbDeshabilidado"
+        Me.rdbDeshabilidado.Size = New System.Drawing.Size(89, 17)
+        Me.rdbDeshabilidado.TabIndex = 1
+        Me.rdbDeshabilidado.TabStop = True
+        Me.rdbDeshabilidado.Text = "Deshabilitado"
+        Me.rdbDeshabilidado.UseVisualStyleBackColor = True
+        '
+        'rdbHabilitado
+        '
+        Me.rdbHabilitado.AutoSize = True
+        Me.rdbHabilitado.Location = New System.Drawing.Point(12, 11)
+        Me.rdbHabilitado.Name = "rdbHabilitado"
+        Me.rdbHabilitado.Size = New System.Drawing.Size(72, 17)
+        Me.rdbHabilitado.TabIndex = 0
+        Me.rdbHabilitado.TabStop = True
+        Me.rdbHabilitado.Text = "Habilitado"
+        Me.rdbHabilitado.UseVisualStyleBackColor = True
+        '
+        'gpbEstadoCivil
+        '
+        Me.gpbEstadoCivil.Controls.Add(Me.rdbViudo)
+        Me.gpbEstadoCivil.Controls.Add(Me.rdbDivorciado)
+        Me.gpbEstadoCivil.Controls.Add(Me.rdbCasado)
+        Me.gpbEstadoCivil.Controls.Add(Me.rdbSoltero)
+        Me.gpbEstadoCivil.Location = New System.Drawing.Point(98, 287)
+        Me.gpbEstadoCivil.Name = "gpbEstadoCivil"
+        Me.gpbEstadoCivil.Size = New System.Drawing.Size(281, 31)
+        Me.gpbEstadoCivil.TabIndex = 42
+        Me.gpbEstadoCivil.TabStop = False
+        '
+        'rdbViudo
+        '
+        Me.rdbViudo.AutoSize = True
+        Me.rdbViudo.Location = New System.Drawing.Point(228, 11)
+        Me.rdbViudo.Name = "rdbViudo"
+        Me.rdbViudo.Size = New System.Drawing.Size(52, 17)
+        Me.rdbViudo.TabIndex = 3
+        Me.rdbViudo.TabStop = True
+        Me.rdbViudo.Text = "Viudo"
+        Me.rdbViudo.UseVisualStyleBackColor = True
+        '
+        'rdbDivorciado
+        '
+        Me.rdbDivorciado.AutoSize = True
+        Me.rdbDivorciado.Location = New System.Drawing.Point(145, 11)
+        Me.rdbDivorciado.Name = "rdbDivorciado"
+        Me.rdbDivorciado.Size = New System.Drawing.Size(76, 17)
+        Me.rdbDivorciado.TabIndex = 2
+        Me.rdbDivorciado.TabStop = True
+        Me.rdbDivorciado.Text = "Divorciado"
+        Me.rdbDivorciado.UseVisualStyleBackColor = True
+        '
+        'rdbCasado
+        '
+        Me.rdbCasado.AutoSize = True
+        Me.rdbCasado.Location = New System.Drawing.Point(77, 11)
+        Me.rdbCasado.Name = "rdbCasado"
+        Me.rdbCasado.Size = New System.Drawing.Size(61, 17)
+        Me.rdbCasado.TabIndex = 1
+        Me.rdbCasado.TabStop = True
+        Me.rdbCasado.Text = "Casado"
+        Me.rdbCasado.UseVisualStyleBackColor = True
+        '
+        'rdbSoltero
+        '
+        Me.rdbSoltero.AutoSize = True
+        Me.rdbSoltero.Location = New System.Drawing.Point(12, 11)
+        Me.rdbSoltero.Name = "rdbSoltero"
+        Me.rdbSoltero.Size = New System.Drawing.Size(58, 17)
+        Me.rdbSoltero.TabIndex = 0
+        Me.rdbSoltero.TabStop = True
+        Me.rdbSoltero.Text = "Soltero"
+        Me.rdbSoltero.UseVisualStyleBackColor = True
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(98, 233)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(127, 20)
+        Me.TextBox2.TabIndex = 50
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(98, 262)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(225, 20)
+        Me.TextBox1.TabIndex = 49
+        '
+        'cboSucursal
+        '
+        Me.cboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboSucursal.FormattingEnabled = True
+        Me.cboSucursal.Location = New System.Drawing.Point(97, 201)
+        Me.cboSucursal.Name = "cboSucursal"
+        Me.cboSucursal.Size = New System.Drawing.Size(225, 21)
+        Me.cboSucursal.TabIndex = 48
+        '
+        'txtDocumento
+        '
+        Me.txtDocumento.Location = New System.Drawing.Point(98, 148)
+        Me.txtDocumento.Name = "txtDocumento"
+        Me.txtDocumento.Size = New System.Drawing.Size(127, 20)
+        Me.txtDocumento.TabIndex = 47
+        '
+        'cboCargo
+        '
+        Me.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboCargo.FormattingEnabled = True
+        Me.cboCargo.Location = New System.Drawing.Point(99, 93)
+        Me.cboCargo.Name = "cboCargo"
+        Me.cboCargo.Size = New System.Drawing.Size(225, 21)
+        Me.cboCargo.TabIndex = 46
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(8, 367)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(40, 13)
+        Me.Label13.TabIndex = 45
+        Me.Label13.Text = "Estado"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(8, 330)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(61, 13)
+        Me.Label12.TabIndex = 44
+        Me.Label12.Text = "Antiguedad"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(8, 296)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(62, 13)
+        Me.Label11.TabIndex = 43
+        Me.Label11.Text = "Estado Civil"
+        '
+        'txtApellido
+        '
+        Me.txtApellido.Location = New System.Drawing.Point(99, 67)
+        Me.txtApellido.Name = "txtApellido"
+        Me.txtApellido.Size = New System.Drawing.Size(127, 20)
+        Me.txtApellido.TabIndex = 42
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.btnConfirmar)
         Me.GroupBox1.Controls.Add(Me.btnEliminar)
         Me.GroupBox1.Controls.Add(Me.btnCancelar)
-        Me.GroupBox1.Location = New System.Drawing.Point(11, 387)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 391)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(427, 65)
         Me.GroupBox1.TabIndex = 41
@@ -166,7 +322,7 @@ Partial Class frmEmpleado
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(8, 254)
+        Me.Label10.Location = New System.Drawing.Point(8, 263)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(52, 13)
         Me.Label10.TabIndex = 40
@@ -175,7 +331,7 @@ Partial Class frmEmpleado
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(7, 227)
+        Me.Label9.Location = New System.Drawing.Point(7, 236)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(49, 13)
         Me.Label9.TabIndex = 38
@@ -184,7 +340,7 @@ Partial Class frmEmpleado
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(8, 200)
+        Me.Label8.Location = New System.Drawing.Point(8, 209)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(48, 13)
         Me.Label8.TabIndex = 35
@@ -193,7 +349,7 @@ Partial Class frmEmpleado
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(9, 174)
+        Me.Label7.Location = New System.Drawing.Point(9, 176)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(58, 13)
         Me.Label7.TabIndex = 33
@@ -229,7 +385,7 @@ Partial Class frmEmpleado
         '
         'nudAntiguedad
         '
-        Me.nudAntiguedad.Location = New System.Drawing.Point(98, 319)
+        Me.nudAntiguedad.Location = New System.Drawing.Point(98, 328)
         Me.nudAntiguedad.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
         Me.nudAntiguedad.Name = "nudAntiguedad"
         Me.nudAntiguedad.Size = New System.Drawing.Size(120, 20)
@@ -287,166 +443,32 @@ Partial Class frmEmpleado
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Cod. Empleado"
         '
-        'txtApellido
+        'tbpConsultaEmp
         '
-        Me.txtApellido.Location = New System.Drawing.Point(99, 67)
-        Me.txtApellido.Name = "txtApellido"
-        Me.txtApellido.Size = New System.Drawing.Size(127, 20)
-        Me.txtApellido.TabIndex = 42
+        Me.tbpConsultaEmp.Controls.Add(Me.dgvConsultaEmp)
+        Me.tbpConsultaEmp.Location = New System.Drawing.Point(4, 22)
+        Me.tbpConsultaEmp.Name = "tbpConsultaEmp"
+        Me.tbpConsultaEmp.Padding = New System.Windows.Forms.Padding(3)
+        Me.tbpConsultaEmp.Size = New System.Drawing.Size(838, 460)
+        Me.tbpConsultaEmp.TabIndex = 1
+        Me.tbpConsultaEmp.Text = "Consulta Empleado"
+        Me.tbpConsultaEmp.UseVisualStyleBackColor = True
         '
-        'Label11
+        'dgvConsultaEmp
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(8, 280)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(62, 13)
-        Me.Label11.TabIndex = 43
-        Me.Label11.Text = "Estado Civil"
+        Me.dgvConsultaEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvConsultaEmp.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvConsultaEmp.Location = New System.Drawing.Point(3, 3)
+        Me.dgvConsultaEmp.Name = "dgvConsultaEmp"
+        Me.dgvConsultaEmp.Size = New System.Drawing.Size(832, 454)
+        Me.dgvConsultaEmp.TabIndex = 0
         '
-        'Label12
+        'DateTimePicker1
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(8, 321)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(61, 13)
-        Me.Label12.TabIndex = 44
-        Me.Label12.Text = "Antiguedad"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(8, 358)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(40, 13)
-        Me.Label13.TabIndex = 45
-        Me.Label13.Text = "Estado"
-        '
-        'cboCargo
-        '
-        Me.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboCargo.FormattingEnabled = True
-        Me.cboCargo.Location = New System.Drawing.Point(99, 93)
-        Me.cboCargo.Name = "cboCargo"
-        Me.cboCargo.Size = New System.Drawing.Size(225, 21)
-        Me.cboCargo.TabIndex = 46
-        '
-        'txtDocumento
-        '
-        Me.txtDocumento.Location = New System.Drawing.Point(99, 148)
-        Me.txtDocumento.Name = "txtDocumento"
-        Me.txtDocumento.Size = New System.Drawing.Size(127, 20)
-        Me.txtDocumento.TabIndex = 47
-        '
-        'cboSucursal
-        '
-        Me.cboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboSucursal.FormattingEnabled = True
-        Me.cboSucursal.Location = New System.Drawing.Point(98, 192)
-        Me.cboSucursal.Name = "cboSucursal"
-        Me.cboSucursal.Size = New System.Drawing.Size(225, 21)
-        Me.cboSucursal.TabIndex = 48
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(98, 254)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(225, 20)
-        Me.TextBox1.TabIndex = 49
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(98, 227)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(127, 20)
-        Me.TextBox2.TabIndex = 50
-        '
-        'gpbEstadoCivil
-        '
-        Me.gpbEstadoCivil.Controls.Add(Me.rdbViudo)
-        Me.gpbEstadoCivil.Controls.Add(Me.rdbDivorciado)
-        Me.gpbEstadoCivil.Controls.Add(Me.rdbCasado)
-        Me.gpbEstadoCivil.Controls.Add(Me.rdbSoltero)
-        Me.gpbEstadoCivil.Location = New System.Drawing.Point(98, 278)
-        Me.gpbEstadoCivil.Name = "gpbEstadoCivil"
-        Me.gpbEstadoCivil.Size = New System.Drawing.Size(281, 31)
-        Me.gpbEstadoCivil.TabIndex = 42
-        Me.gpbEstadoCivil.TabStop = False
-        '
-        'rdbSoltero
-        '
-        Me.rdbSoltero.AutoSize = True
-        Me.rdbSoltero.Location = New System.Drawing.Point(12, 11)
-        Me.rdbSoltero.Name = "rdbSoltero"
-        Me.rdbSoltero.Size = New System.Drawing.Size(58, 17)
-        Me.rdbSoltero.TabIndex = 0
-        Me.rdbSoltero.TabStop = True
-        Me.rdbSoltero.Text = "Soltero"
-        Me.rdbSoltero.UseVisualStyleBackColor = True
-        '
-        'rdbCasado
-        '
-        Me.rdbCasado.AutoSize = True
-        Me.rdbCasado.Location = New System.Drawing.Point(77, 11)
-        Me.rdbCasado.Name = "rdbCasado"
-        Me.rdbCasado.Size = New System.Drawing.Size(61, 17)
-        Me.rdbCasado.TabIndex = 1
-        Me.rdbCasado.TabStop = True
-        Me.rdbCasado.Text = "Casado"
-        Me.rdbCasado.UseVisualStyleBackColor = True
-        '
-        'rdbDivorciado
-        '
-        Me.rdbDivorciado.AutoSize = True
-        Me.rdbDivorciado.Location = New System.Drawing.Point(145, 11)
-        Me.rdbDivorciado.Name = "rdbDivorciado"
-        Me.rdbDivorciado.Size = New System.Drawing.Size(76, 17)
-        Me.rdbDivorciado.TabIndex = 2
-        Me.rdbDivorciado.TabStop = True
-        Me.rdbDivorciado.Text = "Divorciado"
-        Me.rdbDivorciado.UseVisualStyleBackColor = True
-        '
-        'rdbViudo
-        '
-        Me.rdbViudo.AutoSize = True
-        Me.rdbViudo.Location = New System.Drawing.Point(228, 11)
-        Me.rdbViudo.Name = "rdbViudo"
-        Me.rdbViudo.Size = New System.Drawing.Size(52, 17)
-        Me.rdbViudo.TabIndex = 3
-        Me.rdbViudo.TabStop = True
-        Me.rdbViudo.Text = "Viudo"
-        Me.rdbViudo.UseVisualStyleBackColor = True
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.rdbDeshabilidado)
-        Me.GroupBox2.Controls.Add(Me.rdbHabilitado)
-        Me.GroupBox2.Location = New System.Drawing.Point(97, 346)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(281, 31)
-        Me.GroupBox2.TabIndex = 43
-        Me.GroupBox2.TabStop = False
-        '
-        'rdbDeshabilidado
-        '
-        Me.rdbDeshabilidado.AutoSize = True
-        Me.rdbDeshabilidado.Location = New System.Drawing.Point(89, 11)
-        Me.rdbDeshabilidado.Name = "rdbDeshabilidado"
-        Me.rdbDeshabilidado.Size = New System.Drawing.Size(89, 17)
-        Me.rdbDeshabilidado.TabIndex = 1
-        Me.rdbDeshabilidado.TabStop = True
-        Me.rdbDeshabilidado.Text = "Deshabilitado"
-        Me.rdbDeshabilidado.UseVisualStyleBackColor = True
-        '
-        'rdbHabilitado
-        '
-        Me.rdbHabilitado.AutoSize = True
-        Me.rdbHabilitado.Location = New System.Drawing.Point(12, 11)
-        Me.rdbHabilitado.Name = "rdbHabilitado"
-        Me.rdbHabilitado.Size = New System.Drawing.Size(72, 17)
-        Me.rdbHabilitado.TabIndex = 0
-        Me.rdbHabilitado.TabStop = True
-        Me.rdbHabilitado.Text = "Habilitado"
-        Me.rdbHabilitado.UseVisualStyleBackColor = True
+        Me.DateTimePicker1.Location = New System.Drawing.Point(97, 173)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.TabIndex = 51
         '
         'frmEmpleado
         '
@@ -459,12 +481,14 @@ Partial Class frmEmpleado
         Me.tbcEmpleado.ResumeLayout(False)
         Me.tbpempleado.ResumeLayout(False)
         Me.tbpempleado.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        CType(Me.nudAntiguedad, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gpbEstadoCivil.ResumeLayout(False)
-        Me.gpbEstadoCivil.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.gpbEstadoCivil.ResumeLayout(False)
+        Me.gpbEstadoCivil.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        CType(Me.nudAntiguedad, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tbpConsultaEmp.ResumeLayout(False)
+        CType(Me.dgvConsultaEmp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -507,4 +531,6 @@ Partial Class frmEmpleado
     Friend WithEvents txtCodEmpleado As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents tbpConsultaEmp As TabPage
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents dgvConsultaEmp As DataGridView
 End Class
