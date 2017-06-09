@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DD99D87F-42FE-4C52-ACC2-712A811F5DDC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>ProyectoTP.My.MyApplication</StartupObject>
-    <RootNamespace>ProyectoTP</RootNamespace>
+    <StartupObject>ProyectoSysTurismo.My.MyApplication</StartupObject>
+    <RootNamespace>ProyectoSysTurismo</RootNamespace>
     <AssemblyName>ProyectoSysTurismo</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
@@ -73,6 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="acceso_datos.vb" />
+    <Compile Include="frmClientes.Designer.vb">
+      <DependentUpon>frmClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmClientes.resx">
+      <DependentUpon>frmClientes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
     </EmbeddedResource>

@@ -17,10 +17,20 @@ CREATE DATABASE SysTurismo;
 
 USE SysTurismo;
 
+CREATE TABLE TipoCliente(
+	TipoClienteID INT NOT NULL IDENTITY(1,1),
+	Descripcion VARCHAR(30) NOT NULL,
+	CONSTRAINT PK_TipoCliente PRIMARY KEY (TipoClienteID),
+);
+
+INSERT INTO TipoCliente VALUES('BRONCE');
+INSERT INTO TipoCliente VALUES('PLATA');
+INSERT INTO TipoCliente VALUES('ORO');
+
 CREATE TABLE CargoEmpleado (
 	CargoEmpleadoID INT NOT NULL IDENTITY (1,1),
-	Nombre VARCHAR(50),
-	Descripcion VARCHAR(256),
+	Nombre VARCHAR(50) NOT NULL,
+	Descripcion VARCHAR(256) NOT NULL,
 	CONSTRAINT PK_CargoEmpleado PRIMARY KEY (CargoEmpleadoID),
 );
 
@@ -454,13 +464,14 @@ CREATE TABLE Cliente (
 	Direccion VARCHAR(100) NOT NULL,
 	Email VARCHAR(50) NOT NULL,
 	FechaNacimiento DATE NOT NULL,
-	Activado BIT NOT NULL DEFAULT 1,
 	ProfesionID INT NOT NULL,
 	Sexo BIT NOT NULL,
-	EstadoSistema BIT NOT NULL,
+	TipoClienteID INT NOT NULL,
+	EstadoSistema BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_Cliente PRIMARY KEY (ClienteID),
 	CONSTRAINT FK_Cliente_TipoDocumento FOREIGN KEY (TipoDocumentoID) REFERENCES TipoDocumento(TipoDocumentoID),
 	CONSTRAINT FK_Cliente_Profesion FOREIGN KEY (ProfesionID) REFERENCES Profesion(ProfesionID),
+	CONSTRAINT FK_Cliente_TipoCliente FOREIGN KEY (TipoClienteID) REFERENCES TipoCliente(TipoClienteID),
 );
 
 CREATE TABLE Habitacion (
@@ -518,3 +529,37 @@ CREATE TABLE Empleado (
 --	CONSTRAINT FK_Reserva_Habitacion FOREIGN KEY (HabitacionID) REFERENCES Habitacion(HabitacionID),
 --	CONSTRAINT FK_Reserva_Moneda FOREIGN KEY (MonedaReservaID) REFERENCES Moneda(MonedaID),
 --);
+
+
+-- Vistas. Se deben crear de a uno descomentando y seleccionando el codigo correspondiente.
+ --CREATE VIEW vista_cliente AS
+ -- SELECT
+	--c.ClienteID as Codigo,
+	--c.Nombre,
+	--c.Apellido,
+	--td.Descripcion as [Tipo Documento],
+	--c.NroDocumento as [Numero Documento],
+	--case c.EstadoCivil
+	--	when 's' then 'Soltero'
+	--	when 'c' then 'Casado'
+	--	when 'v' then 'Viudo'
+	--	when 'd' then 'Divorciado'
+	--end as [Estado Civil],
+	--c.Telefono,
+	--c.Direccion,
+	--c.Email,
+	--c.FechaNacimiento as [Fecha Nacimiento],
+	--p.Descripcion as Profesion,
+	--case c.Sexo
+	--	when 1 then 'Masculino'
+	--	when 0 then 'Femenino'
+ --   end as Sexo,
+	--tc.Descripcion as [Tipo Cliente],
+	--case c.EstadoSistema
+	--	when 1 then 'Habilitado'
+	--	when 0 then 'Deshabilitado'
+	--end as [Estado Sistema]
+ -- FROM Cliente c JOIN
+ -- TipoDocumento td ON td.TipoDocumentoID = c.TipoDocumentoID JOIN
+ -- TipoCliente tc on tc.TipoClienteID = c.TipoClienteID JOIN
+ -- Profesion p on p.ProfesionID = c.ProfesionID
