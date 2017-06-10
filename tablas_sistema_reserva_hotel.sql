@@ -34,6 +34,12 @@ CREATE TABLE CargoEmpleado (
 	CONSTRAINT PK_CargoEmpleado PRIMARY KEY (CargoEmpleadoID),
 );
 
+INSERT INTO CargoEmpleado VALUES ('Cajero', 'Se encargar de realizar las cobranzas');
+INSERT INTO CargoEmpleado VALUES ('Gerente', 'Se encargar de organizar y reunir nuevo personal');
+INSERT INTO CargoEmpleado VALUES ('Jefe', 'Se de todo el personal de la empresa y sus areas');
+INSERT INTO CargoEmpleado VALUES ('Vendedor', 'Se encargar de realizar busqueda de clientes para la empresa');
+INSERT INTO CargoEmpleado VALUES ('Call Center', 'Se encargar de atender a los clientes via telefonica');
+
 CREATE TABLE TipoDocumento (
 	TipoDocumentoID INT NOT NULL IDENTITY (1,1),
 	Descripcion VARCHAR(50) NOT NULL,
@@ -452,6 +458,8 @@ CREATE TABLE SucursalEmpresa (
 	CONSTRAINT PK_SucursalEmpresa PRIMARY KEY (SucursalEmpresaID),
 	CONSTRAINT FK_SucursalEmpresa_Ciudad FOREIGN KEY (CiudadID) REFERENCES Ciudad(CiudadID),
 );
+
+INSERT INTO SucursalEmpresa VALUES ('Turipar', 1, '565889', 'Gral Santos c Rca Siria', 'turipar@turismo.com.py', 26, 1);
 
 CREATE TABLE Alojamiento (
 	AlojamientoID INT NOT NULL IDENTITY (1,1),

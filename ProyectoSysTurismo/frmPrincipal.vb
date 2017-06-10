@@ -10,4 +10,15 @@
         f.MdiParent = Me
         f.Show()
     End Sub
+
+    Private Sub mnuEmpleados_Click(sender As Object, e As EventArgs) Handles mnuEmpleados.Click
+        Dim f As New frmEmpleado
+        f.MdiParent = Me
+        f.Show()
+    End Sub
+
+    Private Sub mnuSalir_Click(sender As Object, e As EventArgs) Handles mnuSalir.Click
+        Me.Close()
+
+    End Sub
 End Class
