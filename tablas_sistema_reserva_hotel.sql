@@ -448,10 +448,9 @@ CREATE TABLE SucursalEmpresa (
 	Direccion VARCHAR (100),
 	Email VARCHAR (50),
 	CantidadEmpleados INT NOT NULL,
-	EstadoSistemaID INT NOT NULL,
+	EstadoSistema BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_SucursalEmpresa PRIMARY KEY (SucursalEmpresaID),
 	CONSTRAINT FK_SucursalEmpresa_Ciudad FOREIGN KEY (CiudadID) REFERENCES Ciudad(CiudadID),
-	CONSTRAINT FK_SucursalEmpresa_EstadoSistema FOREIGN KEY (EstadoSistemaID) REFERENCES EstadoSistema(EstadoSistemaID),
 );
 
 CREATE TABLE Alojamiento (
@@ -463,26 +462,9 @@ CREATE TABLE Alojamiento (
 	Telefono VARCHAR(30) NOT NULL,
 	PaginaWeb VARCHAR(30) NOT NULL,
 	Estrellas INT NOT NULL,
-	EstadoSistemaID INT NOT NULL,
+	EstadoSistema BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_Alojamiento PRIMARY KEY (AlojamientoID),
 	CONSTRAINT FK_Alojamiento_TipoAlojamiento FOREIGN KEY (TipoAlojamientoID) REFERENCES TipoAlojamiento(TipoAlojamientoID),
-	CONSTRAINT FK_Alojamiento_EstadoSistema FOREIGN KEY (EstadoSistemaID) REFERENCES EstadoSistema(EstadoSistemaID),
-);
-
-CREATE TABLE TipoServicioAlojamientoPorAlojamiento(
-	TipoServicioAlojamientoID INT NOT NULL,
-	TipoAlojamientoID INT NOT NULL,
-	CONSTRAINT PK_TipoServicioAlojamientoPorAlojamiento PRIMARY KEY (TipoServicioAlojamientoID, TipoAlojamientoID),
-	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoServicioAlojamiento FOREIGN KEY (TipoServicioAlojamientoID) REFERENCES TipoServicioAlojamiento(TipoServicioAlojamientoID),
-	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoAlojamiento FOREIGN KEY (TipoAlojamientoID) REFERENCES TipoAlojamiento(TipoAlojamientoID),
-);
-
-CREATE TABLE TipoServicioHabitacionPorHabitacion(
-	TipoServicioAlojamientoID INT NOT NULL,
-	TipoAlojamientoID INT NOT NULL,
-	CONSTRAINT PK_TipoServicioAlojamientoPorAlojamiento PRIMARY KEY (TipoServicioAlojamientoID, TipoAlojamientoID),
-	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoServicioAlojamiento FOREIGN KEY (TipoServicioAlojamientoID) REFERENCES TipoServicioAlojamiento(TipoServicioAlojamientoID),
-	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoAlojamiento FOREIGN KEY (TipoAlojamientoID) REFERENCES TipoAlojamiento(TipoAlojamientoID),
 );
 
 CREATE TABLE SucursalAlojamiento (
@@ -493,11 +475,10 @@ CREATE TABLE SucursalAlojamiento (
 	Telefono VARCHAR (30),
 	Direccion VARCHAR (100),
 	Email VARCHAR (50),
-	EstadoSistemaID INT NOT NULL,
+	EstadoSistema BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_SucursalAlojamiento PRIMARY KEY (SucursalAlojamientoID),
 	CONSTRAINT FK_SucursalAlojamiento_Alojamiento FOREIGN KEY (AlojamientoID) REFERENCES Alojamiento(AlojamientoID),
 	CONSTRAINT FK_SucursalAlojamiento_Ciudad FOREIGN KEY (CiudadID) REFERENCES Ciudad(CiudadID),
-	CONSTRAINT FK_SucursalAlojamiento_EstadoSistema FOREIGN KEY (EstadoSistemaID) REFERENCES EstadoSistema(EstadoSistemaID),
 );
 
 CREATE TABLE Cliente (
@@ -547,12 +528,27 @@ CREATE TABLE Empleado (
 	Direccion VARCHAR(100) NOT NULL,
 	EstadoCivil CHAR(1) NOT NULL,
 	Antiguedad INT NOT NULL,           -- en años
-	EstadoSistemaID INT NOT NULL,
+	EstadoSistema BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_Empleado PRIMARY KEY (EmpleadoID),
 	CONSTRAINT FK_Empleado_CargoEmpleado FOREIGN KEY (CargoEmpleadoID) REFERENCES CargoEmpleado(CargoEmpleadoID),
 	CONSTRAINT FK_Empleado_TipoDocumento FOREIGN KEY (TipoDocumentoID) REFERENCES TipoDocumento(TipoDocumentoID),
 	CONSTRAINT FK_Empleado_SucursalEmpresa FOREIGN KEY (SucursalEmpresaID) REFERENCES SucursalEmpresa(SucursalEmpresaID),
-	CONSTRAINT FK_Empleado_EstadoSistema FOREIGN KEY (EstadoSistemaID) REFERENCES EstadoSistema(EstadoSistemaID),
+);
+
+CREATE TABLE TipoServicioAlojamientoPorSucursalAlojamiento(
+	TipoServicioAlojamientoID INT NOT NULL,
+	SucursalAlojamientoID INT NOT NULL,
+	CONSTRAINT PK_TipoServicioAlojamientoPorAlojamiento PRIMARY KEY (TipoServicioAlojamientoID, SucursalAlojamientoID),
+	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoServicioAlojamiento FOREIGN KEY (TipoServicioAlojamientoID) REFERENCES TipoServicioAlojamiento(TipoServicioAlojamientoID),
+	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_SucursalAlojamiento FOREIGN KEY (SucursalAlojamientoID) REFERENCES SucursalAlojamiento(SucursalAlojamientoID),
+);
+
+CREATE TABLE TipoServicioHabitacionPorHabitacion(
+	TipoServicioHabitacionID INT NOT NULL,
+	HabitacionID INT NOT NULL,
+	CONSTRAINT PK_TipoServicioHabitacionPorHabitacion PRIMARY KEY (TipoServicioHabitacionID, HabitacionID),
+	CONSTRAINT FK_TipoServicioHabitacionPorHabitacion_TipoServicioHabitacion FOREIGN KEY (TipoServicioHabitacionID) REFERENCES TipoServicioHabitacion(TipoServicioHabitacionID),
+	CONSTRAINT FK_TipoServicioHabitacionPorHabitacion_Habitacion FOREIGN KEY (HabitacionID) REFERENCES Habitacion(HabitacionID),
 );
 
 -- cabecera detalle
