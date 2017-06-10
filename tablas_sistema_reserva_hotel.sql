@@ -615,3 +615,15 @@ CREATE TABLE TipoServicioHabitacionPorHabitacion(
  -- TipoDocumento td ON td.TipoDocumentoID = c.TipoDocumentoID JOIN
  -- TipoCliente tc on tc.TipoClienteID = c.TipoClienteID JOIN
  -- Profesion p on p.ProfesionID = c.ProfesionID
+
+ -- Vista de Empleado
+-- CREATE VIEW vista_Empleado AS
+ 
+-- SELECT        dbo.Empleado.EmpleadoID, dbo.Empleado.Nombre, dbo.Empleado.Apellido, dbo.CargoEmpleado.Nombre AS Cargo, dbo.TipoDocumento.Descripcion, dbo.Empleado.NroDocumento, 
+--                         dbo.Empleado.FechaNacimiento, dbo.SucursalEmpresa.Nombre AS Sucursal, dbo.Empleado.Telefono, dbo.Empleado.Direccion, 
+--                         CASE dbo.Empleado.EstadoCivil WHEN 's' THEN 'Soltero' WHEN 'c' THEN 'Casado' WHEN 'v' THEN 'Viudo' WHEN 'd' THEN 'Divorciado' END AS [Estado Civil], dbo.Empleado.Antiguedad, 
+--                         dbo.Empleado.EstadoSistema
+--FROM            dbo.Empleado INNER JOIN
+--                         dbo.CargoEmpleado ON dbo.Empleado.CargoEmpleadoID = dbo.CargoEmpleado.CargoEmpleadoID INNER JOIN
+--                         dbo.TipoDocumento ON dbo.Empleado.TipoDocumentoID = dbo.TipoDocumento.TipoDocumentoID INNER JOIN
+--                         dbo.SucursalEmpresa ON dbo.Empleado.SucursalEmpresaID = dbo.SucursalEmpresa.SucursalEmpresaID;
