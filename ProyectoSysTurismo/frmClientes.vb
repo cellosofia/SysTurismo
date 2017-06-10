@@ -105,15 +105,15 @@ Public Class frmClientes
         txtCodigo.Text = ""
         txtNombre.Text = ""
         txtApellido.Text = ""
-        cboTipoDocumento.SelectedIndex = -1
+        cboTipoDocumento.SelectedIndex = 0
         txtNroDocumento.Text = ""
-        cboEstadoCivil.SelectedIndex = -1
+        cboEstadoCivil.SelectedIndex = 0
         txtTelefono.Text = ""
         txtDireccion.Text = ""
         txtEmail.Text = ""
         dtpFechaNacimiento.Value = Date.Today
-        cboProfesion.SelectedIndex = -1
-        cboTipoCliente.SelectedIndex = -1
+        cboProfesion.SelectedIndex = 0
+        cboTipoCliente.SelectedIndex = 0
         rdbMasculino.Checked = True
         chkHabilitado.Checked = True
     End Sub
