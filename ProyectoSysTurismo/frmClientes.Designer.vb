@@ -24,17 +24,18 @@ Partial Class frmClientes
     Private Sub InitializeComponent()
         Me.tbcPrincipal = New System.Windows.Forms.TabControl()
         Me.tbpABM = New System.Windows.Forms.TabPage()
-        Me.cmbTipoCliente = New System.Windows.Forms.ComboBox()
+        Me.chkHabilitado = New System.Windows.Forms.CheckBox()
+        Me.cboTipoCliente = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gbxSexo = New System.Windows.Forms.GroupBox()
         Me.rdbMasculino = New System.Windows.Forms.RadioButton()
         Me.rdbFemenino = New System.Windows.Forms.RadioButton()
-        Me.cmbProfesion = New System.Windows.Forms.ComboBox()
+        Me.cboProfesion = New System.Windows.Forms.ComboBox()
         Me.dtpFechaNacimiento = New System.Windows.Forms.DateTimePicker()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
-        Me.cmbEstadoCivil = New System.Windows.Forms.ComboBox()
+        Me.cboEstadoCivil = New System.Windows.Forms.ComboBox()
         Me.txtNroDocumento = New System.Windows.Forms.TextBox()
         Me.txtApellido = New System.Windows.Forms.TextBox()
         Me.lblProfesion = New System.Windows.Forms.Label()
@@ -48,7 +49,7 @@ Partial Class frmClientes
         Me.lblTelefono = New System.Windows.Forms.Label()
         Me.lblEstadoCivil = New System.Windows.Forms.Label()
         Me.lblNroDocumento = New System.Windows.Forms.Label()
-        Me.cmbTipoDocumento = New System.Windows.Forms.ComboBox()
+        Me.cboTipoDocumento = New System.Windows.Forms.ComboBox()
         Me.lblTipoDocumento = New System.Windows.Forms.Label()
         Me.lblApellido = New System.Windows.Forms.Label()
         Me.txtNombre = New System.Windows.Forms.TextBox()
@@ -69,24 +70,24 @@ Partial Class frmClientes
         '
         Me.tbcPrincipal.Controls.Add(Me.tbpABM)
         Me.tbcPrincipal.Controls.Add(Me.tbpConsulta)
-        Me.tbcPrincipal.Location = New System.Drawing.Point(13, 19)
-        Me.tbcPrincipal.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbcPrincipal.Location = New System.Drawing.Point(10, 15)
         Me.tbcPrincipal.Name = "tbcPrincipal"
         Me.tbcPrincipal.SelectedIndex = 0
-        Me.tbcPrincipal.Size = New System.Drawing.Size(944, 475)
+        Me.tbcPrincipal.Size = New System.Drawing.Size(708, 386)
         Me.tbcPrincipal.TabIndex = 0
         '
         'tbpABM
         '
-        Me.tbpABM.Controls.Add(Me.cmbTipoCliente)
+        Me.tbpABM.Controls.Add(Me.chkHabilitado)
+        Me.tbpABM.Controls.Add(Me.cboTipoCliente)
         Me.tbpABM.Controls.Add(Me.Label1)
         Me.tbpABM.Controls.Add(Me.gbxSexo)
-        Me.tbpABM.Controls.Add(Me.cmbProfesion)
+        Me.tbpABM.Controls.Add(Me.cboProfesion)
         Me.tbpABM.Controls.Add(Me.dtpFechaNacimiento)
         Me.tbpABM.Controls.Add(Me.txtEmail)
         Me.tbpABM.Controls.Add(Me.txtDireccion)
         Me.tbpABM.Controls.Add(Me.txtTelefono)
-        Me.tbpABM.Controls.Add(Me.cmbEstadoCivil)
+        Me.tbpABM.Controls.Add(Me.cboEstadoCivil)
         Me.tbpABM.Controls.Add(Me.txtNroDocumento)
         Me.tbpABM.Controls.Add(Me.txtApellido)
         Me.tbpABM.Controls.Add(Me.lblProfesion)
@@ -97,39 +98,48 @@ Partial Class frmClientes
         Me.tbpABM.Controls.Add(Me.lblTelefono)
         Me.tbpABM.Controls.Add(Me.lblEstadoCivil)
         Me.tbpABM.Controls.Add(Me.lblNroDocumento)
-        Me.tbpABM.Controls.Add(Me.cmbTipoDocumento)
+        Me.tbpABM.Controls.Add(Me.cboTipoDocumento)
         Me.tbpABM.Controls.Add(Me.lblTipoDocumento)
         Me.tbpABM.Controls.Add(Me.lblApellido)
         Me.tbpABM.Controls.Add(Me.txtNombre)
         Me.tbpABM.Controls.Add(Me.lblNombre)
         Me.tbpABM.Controls.Add(Me.txtCodigo)
         Me.tbpABM.Controls.Add(Me.lblCodigo)
-        Me.tbpABM.Location = New System.Drawing.Point(4, 25)
-        Me.tbpABM.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbpABM.Location = New System.Drawing.Point(4, 22)
         Me.tbpABM.Name = "tbpABM"
-        Me.tbpABM.Padding = New System.Windows.Forms.Padding(4)
-        Me.tbpABM.Size = New System.Drawing.Size(936, 446)
+        Me.tbpABM.Padding = New System.Windows.Forms.Padding(3)
+        Me.tbpABM.Size = New System.Drawing.Size(700, 360)
         Me.tbpABM.TabIndex = 0
         Me.tbpABM.Text = "ABM"
         Me.tbpABM.UseVisualStyleBackColor = True
         '
-        'cmbTipoCliente
+        'chkHabilitado
         '
-        Me.cmbTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTipoCliente.FormattingEnabled = True
-        Me.cmbTipoCliente.Location = New System.Drawing.Point(545, 48)
-        Me.cmbTipoCliente.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbTipoCliente.Name = "cmbTipoCliente"
-        Me.cmbTipoCliente.Size = New System.Drawing.Size(363, 24)
-        Me.cmbTipoCliente.TabIndex = 23
+        Me.chkHabilitado.AutoSize = True
+        Me.chkHabilitado.Checked = True
+        Me.chkHabilitado.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkHabilitado.Location = New System.Drawing.Point(345, 170)
+        Me.chkHabilitado.Name = "chkHabilitado"
+        Me.chkHabilitado.Size = New System.Drawing.Size(73, 17)
+        Me.chkHabilitado.TabIndex = 26
+        Me.chkHabilitado.Text = "Habilitado"
+        Me.chkHabilitado.UseVisualStyleBackColor = True
+        '
+        'cboTipoCliente
+        '
+        Me.cboTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboTipoCliente.FormattingEnabled = True
+        Me.cboTipoCliente.Location = New System.Drawing.Point(409, 39)
+        Me.cboTipoCliente.Name = "cboTipoCliente"
+        Me.cboTipoCliente.Size = New System.Drawing.Size(273, 21)
+        Me.cboTipoCliente.TabIndex = 23
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(456, 52)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(342, 42)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(83, 17)
+        Me.Label1.Size = New System.Drawing.Size(63, 13)
         Me.Label1.TabIndex = 22
         Me.Label1.Text = "Tipo Cliente"
         '
@@ -137,9 +147,11 @@ Partial Class frmClientes
         '
         Me.gbxSexo.Controls.Add(Me.rdbMasculino)
         Me.gbxSexo.Controls.Add(Me.rdbFemenino)
-        Me.gbxSexo.Location = New System.Drawing.Point(456, 84)
+        Me.gbxSexo.Location = New System.Drawing.Point(342, 68)
+        Me.gbxSexo.Margin = New System.Windows.Forms.Padding(2)
         Me.gbxSexo.Name = "gbxSexo"
-        Me.gbxSexo.Size = New System.Drawing.Size(449, 119)
+        Me.gbxSexo.Padding = New System.Windows.Forms.Padding(2)
+        Me.gbxSexo.Size = New System.Drawing.Size(337, 99)
         Me.gbxSexo.TabIndex = 24
         Me.gbxSexo.TabStop = False
         Me.gbxSexo.Text = "Sexo"
@@ -147,9 +159,10 @@ Partial Class frmClientes
         'rdbMasculino
         '
         Me.rdbMasculino.AutoSize = True
-        Me.rdbMasculino.Location = New System.Drawing.Point(92, 51)
+        Me.rdbMasculino.Location = New System.Drawing.Point(69, 41)
+        Me.rdbMasculino.Margin = New System.Windows.Forms.Padding(2)
         Me.rdbMasculino.Name = "rdbMasculino"
-        Me.rdbMasculino.Size = New System.Drawing.Size(92, 21)
+        Me.rdbMasculino.Size = New System.Drawing.Size(73, 17)
         Me.rdbMasculino.TabIndex = 0
         Me.rdbMasculino.TabStop = True
         Me.rdbMasculino.Text = "Masculino"
@@ -158,90 +171,84 @@ Partial Class frmClientes
         'rdbFemenino
         '
         Me.rdbFemenino.AutoSize = True
-        Me.rdbFemenino.Location = New System.Drawing.Point(262, 51)
+        Me.rdbFemenino.Location = New System.Drawing.Point(196, 41)
+        Me.rdbFemenino.Margin = New System.Windows.Forms.Padding(2)
         Me.rdbFemenino.Name = "rdbFemenino"
-        Me.rdbFemenino.Size = New System.Drawing.Size(91, 21)
+        Me.rdbFemenino.Size = New System.Drawing.Size(71, 17)
         Me.rdbFemenino.TabIndex = 1
         Me.rdbFemenino.TabStop = True
         Me.rdbFemenino.Text = "Femenino"
         Me.rdbFemenino.UseVisualStyleBackColor = True
         '
-        'cmbProfesion
+        'cboProfesion
         '
-        Me.cmbProfesion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbProfesion.FormattingEnabled = True
-        Me.cmbProfesion.Location = New System.Drawing.Point(545, 16)
-        Me.cmbProfesion.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbProfesion.Name = "cmbProfesion"
-        Me.cmbProfesion.Size = New System.Drawing.Size(363, 24)
-        Me.cmbProfesion.TabIndex = 21
+        Me.cboProfesion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboProfesion.FormattingEnabled = True
+        Me.cboProfesion.Location = New System.Drawing.Point(409, 13)
+        Me.cboProfesion.Name = "cboProfesion"
+        Me.cboProfesion.Size = New System.Drawing.Size(273, 21)
+        Me.cboProfesion.TabIndex = 21
         '
         'dtpFechaNacimiento
         '
         Me.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaNacimiento.Location = New System.Drawing.Point(141, 310)
+        Me.dtpFechaNacimiento.Location = New System.Drawing.Point(106, 252)
+        Me.dtpFechaNacimiento.Margin = New System.Windows.Forms.Padding(2)
         Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
-        Me.dtpFechaNacimiento.Size = New System.Drawing.Size(169, 22)
+        Me.dtpFechaNacimiento.Size = New System.Drawing.Size(128, 20)
         Me.dtpFechaNacimiento.TabIndex = 19
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(141, 276)
-        Me.txtEmail.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtEmail.Location = New System.Drawing.Point(106, 224)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(169, 22)
+        Me.txtEmail.Size = New System.Drawing.Size(128, 20)
         Me.txtEmail.TabIndex = 17
         '
         'txtDireccion
         '
-        Me.txtDireccion.Location = New System.Drawing.Point(141, 243)
-        Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDireccion.Location = New System.Drawing.Point(106, 197)
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(297, 22)
+        Me.txtDireccion.Size = New System.Drawing.Size(224, 20)
         Me.txtDireccion.TabIndex = 15
         '
         'txtTelefono
         '
-        Me.txtTelefono.Location = New System.Drawing.Point(141, 211)
-        Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTelefono.Location = New System.Drawing.Point(106, 171)
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(169, 22)
+        Me.txtTelefono.Size = New System.Drawing.Size(128, 20)
         Me.txtTelefono.TabIndex = 13
         '
-        'cmbEstadoCivil
+        'cboEstadoCivil
         '
-        Me.cmbEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbEstadoCivil.FormattingEnabled = True
-        Me.cmbEstadoCivil.Items.AddRange(New Object() {"Soltero", "Casado", "Viudo", "Divorciado"})
-        Me.cmbEstadoCivil.Location = New System.Drawing.Point(141, 178)
-        Me.cmbEstadoCivil.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbEstadoCivil.Name = "cmbEstadoCivil"
-        Me.cmbEstadoCivil.Size = New System.Drawing.Size(169, 24)
-        Me.cmbEstadoCivil.TabIndex = 11
+        Me.cboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEstadoCivil.FormattingEnabled = True
+        Me.cboEstadoCivil.Items.AddRange(New Object() {"Soltero", "Casado", "Viudo", "Divorciado"})
+        Me.cboEstadoCivil.Location = New System.Drawing.Point(106, 145)
+        Me.cboEstadoCivil.Name = "cboEstadoCivil"
+        Me.cboEstadoCivil.Size = New System.Drawing.Size(128, 21)
+        Me.cboEstadoCivil.TabIndex = 11
         '
         'txtNroDocumento
         '
-        Me.txtNroDocumento.Location = New System.Drawing.Point(141, 147)
-        Me.txtNroDocumento.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNroDocumento.Location = New System.Drawing.Point(106, 119)
         Me.txtNroDocumento.Name = "txtNroDocumento"
-        Me.txtNroDocumento.Size = New System.Drawing.Size(169, 22)
+        Me.txtNroDocumento.Size = New System.Drawing.Size(128, 20)
         Me.txtNroDocumento.TabIndex = 9
         '
         'txtApellido
         '
-        Me.txtApellido.Location = New System.Drawing.Point(141, 84)
-        Me.txtApellido.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtApellido.Location = New System.Drawing.Point(106, 68)
         Me.txtApellido.Name = "txtApellido"
-        Me.txtApellido.Size = New System.Drawing.Size(297, 22)
+        Me.txtApellido.Size = New System.Drawing.Size(224, 20)
         Me.txtApellido.TabIndex = 5
         '
         'lblProfesion
         '
         Me.lblProfesion.AutoSize = True
-        Me.lblProfesion.Location = New System.Drawing.Point(456, 20)
-        Me.lblProfesion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblProfesion.Location = New System.Drawing.Point(342, 16)
         Me.lblProfesion.Name = "lblProfesion"
-        Me.lblProfesion.Size = New System.Drawing.Size(68, 17)
+        Me.lblProfesion.Size = New System.Drawing.Size(51, 13)
         Me.lblProfesion.TabIndex = 20
         Me.lblProfesion.Text = "Profesión"
         '
@@ -250,40 +257,35 @@ Partial Class frmClientes
         Me.gbxBotones.Controls.Add(Me.btnConfirmar)
         Me.gbxBotones.Controls.Add(Me.btnEliminar)
         Me.gbxBotones.Controls.Add(Me.btnCancelar)
-        Me.gbxBotones.Location = New System.Drawing.Point(197, 339)
-        Me.gbxBotones.Margin = New System.Windows.Forms.Padding(4)
+        Me.gbxBotones.Location = New System.Drawing.Point(148, 275)
         Me.gbxBotones.Name = "gbxBotones"
-        Me.gbxBotones.Padding = New System.Windows.Forms.Padding(4)
-        Me.gbxBotones.Size = New System.Drawing.Size(569, 80)
+        Me.gbxBotones.Size = New System.Drawing.Size(427, 65)
         Me.gbxBotones.TabIndex = 25
         Me.gbxBotones.TabStop = False
         '
         'btnConfirmar
         '
-        Me.btnConfirmar.Location = New System.Drawing.Point(85, 26)
-        Me.btnConfirmar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnConfirmar.Location = New System.Drawing.Point(64, 21)
         Me.btnConfirmar.Name = "btnConfirmar"
-        Me.btnConfirmar.Size = New System.Drawing.Size(100, 28)
+        Me.btnConfirmar.Size = New System.Drawing.Size(75, 23)
         Me.btnConfirmar.TabIndex = 0
         Me.btnConfirmar.Text = "Confirmar"
         Me.btnConfirmar.UseVisualStyleBackColor = True
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(235, 26)
-        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnEliminar.Location = New System.Drawing.Point(176, 21)
         Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(100, 28)
+        Me.btnEliminar.Size = New System.Drawing.Size(75, 23)
         Me.btnEliminar.TabIndex = 1
         Me.btnEliminar.Text = "Eliminar"
         Me.btnEliminar.UseVisualStyleBackColor = True
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(392, 26)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCancelar.Location = New System.Drawing.Point(294, 21)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(100, 28)
+        Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelar.TabIndex = 2
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
@@ -291,138 +293,124 @@ Partial Class frmClientes
         'lblFechaNacimiento
         '
         Me.lblFechaNacimiento.AutoSize = True
-        Me.lblFechaNacimiento.Location = New System.Drawing.Point(12, 313)
-        Me.lblFechaNacimiento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblFechaNacimiento.Location = New System.Drawing.Point(9, 254)
         Me.lblFechaNacimiento.Name = "lblFechaNacimiento"
-        Me.lblFechaNacimiento.Size = New System.Drawing.Size(121, 17)
+        Me.lblFechaNacimiento.Size = New System.Drawing.Size(93, 13)
         Me.lblFechaNacimiento.TabIndex = 18
         Me.lblFechaNacimiento.Text = "Fecha Nacimiento"
         '
         'lblEmail
         '
         Me.lblEmail.AutoSize = True
-        Me.lblEmail.Location = New System.Drawing.Point(12, 279)
-        Me.lblEmail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblEmail.Location = New System.Drawing.Point(9, 227)
         Me.lblEmail.Name = "lblEmail"
-        Me.lblEmail.Size = New System.Drawing.Size(42, 17)
+        Me.lblEmail.Size = New System.Drawing.Size(32, 13)
         Me.lblEmail.TabIndex = 16
         Me.lblEmail.Text = "Email"
         '
         'lblDireccion
         '
         Me.lblDireccion.AutoSize = True
-        Me.lblDireccion.Location = New System.Drawing.Point(12, 246)
-        Me.lblDireccion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblDireccion.Location = New System.Drawing.Point(9, 200)
         Me.lblDireccion.Name = "lblDireccion"
-        Me.lblDireccion.Size = New System.Drawing.Size(67, 17)
+        Me.lblDireccion.Size = New System.Drawing.Size(52, 13)
         Me.lblDireccion.TabIndex = 14
         Me.lblDireccion.Text = "Dirección"
         '
         'lblTelefono
         '
         Me.lblTelefono.AutoSize = True
-        Me.lblTelefono.Location = New System.Drawing.Point(12, 214)
-        Me.lblTelefono.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTelefono.Location = New System.Drawing.Point(9, 174)
         Me.lblTelefono.Name = "lblTelefono"
-        Me.lblTelefono.Size = New System.Drawing.Size(64, 17)
+        Me.lblTelefono.Size = New System.Drawing.Size(49, 13)
         Me.lblTelefono.TabIndex = 12
         Me.lblTelefono.Text = "Teléfono"
         '
         'lblEstadoCivil
         '
         Me.lblEstadoCivil.AutoSize = True
-        Me.lblEstadoCivil.Location = New System.Drawing.Point(12, 182)
-        Me.lblEstadoCivil.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblEstadoCivil.Location = New System.Drawing.Point(9, 148)
         Me.lblEstadoCivil.Name = "lblEstadoCivil"
-        Me.lblEstadoCivil.Size = New System.Drawing.Size(81, 17)
+        Me.lblEstadoCivil.Size = New System.Drawing.Size(62, 13)
         Me.lblEstadoCivil.TabIndex = 10
         Me.lblEstadoCivil.Text = "Estado Civil"
         '
         'lblNroDocumento
         '
         Me.lblNroDocumento.AutoSize = True
-        Me.lblNroDocumento.Location = New System.Drawing.Point(12, 150)
-        Me.lblNroDocumento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblNroDocumento.Location = New System.Drawing.Point(9, 122)
         Me.lblNroDocumento.Name = "lblNroDocumento"
-        Me.lblNroDocumento.Size = New System.Drawing.Size(111, 17)
+        Me.lblNroDocumento.Size = New System.Drawing.Size(85, 13)
         Me.lblNroDocumento.TabIndex = 8
         Me.lblNroDocumento.Text = "Nro. Documento"
         '
-        'cmbTipoDocumento
+        'cboTipoDocumento
         '
-        Me.cmbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTipoDocumento.FormattingEnabled = True
-        Me.cmbTipoDocumento.Location = New System.Drawing.Point(141, 113)
-        Me.cmbTipoDocumento.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbTipoDocumento.Name = "cmbTipoDocumento"
-        Me.cmbTipoDocumento.Size = New System.Drawing.Size(169, 24)
-        Me.cmbTipoDocumento.TabIndex = 7
+        Me.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboTipoDocumento.FormattingEnabled = True
+        Me.cboTipoDocumento.Location = New System.Drawing.Point(106, 92)
+        Me.cboTipoDocumento.Name = "cboTipoDocumento"
+        Me.cboTipoDocumento.Size = New System.Drawing.Size(128, 21)
+        Me.cboTipoDocumento.TabIndex = 7
         '
         'lblTipoDocumento
         '
         Me.lblTipoDocumento.AutoSize = True
-        Me.lblTipoDocumento.Location = New System.Drawing.Point(12, 117)
-        Me.lblTipoDocumento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTipoDocumento.Location = New System.Drawing.Point(9, 95)
         Me.lblTipoDocumento.Name = "lblTipoDocumento"
-        Me.lblTipoDocumento.Size = New System.Drawing.Size(112, 17)
+        Me.lblTipoDocumento.Size = New System.Drawing.Size(86, 13)
         Me.lblTipoDocumento.TabIndex = 6
         Me.lblTipoDocumento.Text = "Tipo Documento"
         '
         'lblApellido
         '
         Me.lblApellido.AutoSize = True
-        Me.lblApellido.Location = New System.Drawing.Point(12, 84)
-        Me.lblApellido.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblApellido.Location = New System.Drawing.Point(9, 68)
         Me.lblApellido.Name = "lblApellido"
-        Me.lblApellido.Size = New System.Drawing.Size(58, 17)
+        Me.lblApellido.Size = New System.Drawing.Size(44, 13)
         Me.lblApellido.TabIndex = 4
         Me.lblApellido.Text = "Apellido"
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(141, 49)
-        Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNombre.Location = New System.Drawing.Point(106, 40)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(297, 22)
+        Me.txtNombre.Size = New System.Drawing.Size(224, 20)
         Me.txtNombre.TabIndex = 3
         '
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(12, 52)
-        Me.lblNombre.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblNombre.Location = New System.Drawing.Point(9, 42)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(58, 17)
+        Me.lblNombre.Size = New System.Drawing.Size(44, 13)
         Me.lblNombre.TabIndex = 2
         Me.lblNombre.Text = "Nombre"
         '
         'txtCodigo
         '
-        Me.txtCodigo.Location = New System.Drawing.Point(141, 17)
-        Me.txtCodigo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCodigo.Location = New System.Drawing.Point(106, 14)
         Me.txtCodigo.Name = "txtCodigo"
         Me.txtCodigo.ReadOnly = True
-        Me.txtCodigo.Size = New System.Drawing.Size(168, 22)
+        Me.txtCodigo.Size = New System.Drawing.Size(127, 20)
         Me.txtCodigo.TabIndex = 1
         '
         'lblCodigo
         '
         Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Location = New System.Drawing.Point(12, 20)
-        Me.lblCodigo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCodigo.Location = New System.Drawing.Point(9, 16)
         Me.lblCodigo.Name = "lblCodigo"
-        Me.lblCodigo.Size = New System.Drawing.Size(52, 17)
+        Me.lblCodigo.Size = New System.Drawing.Size(40, 13)
         Me.lblCodigo.TabIndex = 0
         Me.lblCodigo.Text = "Código"
         '
         'tbpConsulta
         '
         Me.tbpConsulta.Controls.Add(Me.dgvConsulta)
-        Me.tbpConsulta.Location = New System.Drawing.Point(4, 25)
-        Me.tbpConsulta.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbpConsulta.Location = New System.Drawing.Point(4, 22)
         Me.tbpConsulta.Name = "tbpConsulta"
-        Me.tbpConsulta.Padding = New System.Windows.Forms.Padding(4)
-        Me.tbpConsulta.Size = New System.Drawing.Size(936, 446)
+        Me.tbpConsulta.Padding = New System.Windows.Forms.Padding(3)
+        Me.tbpConsulta.Size = New System.Drawing.Size(700, 360)
         Me.tbpConsulta.TabIndex = 1
         Me.tbpConsulta.Text = "Consulta"
         Me.tbpConsulta.UseVisualStyleBackColor = True
@@ -431,18 +419,18 @@ Partial Class frmClientes
         '
         Me.dgvConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvConsulta.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvConsulta.Location = New System.Drawing.Point(4, 4)
-        Me.dgvConsulta.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgvConsulta.Location = New System.Drawing.Point(3, 3)
         Me.dgvConsulta.Name = "dgvConsulta"
-        Me.dgvConsulta.Size = New System.Drawing.Size(928, 438)
+        Me.dgvConsulta.Size = New System.Drawing.Size(694, 354)
         Me.dgvConsulta.TabIndex = 0
         '
         'frmClientes
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(970, 508)
+        Me.ClientSize = New System.Drawing.Size(728, 413)
         Me.Controls.Add(Me.tbcPrincipal)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmClientes"
         Me.Text = "Clientes - SysTurismo"
         Me.tbcPrincipal.ResumeLayout(False)
@@ -469,7 +457,7 @@ Partial Class frmClientes
     Friend WithEvents lblTelefono As Label
     Friend WithEvents lblEstadoCivil As Label
     Friend WithEvents lblNroDocumento As Label
-    Friend WithEvents cmbTipoDocumento As ComboBox
+    Friend WithEvents cboTipoDocumento As ComboBox
     Friend WithEvents lblTipoDocumento As Label
     Friend WithEvents lblApellido As Label
     Friend WithEvents txtNombre As TextBox
@@ -479,17 +467,18 @@ Partial Class frmClientes
     Friend WithEvents tbpConsulta As TabPage
     Friend WithEvents dgvConsulta As DataGridView
     Friend WithEvents lblProfesion As Label
-    Friend WithEvents cmbProfesion As ComboBox
+    Friend WithEvents cboProfesion As ComboBox
     Friend WithEvents dtpFechaNacimiento As DateTimePicker
     Friend WithEvents txtEmail As TextBox
     Friend WithEvents txtDireccion As TextBox
     Friend WithEvents txtTelefono As TextBox
-    Friend WithEvents cmbEstadoCivil As ComboBox
+    Friend WithEvents cboEstadoCivil As ComboBox
     Friend WithEvents txtNroDocumento As TextBox
     Friend WithEvents txtApellido As TextBox
     Friend WithEvents gbxSexo As GroupBox
     Friend WithEvents rdbMasculino As RadioButton
     Friend WithEvents rdbFemenino As RadioButton
-    Friend WithEvents cmbTipoCliente As ComboBox
+    Friend WithEvents cboTipoCliente As ComboBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents chkHabilitado As CheckBox
 End Class
