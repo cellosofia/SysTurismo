@@ -101,6 +101,12 @@
     <Compile Include="frmEmpleado.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmHabitacion.Designer.vb">
+      <DependentUpon>frmHabitacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHabitacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleado.resx">
       <DependentUpon>frmEmpleado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHabitacion.resx">
+      <DependentUpon>frmHabitacion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>

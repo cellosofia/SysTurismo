@@ -509,6 +509,7 @@ CREATE TABLE Habitacion (
 	Precio MONEY NOT NULL,          -- en guaranies
 	TipoHabitacionID INT NOT NULL,
 	EstadoHabitacionID INT NOT NULL,
+	EstadoSistema BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_Habitacion PRIMARY KEY (HabitacionID),
 	CONSTRAINT FK_Habitacion_SucursalAlojamiento FOREIGN KEY (SucursalAlojamientoID) REFERENCES SucursalAlojamiento(SucursalAlojamientoID),
 	CONSTRAINT FK_Habitacion_TipoHabitacion FOREIGN KEY (TipoHabitacionID) REFERENCES TipoHabitacion(TipoHabitacionID),
