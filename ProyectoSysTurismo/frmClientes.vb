@@ -228,4 +228,8 @@ Public Class frmClientes
     Private Sub tbpABM_Click(sender As Object, e As EventArgs) Handles tbpABM.Click
 
     End Sub
+
+    Private Sub dgvConsulta_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvConsulta.CellContentClick
+
+    End Sub
 End Class

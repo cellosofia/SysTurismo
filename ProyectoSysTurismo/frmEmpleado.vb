@@ -160,7 +160,7 @@ Public Class frmEmpleado
 
     Private Sub tbcEmpleado_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbcEmpleado.SelectedIndexChanged
         If tbcEmpleado.SelectedIndex = 1 Then
-            dgvConsultaEmp.DataSource = generar_datatabla("select * from Empleado") 'falta vista
+            dgvConsultaEmp.DataSource = generar_datatabla("select * from vista_empleado") 'falta vista
         End If
 
     End Sub
