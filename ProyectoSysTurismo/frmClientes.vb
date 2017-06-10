@@ -6,17 +6,17 @@ Public Class frmClientes
     Dim vNuevo As Boolean = True
 
     Private Sub frmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        cmbTipoDocumento.DataSource = generar_datatabla("select * from TipoDocumento")
-        cmbTipoDocumento.ValueMember = "TipoDocumentoID"
-        cmbTipoDocumento.DisplayMember = "Descripcion"
+        cboTipoDocumento.DataSource = generar_datatabla("select * from TipoDocumento")
+        cboTipoDocumento.ValueMember = "TipoDocumentoID"
+        cboTipoDocumento.DisplayMember = "Descripcion"
 
-        cmbProfesion.DataSource = generar_datatabla("select * from Profesion")
-        cmbProfesion.ValueMember = "ProfesionID"
-        cmbProfesion.DisplayMember = "Descripcion"
+        cboProfesion.DataSource = generar_datatabla("select * from Profesion")
+        cboProfesion.ValueMember = "ProfesionID"
+        cboProfesion.DisplayMember = "Descripcion"
 
-        cmbTipoCliente.DataSource = generar_datatabla("select * from TipoCliente")
-        cmbTipoCliente.ValueMember = "TipoClienteID"
-        cmbTipoCliente.DisplayMember = "Descripcion"
+        cboTipoCliente.DataSource = generar_datatabla("select * from TipoCliente")
+        cboTipoCliente.ValueMember = "TipoClienteID"
+        cboTipoCliente.DisplayMember = "Descripcion"
 
         LimpiarFormulario()
 
@@ -43,8 +43,8 @@ Public Class frmClientes
             Return False
         End If
 
-        If cmbTipoDocumento.SelectedIndex = -1 Then
-            cmbTipoDocumento.Focus()
+        If cboTipoDocumento.SelectedIndex = -1 Then
+            cboTipoDocumento.Focus()
             MessageBox.Show("Debe seleccionar el tipo de documento", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
@@ -55,8 +55,8 @@ Public Class frmClientes
             Return False
         End If
 
-        If cmbEstadoCivil.SelectedIndex = -1 Then
-            cmbEstadoCivil.Focus()
+        If cboEstadoCivil.SelectedIndex = -1 Then
+            cboEstadoCivil.Focus()
             MessageBox.Show("Debe seleccionar el estado civil", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
@@ -79,14 +79,14 @@ Public Class frmClientes
             Return False
         End If
 
-        If cmbProfesion.SelectedIndex = -1 Then
-            cmbProfesion.Focus()
+        If cboProfesion.SelectedIndex = -1 Then
+            cboProfesion.Focus()
             MessageBox.Show("Debe seleccionar la profesion", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
 
-        If cmbTipoCliente.SelectedIndex = -1 Then
-            cmbTipoCliente.Focus()
+        If cboTipoCliente.SelectedIndex = -1 Then
+            cboTipoCliente.Focus()
             MessageBox.Show("Debe seleccionar el tipo de cliente", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
@@ -105,16 +105,17 @@ Public Class frmClientes
         txtCodigo.Text = ""
         txtNombre.Text = ""
         txtApellido.Text = ""
-        cmbTipoDocumento.SelectedIndex = -1
+        cboTipoDocumento.SelectedIndex = 0
         txtNroDocumento.Text = ""
-        cmbEstadoCivil.SelectedIndex = -1
+        cboEstadoCivil.SelectedIndex = 0
         txtTelefono.Text = ""
         txtDireccion.Text = ""
         txtEmail.Text = ""
         dtpFechaNacimiento.Value = Date.Today
-        cmbProfesion.SelectedIndex = -1
-        cmbTipoCliente.SelectedIndex = -1
+        cboProfesion.SelectedIndex = 0
+        cboTipoCliente.SelectedIndex = 0
         rdbMasculino.Checked = True
+        chkHabilitado.Checked = True
     End Sub
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
@@ -122,9 +123,10 @@ Public Class frmClientes
             Dim comando As New SqlCommand
 
             Dim EstadoCivil As Char
-            Dim sexo As Integer
+            Dim sexo As Boolean
+            Dim habilitado As Boolean
 
-            Select Case cmbEstadoCivil.Text
+            Select Case cboEstadoCivil.Text
                 Case "Soltero"
                     EstadoCivil = "s"
                 Case "Casado"
@@ -136,15 +138,21 @@ Public Class frmClientes
             End Select
 
             If rdbMasculino.Checked Then
-                sexo = 1
+                sexo = True
             Else
-                sexo = 0
+                sexo = False
+            End If
+
+            If chkHabilitado.Checked Then
+                habilitado = True
+            Else
+                habilitado = False
             End If
 
             If vNuevo = True Then
-                EjecutarSQL("INSERT INTO Cliente VALUES(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13)", txtNombre.Text.Trim, txtApellido.Text.Trim, cmbTipoDocumento.SelectedValue, txtNroDocumento.Text.Trim, EstadoCivil, txtTelefono.Text.Trim, txtDireccion.Text.Trim, txtEmail.Text.Trim, dtpFechaNacimiento.Value, cmbProfesion.SelectedValue, sexo, cmbTipoCliente.SelectedValue, 1)
+                EjecutarSQL("INSERT INTO Cliente VALUES(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13)", txtNombre.Text.Trim, txtApellido.Text.Trim, cboTipoDocumento.SelectedValue, txtNroDocumento.Text.Trim, EstadoCivil, txtTelefono.Text.Trim, txtDireccion.Text.Trim, txtEmail.Text.Trim, dtpFechaNacimiento.Value, cboProfesion.SelectedValue, sexo, cboTipoCliente.SelectedValue, habilitado)
             Else
-                EjecutarSQL("UPDATE Cliente SET Nombre=@1,Apellido=@2,TipoDocumentoID=@3,NroDocumento=@4,EstadoCivil=@5,Telefono=@6,Direccion=@7,Email=@8,FechaNacimiento=@9,ProfesionID=@10,Sexo=@11,TipoClienteID=@12", txtNombre.Text.Trim, txtApellido.Text.Trim, cmbTipoDocumento.SelectedValue, txtNroDocumento.Text.Trim, EstadoCivil, txtTelefono.Text.Trim, txtDireccion.Text.Trim, txtEmail.Text.Trim, dtpFechaNacimiento.Value, cmbProfesion.SelectedValue, sexo, cmbTipoCliente.SelectedValue)
+                EjecutarSQL("UPDATE Cliente SET Nombre=@1,Apellido=@2,TipoDocumentoID=@3,NroDocumento=@4,EstadoCivil=@5,Telefono=@6,Direccion=@7,Email=@8,FechaNacimiento=@9,ProfesionID=@10,Sexo=@11,TipoClienteID=@12,EstadoSistema=@13 WHERE ClienteID=@14", txtNombre.Text.Trim, txtApellido.Text.Trim, cboTipoDocumento.SelectedValue, txtNroDocumento.Text.Trim, EstadoCivil, txtTelefono.Text.Trim, txtDireccion.Text.Trim, txtEmail.Text.Trim, dtpFechaNacimiento.Value, cboProfesion.SelectedValue, sexo, cboTipoCliente.SelectedValue, habilitado, txtCodigo.Text)
                 vNuevo = True
             End If
 
@@ -161,26 +169,26 @@ Public Class frmClientes
             txtCodigo.Text = dtCliente.Rows(0).Item("ClienteID")
             txtNombre.Text = dtCliente.Rows(0).Item("Nombre")
             txtApellido.Text = dtCliente.Rows(0).Item("Apellido")
-            cmbTipoDocumento.SelectedValue = dtCliente.Rows(0).Item("TipoDocumentoID")
+            cboTipoDocumento.SelectedValue = dtCliente.Rows(0).Item("TipoDocumentoID")
             txtNroDocumento.Text = dtCliente.Rows(0).Item("NroDocumento")
 
             Select Case dtCliente.Rows(0).Item("EstadoCivil")
                 Case "s"
-                    cmbEstadoCivil.Text = "Soltero"
+                    cboEstadoCivil.Text = "Soltero"
                 Case "c"
-                    cmbEstadoCivil.Text = "Casado"
+                    cboEstadoCivil.Text = "Casado"
                 Case "v"
-                    cmbEstadoCivil.Text = "Viudo"
+                    cboEstadoCivil.Text = "Viudo"
                 Case "d"
-                    cmbEstadoCivil.Text = "Divorciado"
+                    cboEstadoCivil.Text = "Divorciado"
             End Select
 
             txtTelefono.Text = dtCliente.Rows(0).Item("Telefono")
             txtDireccion.Text = dtCliente.Rows(0).Item("Direccion")
             txtEmail.Text = dtCliente.Rows(0).Item("Email")
             dtpFechaNacimiento.Value = dtCliente.Rows(0).Item("FechaNacimiento")
-            cmbProfesion.SelectedValue = dtCliente.Rows(0).Item("ProfesionID")
-            cmbTipoCliente.SelectedValue = dtCliente.Rows(0).Item("TipoClienteID")
+            cboProfesion.SelectedValue = dtCliente.Rows(0).Item("ProfesionID")
+            cboTipoCliente.SelectedValue = dtCliente.Rows(0).Item("TipoClienteID")
 
             If dtCliente.Rows(0).Item("Sexo") = True Then
                 rdbMasculino.Checked = True
@@ -188,10 +196,16 @@ Public Class frmClientes
                 rdbFemenino.Checked = True
             End If
 
+            If dtCliente.Rows(0).Item("EstadoSistema") = True Then
+                chkHabilitado.Checked = True
+            Else
+                chkHabilitado.Checked = False
+            End If
+
             tbcPrincipal.SelectedIndex = 0
 
-            vNuevo = False
-        End If
+                vNuevo = False
+            End If
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click

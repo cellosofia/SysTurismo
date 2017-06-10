@@ -24,17 +24,18 @@ Partial Class frmClientes
     Private Sub InitializeComponent()
         Me.tbcPrincipal = New System.Windows.Forms.TabControl()
         Me.tbpABM = New System.Windows.Forms.TabPage()
-        Me.cmbTipoCliente = New System.Windows.Forms.ComboBox()
+        Me.chkHabilitado = New System.Windows.Forms.CheckBox()
+        Me.cboTipoCliente = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gbxSexo = New System.Windows.Forms.GroupBox()
         Me.rdbMasculino = New System.Windows.Forms.RadioButton()
         Me.rdbFemenino = New System.Windows.Forms.RadioButton()
-        Me.cmbProfesion = New System.Windows.Forms.ComboBox()
+        Me.cboProfesion = New System.Windows.Forms.ComboBox()
         Me.dtpFechaNacimiento = New System.Windows.Forms.DateTimePicker()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
-        Me.cmbEstadoCivil = New System.Windows.Forms.ComboBox()
+        Me.cboEstadoCivil = New System.Windows.Forms.ComboBox()
         Me.txtNroDocumento = New System.Windows.Forms.TextBox()
         Me.txtApellido = New System.Windows.Forms.TextBox()
         Me.lblProfesion = New System.Windows.Forms.Label()
@@ -48,7 +49,7 @@ Partial Class frmClientes
         Me.lblTelefono = New System.Windows.Forms.Label()
         Me.lblEstadoCivil = New System.Windows.Forms.Label()
         Me.lblNroDocumento = New System.Windows.Forms.Label()
-        Me.cmbTipoDocumento = New System.Windows.Forms.ComboBox()
+        Me.cboTipoDocumento = New System.Windows.Forms.ComboBox()
         Me.lblTipoDocumento = New System.Windows.Forms.Label()
         Me.lblApellido = New System.Windows.Forms.Label()
         Me.txtNombre = New System.Windows.Forms.TextBox()
@@ -77,15 +78,16 @@ Partial Class frmClientes
         '
         'tbpABM
         '
-        Me.tbpABM.Controls.Add(Me.cmbTipoCliente)
+        Me.tbpABM.Controls.Add(Me.chkHabilitado)
+        Me.tbpABM.Controls.Add(Me.cboTipoCliente)
         Me.tbpABM.Controls.Add(Me.Label1)
         Me.tbpABM.Controls.Add(Me.gbxSexo)
-        Me.tbpABM.Controls.Add(Me.cmbProfesion)
+        Me.tbpABM.Controls.Add(Me.cboProfesion)
         Me.tbpABM.Controls.Add(Me.dtpFechaNacimiento)
         Me.tbpABM.Controls.Add(Me.txtEmail)
         Me.tbpABM.Controls.Add(Me.txtDireccion)
         Me.tbpABM.Controls.Add(Me.txtTelefono)
-        Me.tbpABM.Controls.Add(Me.cmbEstadoCivil)
+        Me.tbpABM.Controls.Add(Me.cboEstadoCivil)
         Me.tbpABM.Controls.Add(Me.txtNroDocumento)
         Me.tbpABM.Controls.Add(Me.txtApellido)
         Me.tbpABM.Controls.Add(Me.lblProfesion)
@@ -96,7 +98,7 @@ Partial Class frmClientes
         Me.tbpABM.Controls.Add(Me.lblTelefono)
         Me.tbpABM.Controls.Add(Me.lblEstadoCivil)
         Me.tbpABM.Controls.Add(Me.lblNroDocumento)
-        Me.tbpABM.Controls.Add(Me.cmbTipoDocumento)
+        Me.tbpABM.Controls.Add(Me.cboTipoDocumento)
         Me.tbpABM.Controls.Add(Me.lblTipoDocumento)
         Me.tbpABM.Controls.Add(Me.lblApellido)
         Me.tbpABM.Controls.Add(Me.txtNombre)
@@ -105,20 +107,32 @@ Partial Class frmClientes
         Me.tbpABM.Controls.Add(Me.lblCodigo)
         Me.tbpABM.Location = New System.Drawing.Point(4, 22)
         Me.tbpABM.Name = "tbpABM"
-        Me.tbpABM.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tbpABM.Padding = New System.Windows.Forms.Padding(3)
         Me.tbpABM.Size = New System.Drawing.Size(700, 360)
         Me.tbpABM.TabIndex = 0
         Me.tbpABM.Text = "ABM"
         Me.tbpABM.UseVisualStyleBackColor = True
         '
-        'cmbTipoCliente
+        'chkHabilitado
         '
-        Me.cmbTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTipoCliente.FormattingEnabled = True
-        Me.cmbTipoCliente.Location = New System.Drawing.Point(409, 39)
-        Me.cmbTipoCliente.Name = "cmbTipoCliente"
-        Me.cmbTipoCliente.Size = New System.Drawing.Size(273, 21)
-        Me.cmbTipoCliente.TabIndex = 23
+        Me.chkHabilitado.AutoSize = True
+        Me.chkHabilitado.Checked = True
+        Me.chkHabilitado.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkHabilitado.Location = New System.Drawing.Point(345, 170)
+        Me.chkHabilitado.Name = "chkHabilitado"
+        Me.chkHabilitado.Size = New System.Drawing.Size(73, 17)
+        Me.chkHabilitado.TabIndex = 26
+        Me.chkHabilitado.Text = "Habilitado"
+        Me.chkHabilitado.UseVisualStyleBackColor = True
+        '
+        'cboTipoCliente
+        '
+        Me.cboTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboTipoCliente.FormattingEnabled = True
+        Me.cboTipoCliente.Location = New System.Drawing.Point(409, 39)
+        Me.cboTipoCliente.Name = "cboTipoCliente"
+        Me.cboTipoCliente.Size = New System.Drawing.Size(273, 21)
+        Me.cboTipoCliente.TabIndex = 23
         '
         'Label1
         '
@@ -134,10 +148,10 @@ Partial Class frmClientes
         Me.gbxSexo.Controls.Add(Me.rdbMasculino)
         Me.gbxSexo.Controls.Add(Me.rdbFemenino)
         Me.gbxSexo.Location = New System.Drawing.Point(342, 68)
-        Me.gbxSexo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbxSexo.Margin = New System.Windows.Forms.Padding(2)
         Me.gbxSexo.Name = "gbxSexo"
-        Me.gbxSexo.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.gbxSexo.Size = New System.Drawing.Size(337, 97)
+        Me.gbxSexo.Padding = New System.Windows.Forms.Padding(2)
+        Me.gbxSexo.Size = New System.Drawing.Size(337, 99)
         Me.gbxSexo.TabIndex = 24
         Me.gbxSexo.TabStop = False
         Me.gbxSexo.Text = "Sexo"
@@ -146,7 +160,7 @@ Partial Class frmClientes
         '
         Me.rdbMasculino.AutoSize = True
         Me.rdbMasculino.Location = New System.Drawing.Point(69, 41)
-        Me.rdbMasculino.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.rdbMasculino.Margin = New System.Windows.Forms.Padding(2)
         Me.rdbMasculino.Name = "rdbMasculino"
         Me.rdbMasculino.Size = New System.Drawing.Size(73, 17)
         Me.rdbMasculino.TabIndex = 0
@@ -158,7 +172,7 @@ Partial Class frmClientes
         '
         Me.rdbFemenino.AutoSize = True
         Me.rdbFemenino.Location = New System.Drawing.Point(196, 41)
-        Me.rdbFemenino.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.rdbFemenino.Margin = New System.Windows.Forms.Padding(2)
         Me.rdbFemenino.Name = "rdbFemenino"
         Me.rdbFemenino.Size = New System.Drawing.Size(71, 17)
         Me.rdbFemenino.TabIndex = 1
@@ -166,20 +180,20 @@ Partial Class frmClientes
         Me.rdbFemenino.Text = "Femenino"
         Me.rdbFemenino.UseVisualStyleBackColor = True
         '
-        'cmbProfesion
+        'cboProfesion
         '
-        Me.cmbProfesion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbProfesion.FormattingEnabled = True
-        Me.cmbProfesion.Location = New System.Drawing.Point(409, 13)
-        Me.cmbProfesion.Name = "cmbProfesion"
-        Me.cmbProfesion.Size = New System.Drawing.Size(273, 21)
-        Me.cmbProfesion.TabIndex = 21
+        Me.cboProfesion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboProfesion.FormattingEnabled = True
+        Me.cboProfesion.Location = New System.Drawing.Point(409, 13)
+        Me.cboProfesion.Name = "cboProfesion"
+        Me.cboProfesion.Size = New System.Drawing.Size(273, 21)
+        Me.cboProfesion.TabIndex = 21
         '
         'dtpFechaNacimiento
         '
         Me.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpFechaNacimiento.Location = New System.Drawing.Point(106, 252)
-        Me.dtpFechaNacimiento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.dtpFechaNacimiento.Margin = New System.Windows.Forms.Padding(2)
         Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
         Me.dtpFechaNacimiento.Size = New System.Drawing.Size(128, 20)
         Me.dtpFechaNacimiento.TabIndex = 19
@@ -205,15 +219,15 @@ Partial Class frmClientes
         Me.txtTelefono.Size = New System.Drawing.Size(128, 20)
         Me.txtTelefono.TabIndex = 13
         '
-        'cmbEstadoCivil
+        'cboEstadoCivil
         '
-        Me.cmbEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbEstadoCivil.FormattingEnabled = True
-        Me.cmbEstadoCivil.Items.AddRange(New Object() {"Soltero", "Casado", "Viudo", "Divorciado"})
-        Me.cmbEstadoCivil.Location = New System.Drawing.Point(106, 145)
-        Me.cmbEstadoCivil.Name = "cmbEstadoCivil"
-        Me.cmbEstadoCivil.Size = New System.Drawing.Size(128, 21)
-        Me.cmbEstadoCivil.TabIndex = 11
+        Me.cboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEstadoCivil.FormattingEnabled = True
+        Me.cboEstadoCivil.Items.AddRange(New Object() {"Soltero", "Casado", "Viudo", "Divorciado"})
+        Me.cboEstadoCivil.Location = New System.Drawing.Point(106, 145)
+        Me.cboEstadoCivil.Name = "cboEstadoCivil"
+        Me.cboEstadoCivil.Size = New System.Drawing.Size(128, 21)
+        Me.cboEstadoCivil.TabIndex = 11
         '
         'txtNroDocumento
         '
@@ -330,14 +344,14 @@ Partial Class frmClientes
         Me.lblNroDocumento.TabIndex = 8
         Me.lblNroDocumento.Text = "Nro. Documento"
         '
-        'cmbTipoDocumento
+        'cboTipoDocumento
         '
-        Me.cmbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTipoDocumento.FormattingEnabled = True
-        Me.cmbTipoDocumento.Location = New System.Drawing.Point(106, 92)
-        Me.cmbTipoDocumento.Name = "cmbTipoDocumento"
-        Me.cmbTipoDocumento.Size = New System.Drawing.Size(128, 21)
-        Me.cmbTipoDocumento.TabIndex = 7
+        Me.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboTipoDocumento.FormattingEnabled = True
+        Me.cboTipoDocumento.Location = New System.Drawing.Point(106, 92)
+        Me.cboTipoDocumento.Name = "cboTipoDocumento"
+        Me.cboTipoDocumento.Size = New System.Drawing.Size(128, 21)
+        Me.cboTipoDocumento.TabIndex = 7
         '
         'lblTipoDocumento
         '
@@ -395,7 +409,7 @@ Partial Class frmClientes
         Me.tbpConsulta.Controls.Add(Me.dgvConsulta)
         Me.tbpConsulta.Location = New System.Drawing.Point(4, 22)
         Me.tbpConsulta.Name = "tbpConsulta"
-        Me.tbpConsulta.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tbpConsulta.Padding = New System.Windows.Forms.Padding(3)
         Me.tbpConsulta.Size = New System.Drawing.Size(700, 360)
         Me.tbpConsulta.TabIndex = 1
         Me.tbpConsulta.Text = "Consulta"
@@ -416,7 +430,7 @@ Partial Class frmClientes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(728, 413)
         Me.Controls.Add(Me.tbcPrincipal)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmClientes"
         Me.Text = "Clientes - SysTurismo"
         Me.tbcPrincipal.ResumeLayout(False)
@@ -443,7 +457,7 @@ Partial Class frmClientes
     Friend WithEvents lblTelefono As Label
     Friend WithEvents lblEstadoCivil As Label
     Friend WithEvents lblNroDocumento As Label
-    Friend WithEvents cmbTipoDocumento As ComboBox
+    Friend WithEvents cboTipoDocumento As ComboBox
     Friend WithEvents lblTipoDocumento As Label
     Friend WithEvents lblApellido As Label
     Friend WithEvents txtNombre As TextBox
@@ -453,17 +467,18 @@ Partial Class frmClientes
     Friend WithEvents tbpConsulta As TabPage
     Friend WithEvents dgvConsulta As DataGridView
     Friend WithEvents lblProfesion As Label
-    Friend WithEvents cmbProfesion As ComboBox
+    Friend WithEvents cboProfesion As ComboBox
     Friend WithEvents dtpFechaNacimiento As DateTimePicker
     Friend WithEvents txtEmail As TextBox
     Friend WithEvents txtDireccion As TextBox
     Friend WithEvents txtTelefono As TextBox
-    Friend WithEvents cmbEstadoCivil As ComboBox
+    Friend WithEvents cboEstadoCivil As ComboBox
     Friend WithEvents txtNroDocumento As TextBox
     Friend WithEvents txtApellido As TextBox
     Friend WithEvents gbxSexo As GroupBox
     Friend WithEvents rdbMasculino As RadioButton
     Friend WithEvents rdbFemenino As RadioButton
-    Friend WithEvents cmbTipoCliente As ComboBox
+    Friend WithEvents cboTipoCliente As ComboBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents chkHabilitado As CheckBox
 End Class
