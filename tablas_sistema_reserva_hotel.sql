@@ -34,6 +34,12 @@ CREATE TABLE CargoEmpleado (
 	CONSTRAINT PK_CargoEmpleado PRIMARY KEY (CargoEmpleadoID),
 );
 
+INSERT INTO CargoEmpleado VALUES ('Cajero', 'Se encargar de realizar las cobranzas');
+INSERT INTO CargoEmpleado VALUES ('Gerente', 'Se encargar de organizar y reunir nuevo personal');
+INSERT INTO CargoEmpleado VALUES ('Jefe', 'Se de todo el personal de la empresa y sus areas');
+INSERT INTO CargoEmpleado VALUES ('Vendedor', 'Se encargar de realizar busqueda de clientes para la empresa');
+INSERT INTO CargoEmpleado VALUES ('Call Center', 'Se encargar de atender a los clientes via telefonica');
+
 CREATE TABLE TipoDocumento (
 	TipoDocumentoID INT NOT NULL IDENTITY (1,1),
 	Descripcion VARCHAR(50) NOT NULL,
@@ -453,6 +459,8 @@ CREATE TABLE SucursalEmpresa (
 	CONSTRAINT FK_SucursalEmpresa_Ciudad FOREIGN KEY (CiudadID) REFERENCES Ciudad(CiudadID),
 );
 
+INSERT INTO SucursalEmpresa VALUES ('Turipar', 1, '565889', 'Gral Santos c Rca Siria', 'turipar@turismo.com.py', 26, 1);
+
 CREATE TABLE Alojamiento (
 	AlojamientoID INT NOT NULL IDENTITY (1,1),
 	TipoAlojamientoID INT NOT NULL,
@@ -608,3 +616,15 @@ CREATE TABLE TipoServicioHabitacionPorHabitacion(
  -- TipoDocumento td ON td.TipoDocumentoID = c.TipoDocumentoID JOIN
  -- TipoCliente tc on tc.TipoClienteID = c.TipoClienteID JOIN
  -- Profesion p on p.ProfesionID = c.ProfesionID
+
+ -- Vista de Empleado
+-- CREATE VIEW vista_Empleado AS
+ 
+-- SELECT        dbo.Empleado.EmpleadoID, dbo.Empleado.Nombre, dbo.Empleado.Apellido, dbo.CargoEmpleado.Nombre AS Cargo, dbo.TipoDocumento.Descripcion, dbo.Empleado.NroDocumento, 
+--                         dbo.Empleado.FechaNacimiento, dbo.SucursalEmpresa.Nombre AS Sucursal, dbo.Empleado.Telefono, dbo.Empleado.Direccion, 
+--                         CASE dbo.Empleado.EstadoCivil WHEN 's' THEN 'Soltero' WHEN 'c' THEN 'Casado' WHEN 'v' THEN 'Viudo' WHEN 'd' THEN 'Divorciado' END AS [Estado Civil], dbo.Empleado.Antiguedad, 
+--                         dbo.Empleado.EstadoSistema
+--FROM            dbo.Empleado INNER JOIN
+--                         dbo.CargoEmpleado ON dbo.Empleado.CargoEmpleadoID = dbo.CargoEmpleado.CargoEmpleadoID INNER JOIN
+--                         dbo.TipoDocumento ON dbo.Empleado.TipoDocumentoID = dbo.TipoDocumento.TipoDocumentoID INNER JOIN
+--                         dbo.SucursalEmpresa ON dbo.Empleado.SucursalEmpresaID = dbo.SucursalEmpresa.SucursalEmpresaID;

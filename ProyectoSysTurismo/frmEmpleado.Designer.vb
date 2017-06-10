@@ -24,14 +24,7 @@ Partial Class frmEmpleado
     Private Sub InitializeComponent()
         Me.tbcEmpleado = New System.Windows.Forms.TabControl()
         Me.tbpempleado = New System.Windows.Forms.TabPage()
-        Me.gpbEstado = New System.Windows.Forms.GroupBox()
-        Me.rdbDeshabilidado = New System.Windows.Forms.RadioButton()
-        Me.rdbHabilitado = New System.Windows.Forms.RadioButton()
-        Me.gpbEstadoCivil = New System.Windows.Forms.GroupBox()
-        Me.rdbViudo = New System.Windows.Forms.RadioButton()
-        Me.rdbDivorciado = New System.Windows.Forms.RadioButton()
-        Me.rdbCasado = New System.Windows.Forms.RadioButton()
-        Me.rdbSoltero = New System.Windows.Forms.RadioButton()
+        Me.dtpFechaNac = New System.Windows.Forms.DateTimePicker()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.cboSucursal = New System.Windows.Forms.ComboBox()
@@ -61,11 +54,10 @@ Partial Class frmEmpleado
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tbpConsultaEmp = New System.Windows.Forms.TabPage()
         Me.dgvConsultaEmp = New System.Windows.Forms.DataGridView()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.cboEstadoCivil = New System.Windows.Forms.ComboBox()
+        Me.chkEstado = New System.Windows.Forms.CheckBox()
         Me.tbcEmpleado.SuspendLayout()
         Me.tbpempleado.SuspendLayout()
-        Me.gpbEstado.SuspendLayout()
-        Me.gpbEstadoCivil.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.nudAntiguedad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbpConsultaEmp.SuspendLayout()
@@ -85,9 +77,9 @@ Partial Class frmEmpleado
         '
         'tbpempleado
         '
-        Me.tbpempleado.Controls.Add(Me.DateTimePicker1)
-        Me.tbpempleado.Controls.Add(Me.gpbEstado)
-        Me.tbpempleado.Controls.Add(Me.gpbEstadoCivil)
+        Me.tbpempleado.Controls.Add(Me.chkEstado)
+        Me.tbpempleado.Controls.Add(Me.cboEstadoCivil)
+        Me.tbpempleado.Controls.Add(Me.dtpFechaNac)
         Me.tbpempleado.Controls.Add(Me.txtTelefono)
         Me.tbpempleado.Controls.Add(Me.txtDireccion)
         Me.tbpempleado.Controls.Add(Me.cboSucursal)
@@ -120,93 +112,13 @@ Partial Class frmEmpleado
         Me.tbpempleado.Text = "ABMEmpleado"
         Me.tbpempleado.UseVisualStyleBackColor = True
         '
-        'gpbEstado
+        'dtpFechaNac
         '
-        Me.gpbEstado.Controls.Add(Me.rdbDeshabilidado)
-        Me.gpbEstado.Controls.Add(Me.rdbHabilitado)
-        Me.gpbEstado.Location = New System.Drawing.Point(97, 355)
-        Me.gpbEstado.Name = "gpbEstado"
-        Me.gpbEstado.Size = New System.Drawing.Size(281, 31)
-        Me.gpbEstado.TabIndex = 43
-        Me.gpbEstado.TabStop = False
-        '
-        'rdbDeshabilidado
-        '
-        Me.rdbDeshabilidado.AutoSize = True
-        Me.rdbDeshabilidado.Location = New System.Drawing.Point(89, 11)
-        Me.rdbDeshabilidado.Name = "rdbDeshabilidado"
-        Me.rdbDeshabilidado.Size = New System.Drawing.Size(89, 17)
-        Me.rdbDeshabilidado.TabIndex = 1
-        Me.rdbDeshabilidado.TabStop = True
-        Me.rdbDeshabilidado.Text = "Deshabilitado"
-        Me.rdbDeshabilidado.UseVisualStyleBackColor = True
-        '
-        'rdbHabilitado
-        '
-        Me.rdbHabilitado.AutoSize = True
-        Me.rdbHabilitado.Location = New System.Drawing.Point(12, 11)
-        Me.rdbHabilitado.Name = "rdbHabilitado"
-        Me.rdbHabilitado.Size = New System.Drawing.Size(72, 17)
-        Me.rdbHabilitado.TabIndex = 0
-        Me.rdbHabilitado.TabStop = True
-        Me.rdbHabilitado.Text = "Habilitado"
-        Me.rdbHabilitado.UseVisualStyleBackColor = True
-        '
-        'gpbEstadoCivil
-        '
-        Me.gpbEstadoCivil.Controls.Add(Me.rdbViudo)
-        Me.gpbEstadoCivil.Controls.Add(Me.rdbDivorciado)
-        Me.gpbEstadoCivil.Controls.Add(Me.rdbCasado)
-        Me.gpbEstadoCivil.Controls.Add(Me.rdbSoltero)
-        Me.gpbEstadoCivil.Location = New System.Drawing.Point(98, 287)
-        Me.gpbEstadoCivil.Name = "gpbEstadoCivil"
-        Me.gpbEstadoCivil.Size = New System.Drawing.Size(281, 31)
-        Me.gpbEstadoCivil.TabIndex = 42
-        Me.gpbEstadoCivil.TabStop = False
-        '
-        'rdbViudo
-        '
-        Me.rdbViudo.AutoSize = True
-        Me.rdbViudo.Location = New System.Drawing.Point(228, 11)
-        Me.rdbViudo.Name = "rdbViudo"
-        Me.rdbViudo.Size = New System.Drawing.Size(52, 17)
-        Me.rdbViudo.TabIndex = 3
-        Me.rdbViudo.TabStop = True
-        Me.rdbViudo.Text = "Viudo"
-        Me.rdbViudo.UseVisualStyleBackColor = True
-        '
-        'rdbDivorciado
-        '
-        Me.rdbDivorciado.AutoSize = True
-        Me.rdbDivorciado.Location = New System.Drawing.Point(145, 11)
-        Me.rdbDivorciado.Name = "rdbDivorciado"
-        Me.rdbDivorciado.Size = New System.Drawing.Size(76, 17)
-        Me.rdbDivorciado.TabIndex = 2
-        Me.rdbDivorciado.TabStop = True
-        Me.rdbDivorciado.Text = "Divorciado"
-        Me.rdbDivorciado.UseVisualStyleBackColor = True
-        '
-        'rdbCasado
-        '
-        Me.rdbCasado.AutoSize = True
-        Me.rdbCasado.Location = New System.Drawing.Point(77, 11)
-        Me.rdbCasado.Name = "rdbCasado"
-        Me.rdbCasado.Size = New System.Drawing.Size(61, 17)
-        Me.rdbCasado.TabIndex = 1
-        Me.rdbCasado.TabStop = True
-        Me.rdbCasado.Text = "Casado"
-        Me.rdbCasado.UseVisualStyleBackColor = True
-        '
-        'rdbSoltero
-        '
-        Me.rdbSoltero.AutoSize = True
-        Me.rdbSoltero.Location = New System.Drawing.Point(12, 11)
-        Me.rdbSoltero.Name = "rdbSoltero"
-        Me.rdbSoltero.Size = New System.Drawing.Size(58, 17)
-        Me.rdbSoltero.TabIndex = 0
-        Me.rdbSoltero.TabStop = True
-        Me.rdbSoltero.Text = "Soltero"
-        Me.rdbSoltero.UseVisualStyleBackColor = True
+        Me.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaNac.Location = New System.Drawing.Point(97, 176)
+        Me.dtpFechaNac.Name = "dtpFechaNac"
+        Me.dtpFechaNac.Size = New System.Drawing.Size(130, 20)
+        Me.dtpFechaNac.TabIndex = 51
         '
         'txtTelefono
         '
@@ -463,12 +375,25 @@ Partial Class frmEmpleado
         Me.dgvConsultaEmp.Size = New System.Drawing.Size(832, 454)
         Me.dgvConsultaEmp.TabIndex = 0
         '
-        'DateTimePicker1
+        'cboEstadoCivil
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(97, 173)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimePicker1.TabIndex = 51
+        Me.cboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEstadoCivil.FormattingEnabled = True
+        Me.cboEstadoCivil.Items.AddRange(New Object() {"Soltero", "Casado", "Viudo", "Divorciado"})
+        Me.cboEstadoCivil.Location = New System.Drawing.Point(98, 293)
+        Me.cboEstadoCivil.Name = "cboEstadoCivil"
+        Me.cboEstadoCivil.Size = New System.Drawing.Size(128, 21)
+        Me.cboEstadoCivil.TabIndex = 52
+        '
+        'chkEstado
+        '
+        Me.chkEstado.AutoSize = True
+        Me.chkEstado.Location = New System.Drawing.Point(97, 366)
+        Me.chkEstado.Name = "chkEstado"
+        Me.chkEstado.Size = New System.Drawing.Size(73, 17)
+        Me.chkEstado.TabIndex = 53
+        Me.chkEstado.Text = "Habilitado"
+        Me.chkEstado.UseVisualStyleBackColor = True
         '
         'frmEmpleado
         '
@@ -481,10 +406,6 @@ Partial Class frmEmpleado
         Me.tbcEmpleado.ResumeLayout(False)
         Me.tbpempleado.ResumeLayout(False)
         Me.tbpempleado.PerformLayout()
-        Me.gpbEstado.ResumeLayout(False)
-        Me.gpbEstado.PerformLayout()
-        Me.gpbEstadoCivil.ResumeLayout(False)
-        Me.gpbEstadoCivil.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.nudAntiguedad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbpConsultaEmp.ResumeLayout(False)
@@ -495,14 +416,6 @@ Partial Class frmEmpleado
 
     Friend WithEvents tbcEmpleado As TabControl
     Friend WithEvents tbpempleado As TabPage
-    Friend WithEvents gpbEstado As GroupBox
-    Friend WithEvents rdbDeshabilidado As RadioButton
-    Friend WithEvents rdbHabilitado As RadioButton
-    Friend WithEvents gpbEstadoCivil As GroupBox
-    Friend WithEvents rdbViudo As RadioButton
-    Friend WithEvents rdbDivorciado As RadioButton
-    Friend WithEvents rdbCasado As RadioButton
-    Friend WithEvents rdbSoltero As RadioButton
     Friend WithEvents txtTelefono As TextBox
     Friend WithEvents txtDireccion As TextBox
     Friend WithEvents cboSucursal As ComboBox
@@ -531,6 +444,8 @@ Partial Class frmEmpleado
     Friend WithEvents txtCodEmpleado As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents tbpConsultaEmp As TabPage
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents dtpFechaNac As DateTimePicker
     Friend WithEvents dgvConsultaEmp As DataGridView
+    Friend WithEvents cboEstadoCivil As ComboBox
+    Friend WithEvents chkEstado As CheckBox
 End Class
