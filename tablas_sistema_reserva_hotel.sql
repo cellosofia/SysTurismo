@@ -369,15 +369,16 @@ INSERT INTO Profesion VALUES ('PROFESOR');
 INSERT INTO Profesion VALUES ('ABOGADO');
 INSERT INTO Profesion VALUES ('INFORMATICO');
 
-CREATE TABLE EstadoSistema (
-	EstadoSistemaID INT NOT NULL IDENTITY (1,1),
+CREATE TABLE EstadoHabitacion (
+	EstadoHabitacionID INT NOT NULL IDENTITY (1,1),
 	Descripcion VARCHAR(50) NOT NULL,
-	CONSTRAINT PK_EstadoSistema PRIMARY KEY (EstadoSistemaID),
+	CONSTRAINT PK_EstadoHabitacion PRIMARY KEY (EstadoHabitacionID),
 );
 
-INSERT INTO EstadoSistema VALUES('HABILITADO');
-INSERT INTO EstadoSistema VALUES('DESHABILITADO');
-INSERT INTO EstadoSistema VALUES('MANTENIMIENTO');
+INSERT INTO EstadoHabitacion VALUES('LIBRE');
+INSERT INTO EstadoHabitacion VALUES('OCUPADO');
+INSERT INTO EstadoHabitacion VALUES('RESERVADO');
+INSERT INTO EstadoHabitacion VALUES('MANTENIMIENTO');
 
 CREATE TABLE TipoAlojamiento (
 	TipoAlojamientoId INT NOT NULL IDENTITY (1,1),
@@ -396,14 +397,46 @@ CREATE TABLE TipoHabitacion (
 );
 
 INSERT INTO TipoHabitacion VALUES('INDIVIDUAL');
-INSERT INTO TipoAlojamiento VALUES('DOBLE INDIVIDUAL');
-INSERT INTO TipoAlojamiento VALUES('DOBLE');
-INSERT INTO TipoAlojamiento VALUES('CAMA SUPLETORIA');
-INSERT INTO TipoAlojamiento VALUES('TRIPLE');
-INSERT INTO TipoAlojamiento VALUES('JUNIOR SUITE');
-INSERT INTO TipoAlojamiento VALUES('SUITE');
-INSERT INTO TipoAlojamiento VALUES('SUITE PRESIDENCIAL');
-INSERT INTO TipoAlojamiento VALUES('SUITE NUPCIAL');
+INSERT INTO TipoHabitacion VALUES('DOBLE INDIVIDUAL');
+INSERT INTO TipoHabitacion VALUES('DOBLE');
+INSERT INTO TipoHabitacion VALUES('CAMA SUPLETORIA');
+INSERT INTO TipoHabitacion VALUES('TRIPLE');
+INSERT INTO TipoHabitacion VALUES('JUNIOR SUITE');
+INSERT INTO TipoHabitacion VALUES('SUITE');
+INSERT INTO TipoHabitacion VALUES('SUITE PRESIDENCIAL');
+INSERT INTO TipoHabitacion VALUES('SUITE NUPCIAL');
+
+CREATE TABLE TipoServicioAlojamiento(
+	TipoServicioAlojamientoID INT NOT NULL IDENTITY (1,1),
+	Descripcion VARCHAR(100) NOT NULL,
+	CONSTRAINT PK_TipoServicioAlojamiento PRIMARY KEY (TipoServicioAlojamientoID),
+);
+
+INSERT INTO TipoServicioAlojamiento VALUES ('PISCINA');
+INSERT INTO TipoServicioAlojamiento VALUES ('PISCINA CLIMATIZADA');
+INSERT INTO TipoServicioAlojamiento VALUES ('RESTAURANTE');
+INSERT INTO TipoServicioAlojamiento VALUES ('BAR');
+INSERT INTO TipoServicioAlojamiento VALUES ('SERVICIO AL CUARTO');
+INSERT INTO TipoServicioAlojamiento VALUES ('WIFI');
+INSERT INTO TipoServicioAlojamiento VALUES ('SALA DE EVENTOS');
+INSERT INTO TipoServicioAlojamiento VALUES ('SPA');
+INSERT INTO TipoServicioAlojamiento VALUES ('GIMNASIO');
+INSERT INTO TipoServicioAlojamiento VALUES ('ACCESO PARA SILLA DE RUEDAS');
+INSERT INTO TipoServicioAlojamiento VALUES ('ACEPTAN MASCOTAS');
+INSERT INTO TipoServicioAlojamiento VALUES ('SERVICIO DE LIMPIEZA DIARIA DEL CUARTO');
+
+CREATE TABLE TipoServicioHabitacion(
+	TipoServicioHabitacionID INT NOT NULL IDENTITY (1,1),
+	Descripcion VARCHAR(100) NOT NULL,
+	CONSTRAINT PK_TipoServicioHabitacion PRIMARY KEY (TipoServicioHabitacionID),
+);
+
+INSERT INTO TipoServicioHabitacion VALUES ('DESAYUNO');
+INSERT INTO TipoServicioHabitacion VALUES ('COCINA');
+INSERT INTO TipoServicioHabitacion VALUES ('TELEVISION POR CABLE');
+INSERT INTO TipoServicioHabitacion VALUES ('FRIGOBAR');
+INSERT INTO TipoServicioHabitacion VALUES ('NETFLIX');
+INSERT INTO TipoServicioHabitacion VALUES ('WIFI EMPRESARIAL');
 
 -- Tablas Mayores
 
@@ -426,16 +459,22 @@ CREATE TABLE Alojamiento (
 	TipoAlojamientoID INT NOT NULL,
 	Imagen Image,
 	Nombre VARCHAR(50),
-	CiudadID INT NOT NULL,             -- esta sería la ciudad donde está la sede principal de la cadena de alojamiento
 	Direccion VARCHAR(100) NOT NULL,
 	Telefono VARCHAR(30) NOT NULL,
 	PaginaWeb VARCHAR(30) NOT NULL,
 	Estrellas INT NOT NULL,
 	EstadoSistemaID INT NOT NULL,
 	CONSTRAINT PK_Alojamiento PRIMARY KEY (AlojamientoID),
-	CONSTRAINT FK_Alojamiento_Ciudad FOREIGN KEY (CiudadID) REFERENCES Ciudad(CiudadID),
 	CONSTRAINT FK_Alojamiento_TipoAlojamiento FOREIGN KEY (TipoAlojamientoID) REFERENCES TipoAlojamiento(TipoAlojamientoID),
 	CONSTRAINT FK_Alojamiento_EstadoSistema FOREIGN KEY (EstadoSistemaID) REFERENCES EstadoSistema(EstadoSistemaID),
+);
+
+CREATE TABLE TipoServicioAlojamientoPorAlojamiento(
+	TipoServicioAlojamientoID INT NOT NULL,
+	TipoAlojamientoID INT NOT NULL,
+	CONSTRAINT PK_TipoServicioAlojamientoPorAlojamiento PRIMARY KEY (TipoServicioAlojamientoID, TipoAlojamientoID),
+	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoServicioAlojamiento FOREIGN KEY (TipoServicioAlojamientoID) REFERENCES TipoServicioAlojamiento(TipoServicioAlojamientoID),
+	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoAlojamiento FOREIGN KEY (TipoAlojamientoID) REFERENCES TipoAlojamiento(TipoAlojamientoID),
 );
 
 CREATE TABLE SucursalAlojamiento (
@@ -476,14 +515,15 @@ CREATE TABLE Cliente (
 
 CREATE TABLE Habitacion (
 	HabitacionID INT NOT NULL IDENTITY (1,1),
+	NroHabitacion INT NOT NULL,
 	SucursalAlojamientoID INT NOT NULL,
 	Precio MONEY NOT NULL,          -- en guaranies
 	TipoHabitacionID INT NOT NULL,
-	EstadoSistemaID INT NOT NULL,
+	EstadoHabitacionID INT NOT NULL,
 	CONSTRAINT PK_Habitacion PRIMARY KEY (HabitacionID),
 	CONSTRAINT FK_Habitacion_SucursalAlojamiento FOREIGN KEY (SucursalAlojamientoID) REFERENCES SucursalAlojamiento(SucursalAlojamientoID),
 	CONSTRAINT FK_Habitacion_TipoHabitacion FOREIGN KEY (TipoHabitacionID) REFERENCES TipoHabitacion(TipoHabitacionID),
-	CONSTRAINT FK_Habitacion_EstadoSistema FOREIGN KEY (EstadoSistemaID) REFERENCES EstadoSistema(EstadoSistemaID),
+	CONSTRAINT FK_Habitacion_EstadoHabitacion FOREIGN KEY (EstadoHabitacionID) REFERENCES EstadoHabitacion(EstadoHabitacionID),
 );
 
 CREATE TABLE Empleado (

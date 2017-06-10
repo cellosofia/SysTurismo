@@ -31,6 +31,7 @@ Partial Class frmPrincipal
         Me.mnuAlojamientos = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTablasMenores = New System.Windows.Forms.ToolStripMenuItem()
         Me.stsPrincipal = New System.Windows.Forms.StatusStrip()
+        Me.lblFechaHora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ntiPrincipal = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.cmsPrincipal = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ArchivoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -38,7 +39,8 @@ Partial Class frmPrincipal
         Me.ABMsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasMenoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tlsPrincipal = New System.Windows.Forms.ToolStrip()
-        Me.lblFechaHora = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.EmpleadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HabitaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPrincipal.SuspendLayout()
         Me.stsPrincipal.SuspendLayout()
         Me.cmsPrincipal.SuspendLayout()
@@ -64,12 +66,12 @@ Partial Class frmPrincipal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(181, 26)
+        Me.mnuSalir.Size = New System.Drawing.Size(113, 26)
         Me.mnuSalir.Text = "&Salir"
         '
         'mnuABMs
         '
-        Me.mnuABMs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuClientes, Me.mnuAlojamientos})
+        Me.mnuABMs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuClientes, Me.mnuAlojamientos, Me.EmpleadosToolStripMenuItem, Me.HabitaciónToolStripMenuItem})
         Me.mnuABMs.Name = "mnuABMs"
         Me.mnuABMs.Size = New System.Drawing.Size(59, 24)
         Me.mnuABMs.Text = "A&BMs"
@@ -101,6 +103,12 @@ Partial Class frmPrincipal
         Me.stsPrincipal.Size = New System.Drawing.Size(880, 25)
         Me.stsPrincipal.TabIndex = 2
         Me.stsPrincipal.Text = "StatusStrip1"
+        '
+        'lblFechaHora
+        '
+        Me.lblFechaHora.Name = "lblFechaHora"
+        Me.lblFechaHora.Size = New System.Drawing.Size(87, 20)
+        Me.lblFechaHora.Text = "Fecha: Hora"
         '
         'ntiPrincipal
         '
@@ -151,11 +159,17 @@ Partial Class frmPrincipal
         Me.tlsPrincipal.TabIndex = 4
         Me.tlsPrincipal.Text = "ToolStrip1"
         '
-        'lblFechaHora
+        'EmpleadosToolStripMenuItem
         '
-        Me.lblFechaHora.Name = "lblFechaHora"
-        Me.lblFechaHora.Size = New System.Drawing.Size(87, 20)
-        Me.lblFechaHora.Text = "Fecha: Hora"
+        Me.EmpleadosToolStripMenuItem.Name = "EmpleadosToolStripMenuItem"
+        Me.EmpleadosToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.EmpleadosToolStripMenuItem.Text = "&Empleados"
+        '
+        'HabitaciónToolStripMenuItem
+        '
+        Me.HabitaciónToolStripMenuItem.Name = "HabitaciónToolStripMenuItem"
+        Me.HabitaciónToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.HabitaciónToolStripMenuItem.Text = "Habitación"
         '
         'frmPrincipal
         '
@@ -196,4 +210,6 @@ Partial Class frmPrincipal
     Friend WithEvents mnuClientes As ToolStripMenuItem
     Friend WithEvents mnuAlojamientos As ToolStripMenuItem
     Friend WithEvents lblFechaHora As ToolStripStatusLabel
+    Friend WithEvents EmpleadosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents HabitaciónToolStripMenuItem As ToolStripMenuItem
 End Class

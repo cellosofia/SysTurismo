@@ -24,6 +24,8 @@ Partial Class frmClientes
     Private Sub InitializeComponent()
         Me.tbcPrincipal = New System.Windows.Forms.TabControl()
         Me.tbpABM = New System.Windows.Forms.TabPage()
+        Me.cmbTipoCliente = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.gbxSexo = New System.Windows.Forms.GroupBox()
         Me.rdbMasculino = New System.Windows.Forms.RadioButton()
         Me.rdbFemenino = New System.Windows.Forms.RadioButton()
@@ -55,8 +57,6 @@ Partial Class frmClientes
         Me.lblCodigo = New System.Windows.Forms.Label()
         Me.tbpConsulta = New System.Windows.Forms.TabPage()
         Me.dgvConsulta = New System.Windows.Forms.DataGridView()
-        Me.cmbTipoCliente = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.tbcPrincipal.SuspendLayout()
         Me.tbpABM.SuspendLayout()
         Me.gbxSexo.SuspendLayout()
@@ -113,6 +113,26 @@ Partial Class frmClientes
         Me.tbpABM.Text = "ABM"
         Me.tbpABM.UseVisualStyleBackColor = True
         '
+        'cmbTipoCliente
+        '
+        Me.cmbTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbTipoCliente.FormattingEnabled = True
+        Me.cmbTipoCliente.Location = New System.Drawing.Point(545, 48)
+        Me.cmbTipoCliente.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbTipoCliente.Name = "cmbTipoCliente"
+        Me.cmbTipoCliente.Size = New System.Drawing.Size(363, 24)
+        Me.cmbTipoCliente.TabIndex = 23
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(456, 52)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(83, 17)
+        Me.Label1.TabIndex = 22
+        Me.Label1.Text = "Tipo Cliente"
+        '
         'gbxSexo
         '
         Me.gbxSexo.Controls.Add(Me.rdbMasculino)
@@ -158,9 +178,10 @@ Partial Class frmClientes
         '
         'dtpFechaNacimiento
         '
+        Me.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpFechaNacimiento.Location = New System.Drawing.Point(141, 310)
         Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
-        Me.dtpFechaNacimiento.Size = New System.Drawing.Size(293, 22)
+        Me.dtpFechaNacimiento.Size = New System.Drawing.Size(169, 22)
         Me.dtpFechaNacimiento.TabIndex = 19
         '
         'txtEmail
@@ -415,26 +436,6 @@ Partial Class frmClientes
         Me.dgvConsulta.Name = "dgvConsulta"
         Me.dgvConsulta.Size = New System.Drawing.Size(928, 438)
         Me.dgvConsulta.TabIndex = 0
-        '
-        'cmbTipoCliente
-        '
-        Me.cmbTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTipoCliente.FormattingEnabled = True
-        Me.cmbTipoCliente.Location = New System.Drawing.Point(545, 48)
-        Me.cmbTipoCliente.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbTipoCliente.Name = "cmbTipoCliente"
-        Me.cmbTipoCliente.Size = New System.Drawing.Size(363, 24)
-        Me.cmbTipoCliente.TabIndex = 23
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(456, 52)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(83, 17)
-        Me.Label1.TabIndex = 22
-        Me.Label1.Text = "Tipo Cliente"
         '
         'frmClientes
         '
