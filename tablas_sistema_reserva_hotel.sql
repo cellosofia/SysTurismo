@@ -477,6 +477,14 @@ CREATE TABLE TipoServicioAlojamientoPorAlojamiento(
 	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoAlojamiento FOREIGN KEY (TipoAlojamientoID) REFERENCES TipoAlojamiento(TipoAlojamientoID),
 );
 
+CREATE TABLE TipoServicioHabitacionPorHabitacion(
+	TipoServicioAlojamientoID INT NOT NULL,
+	TipoAlojamientoID INT NOT NULL,
+	CONSTRAINT PK_TipoServicioAlojamientoPorAlojamiento PRIMARY KEY (TipoServicioAlojamientoID, TipoAlojamientoID),
+	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoServicioAlojamiento FOREIGN KEY (TipoServicioAlojamientoID) REFERENCES TipoServicioAlojamiento(TipoServicioAlojamientoID),
+	CONSTRAINT FK_TipoServicioAlojamientoPorAlojamiento_TipoAlojamiento FOREIGN KEY (TipoAlojamientoID) REFERENCES TipoAlojamiento(TipoAlojamientoID),
+);
+
 CREATE TABLE SucursalAlojamiento (
 	SucursalAlojamientoID INT NOT NULL IDENTITY(1,1),
 	AlojamientoID INT NOT NULL,
