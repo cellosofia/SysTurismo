@@ -81,9 +81,9 @@ Public Class frmEmpleado
         txtNombre.Text = ""
         txtApellido.Text = ""
         txtDocumento.Text = ""
-        cboCargo.SelectedIndex = -1
-        cboDocumento.SelectedIndex = -1
-        cboSucursal.SelectedIndex = -1
+        cboCargo.SelectedIndex = 0
+        cboDocumento.SelectedIndex = 0
+        cboSucursal.SelectedIndex = 0
         txtDireccion.Text = ""
         txtTelefono.Text = ""
         nudAntiguedad.Value = 0

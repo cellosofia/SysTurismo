@@ -24,6 +24,8 @@ Partial Class frmEmpleado
     Private Sub InitializeComponent()
         Me.tbcEmpleado = New System.Windows.Forms.TabControl()
         Me.tbpempleado = New System.Windows.Forms.TabPage()
+        Me.chkEstado = New System.Windows.Forms.CheckBox()
+        Me.cboEstadoCivil = New System.Windows.Forms.ComboBox()
         Me.dtpFechaNac = New System.Windows.Forms.DateTimePicker()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
@@ -54,8 +56,6 @@ Partial Class frmEmpleado
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tbpConsultaEmp = New System.Windows.Forms.TabPage()
         Me.dgvConsultaEmp = New System.Windows.Forms.DataGridView()
-        Me.cboEstadoCivil = New System.Windows.Forms.ComboBox()
-        Me.chkEstado = New System.Windows.Forms.CheckBox()
         Me.tbcEmpleado.SuspendLayout()
         Me.tbpempleado.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -111,6 +111,28 @@ Partial Class frmEmpleado
         Me.tbpempleado.TabIndex = 0
         Me.tbpempleado.Text = "ABMEmpleado"
         Me.tbpempleado.UseVisualStyleBackColor = True
+        '
+        'chkEstado
+        '
+        Me.chkEstado.AutoSize = True
+        Me.chkEstado.Checked = True
+        Me.chkEstado.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkEstado.Location = New System.Drawing.Point(97, 366)
+        Me.chkEstado.Name = "chkEstado"
+        Me.chkEstado.Size = New System.Drawing.Size(73, 17)
+        Me.chkEstado.TabIndex = 53
+        Me.chkEstado.Text = "Habilitado"
+        Me.chkEstado.UseVisualStyleBackColor = True
+        '
+        'cboEstadoCivil
+        '
+        Me.cboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEstadoCivil.FormattingEnabled = True
+        Me.cboEstadoCivil.Items.AddRange(New Object() {"Soltero", "Casado", "Viudo", "Divorciado"})
+        Me.cboEstadoCivil.Location = New System.Drawing.Point(98, 293)
+        Me.cboEstadoCivil.Name = "cboEstadoCivil"
+        Me.cboEstadoCivil.Size = New System.Drawing.Size(128, 21)
+        Me.cboEstadoCivil.TabIndex = 52
         '
         'dtpFechaNac
         '
@@ -374,26 +396,6 @@ Partial Class frmEmpleado
         Me.dgvConsultaEmp.Name = "dgvConsultaEmp"
         Me.dgvConsultaEmp.Size = New System.Drawing.Size(832, 454)
         Me.dgvConsultaEmp.TabIndex = 0
-        '
-        'cboEstadoCivil
-        '
-        Me.cboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboEstadoCivil.FormattingEnabled = True
-        Me.cboEstadoCivil.Items.AddRange(New Object() {"Soltero", "Casado", "Viudo", "Divorciado"})
-        Me.cboEstadoCivil.Location = New System.Drawing.Point(98, 293)
-        Me.cboEstadoCivil.Name = "cboEstadoCivil"
-        Me.cboEstadoCivil.Size = New System.Drawing.Size(128, 21)
-        Me.cboEstadoCivil.TabIndex = 52
-        '
-        'chkEstado
-        '
-        Me.chkEstado.AutoSize = True
-        Me.chkEstado.Location = New System.Drawing.Point(97, 366)
-        Me.chkEstado.Name = "chkEstado"
-        Me.chkEstado.Size = New System.Drawing.Size(73, 17)
-        Me.chkEstado.TabIndex = 53
-        Me.chkEstado.Text = "Habilitado"
-        Me.chkEstado.UseVisualStyleBackColor = True
         '
         'frmEmpleado
         '

@@ -1,5 +1,6 @@
 ﻿Public Class frmPrincipal
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         lblFechaHora.Text = lblFechaHora.Text + DateTime.Now
 
         ntiPrincipal.ShowBalloonTip(1000)
@@ -24,7 +25,28 @@
     End Sub
 
     Private Sub mnuSalir_Click(sender As Object, e As EventArgs) Handles mnuSalir.Click
-        Me.Close()
+        If (MessageBox.Show("Desea Salir", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) = vbYes Then
+            ' MsgBox("Se va a cerrar el formulario y el programa")
+            'Me.Close()
+            End
+            Me.Close()
+        End If
+
+
+
+    End Sub
+
+    Private Sub stsPrincipal_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles stsPrincipal.ItemClicked
+
+    End Sub
+
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+        frmEmpleado.Show()
+
+    End Sub
+
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+        frmClientes.Show()
 
     End Sub
 End Class
