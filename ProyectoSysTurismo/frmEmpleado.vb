@@ -142,11 +142,13 @@ Public Class frmEmpleado
 
             If chkEstado.Checked = True Then
                 Habilitado = 1
+                chkEstado.Checked = dtEmpleado.Rows(0).Item("EstadoSistema")
                 ' Habilitado = dtEmpleado.Rows.Item("EstadoSistema")
 
             Else
                 Habilitado = 0
                 'Habilitado = dtEmpleado.Rows.Item("EstadoSistema")
+                chkEstado.Checked = dtEmpleado.Rows(0).Item("EstadoSistema")
 
             End If
 
@@ -190,9 +192,9 @@ Public Class frmEmpleado
                 End If
 
                 If vNuevo = True Then
-                    EjecutarSQL("INSERT INTO Empleado VALUES(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12)", txtNombre.Text.Trim, txtApellido.Text.Trim, cboCargo.SelectedValue, cboDocumento.SelectedValue, txtDocumento.Text.Trim, dtpFechaNac.Value, cboSucursal.SelectedValue, txtTelefono.Text.Trim, txtDireccion.Text.Trim, EstadoCivil, nudAntiguedad.Value, Habilitado)
+                    EjecutarSQL("INSERT INTO Empleado VALUES(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12)", txtNombre.Text.Trim, txtApellido.Text.Trim, cboCargo.SelectedValue, cboDocumento.SelectedValue, txtDocumento.Text.Trim, dtpFechaNac.Value, cboSucursal.SelectedValue, txtTelefono.Text.Trim, txtDireccion.Text.Trim, EstadoCivil, nudAntiguedad.Value, chkEstado.Checked)
                 Else
-                    EjecutarSQL("UPDATE Empleado SET Nombre=@1,Apellido=@2,CargoEmpleadoID=@3,TipoDocumentoID=@4,NroDocumento=@5,FechaNacimiento=@6,SucursalEmpresaID=@7,Telefono=@8,Direccion=@9,EstadoCivil=@10,Antiguedad=@11,EstadoSistema=@12 where EmpleadoID=@13", txtNombre.Text.Trim, txtApellido.Text.Trim, cboCargo.SelectedValue, cboDocumento.SelectedValue, txtDocumento.Text.Trim, dtpFechaNac.Value, cboSucursal.SelectedValue, txtTelefono.Text.Trim, txtDireccion.Text.Trim, EstadoCivil, nudAntiguedad.Value, Habilitado)
+                    EjecutarSQL("UPDATE Empleado SET Nombre=@1,Apellido=@2,CargoEmpleadoID=@3,TipoDocumentoID=@4,NroDocumento=@5,FechaNacimiento=@6,SucursalEmpresaID=@7,Telefono=@8,Direccion=@9,EstadoCivil=@10,Antiguedad=@11,EstadoSistema=@12 where EmpleadoID=@13", txtNombre.Text.Trim, txtApellido.Text.Trim, cboCargo.SelectedValue, cboDocumento.SelectedValue, txtDocumento.Text.Trim, dtpFechaNac.Value, cboSucursal.SelectedValue, txtTelefono.Text.Trim, txtDireccion.Text.Trim, EstadoCivil, nudAntiguedad.Value, chkEstado.Checked, txtCodEmpleado.Text.Trim)
                     vNuevo = True
                 End If
 

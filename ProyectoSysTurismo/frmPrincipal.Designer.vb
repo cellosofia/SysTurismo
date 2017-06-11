@@ -31,7 +31,12 @@ Partial Class frmPrincipal
         Me.mnuAlojamientos = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuEmpleados = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuHabitacion = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SucursalAlojamientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SucursalEmpresaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTablasMenores = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CiudadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DepartamentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PaísToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.stsPrincipal = New System.Windows.Forms.StatusStrip()
         Me.lblFechaHora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ntiPrincipal = New System.Windows.Forms.NotifyIcon(Me.components)
@@ -41,11 +46,6 @@ Partial Class frmPrincipal
         Me.ABMsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasMenoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tlsPrincipal = New System.Windows.Forms.ToolStrip()
-        Me.SucursalAlojamientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SucursalEmpresaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CiudadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DepartamentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PaísToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPrincipal.SuspendLayout()
         Me.stsPrincipal.SuspendLayout()
         Me.cmsPrincipal.SuspendLayout()
@@ -72,7 +72,7 @@ Partial Class frmPrincipal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(96, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(152, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'mnuABMs
@@ -85,26 +85,38 @@ Partial Class frmPrincipal
         'mnuClientes
         '
         Me.mnuClientes.Name = "mnuClientes"
-        Me.mnuClientes.Size = New System.Drawing.Size(152, 22)
+        Me.mnuClientes.Size = New System.Drawing.Size(186, 22)
         Me.mnuClientes.Text = "&Clientes"
         '
         'mnuAlojamientos
         '
         Me.mnuAlojamientos.Name = "mnuAlojamientos"
-        Me.mnuAlojamientos.Size = New System.Drawing.Size(152, 22)
+        Me.mnuAlojamientos.Size = New System.Drawing.Size(186, 22)
         Me.mnuAlojamientos.Text = "&Alojamientos"
         '
         'mnuEmpleados
         '
         Me.mnuEmpleados.Name = "mnuEmpleados"
-        Me.mnuEmpleados.Size = New System.Drawing.Size(152, 22)
+        Me.mnuEmpleados.Size = New System.Drawing.Size(186, 22)
         Me.mnuEmpleados.Text = "&Empleados"
         '
         'mnuHabitacion
         '
         Me.mnuHabitacion.Name = "mnuHabitacion"
-        Me.mnuHabitacion.Size = New System.Drawing.Size(152, 22)
+        Me.mnuHabitacion.Size = New System.Drawing.Size(186, 22)
         Me.mnuHabitacion.Text = "Habitación"
+        '
+        'SucursalAlojamientoToolStripMenuItem
+        '
+        Me.SucursalAlojamientoToolStripMenuItem.Name = "SucursalAlojamientoToolStripMenuItem"
+        Me.SucursalAlojamientoToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.SucursalAlojamientoToolStripMenuItem.Text = "Sucursal Alojamiento"
+        '
+        'SucursalEmpresaToolStripMenuItem
+        '
+        Me.SucursalEmpresaToolStripMenuItem.Name = "SucursalEmpresaToolStripMenuItem"
+        Me.SucursalEmpresaToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.SucursalEmpresaToolStripMenuItem.Text = "Sucursal Empresa"
         '
         'mnuTablasMenores
         '
@@ -112,6 +124,24 @@ Partial Class frmPrincipal
         Me.mnuTablasMenores.Name = "mnuTablasMenores"
         Me.mnuTablasMenores.Size = New System.Drawing.Size(101, 20)
         Me.mnuTablasMenores.Text = "&Tablas Menores"
+        '
+        'CiudadToolStripMenuItem
+        '
+        Me.CiudadToolStripMenuItem.Name = "CiudadToolStripMenuItem"
+        Me.CiudadToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.CiudadToolStripMenuItem.Text = "Ciudad"
+        '
+        'DepartamentoToolStripMenuItem
+        '
+        Me.DepartamentoToolStripMenuItem.Name = "DepartamentoToolStripMenuItem"
+        Me.DepartamentoToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.DepartamentoToolStripMenuItem.Text = "Departamento"
+        '
+        'PaísToolStripMenuItem
+        '
+        Me.PaísToolStripMenuItem.Name = "PaísToolStripMenuItem"
+        Me.PaísToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.PaísToolStripMenuItem.Text = "País"
         '
         'stsPrincipal
         '
@@ -179,36 +209,6 @@ Partial Class frmPrincipal
         Me.tlsPrincipal.TabIndex = 4
         Me.tlsPrincipal.Text = "ToolStrip1"
         '
-        'SucursalAlojamientoToolStripMenuItem
-        '
-        Me.SucursalAlojamientoToolStripMenuItem.Name = "SucursalAlojamientoToolStripMenuItem"
-        Me.SucursalAlojamientoToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
-        Me.SucursalAlojamientoToolStripMenuItem.Text = "Sucursal Alojamiento"
-        '
-        'SucursalEmpresaToolStripMenuItem
-        '
-        Me.SucursalEmpresaToolStripMenuItem.Name = "SucursalEmpresaToolStripMenuItem"
-        Me.SucursalEmpresaToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
-        Me.SucursalEmpresaToolStripMenuItem.Text = "Sucursal Empresa"
-        '
-        'CiudadToolStripMenuItem
-        '
-        Me.CiudadToolStripMenuItem.Name = "CiudadToolStripMenuItem"
-        Me.CiudadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CiudadToolStripMenuItem.Text = "Ciudad"
-        '
-        'DepartamentoToolStripMenuItem
-        '
-        Me.DepartamentoToolStripMenuItem.Name = "DepartamentoToolStripMenuItem"
-        Me.DepartamentoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.DepartamentoToolStripMenuItem.Text = "Departamento"
-        '
-        'PaísToolStripMenuItem
-        '
-        Me.PaísToolStripMenuItem.Name = "PaísToolStripMenuItem"
-        Me.PaísToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PaísToolStripMenuItem.Text = "País"
-        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -219,7 +219,7 @@ Partial Class frmPrincipal
         Me.Controls.Add(Me.mnuPrincipal)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.mnuPrincipal
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmPrincipal"
         Me.Text = "Sistema de Turismo - Principal - SysTurismo"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
