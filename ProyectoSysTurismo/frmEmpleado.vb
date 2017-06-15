@@ -4,6 +4,8 @@ Public Class frmEmpleado
     Dim Habilitado As Integer
 
 
+
+
     Dim vNuevo As Boolean = True
 
     Private Sub frmEmpleado_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -207,5 +209,66 @@ Public Class frmEmpleado
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+    End Sub
+
+    Private Sub tbpempleado_Click(sender As Object, e As EventArgs) Handles tbpempleado.Click
+
+    End Sub
+    Sub Consulta()
+
+    End Sub
+
+    Private Sub tbpConsultaEmp_DoubleClick(sender As Object, e As EventArgs) Handles tbpConsultaEmp.DoubleClick
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim dtEmpleado As New DataTable
+        'En el commandText filtramos para que traiga los datos solo del articulo seleccionado, a través de la instrucción "where"
+        'dgvConsulta(0, e.RowIndex) --> Cero hace referencia a la primera columna, y e.RowIndex hace referencia a la fila seleccionada
+        dtEmpleado = generar_datatabla("select * from Empleado where EmpleadoID=" & txtBusqueda.Text)
+        If dtEmpleado.Rows.Count > 0 Then
+            'Rows(0) hace referencia a la primera fila recuperada de la base de datos, que en este caso es la única, ya que por el where en la sentencia sql estamos recuperando un solo registro. Item("Columna") hace referencia a la columna que queremos recuperar de la tabla, tiene que coincidir con el nombre del campo en la tabla.
+            txtCodEmpleado.Text = dtEmpleado.Rows(0).Item("EmpleadoID")
+            txtNombre.Text = dtEmpleado.Rows(0).Item("Nombre")
+            txtApellido.Text = dtEmpleado.Rows(0).Item("Apellido")
+            cboCargo.SelectedValue = dtEmpleado.Rows(0).Item("CargoEmpleadoID")
+            cboDocumento.SelectedValue = dtEmpleado.Rows(0).Item("TipoDocumentoID")
+            txtDocumento.Text = dtEmpleado.Rows(0).Item("NroDocumento")
+            dtpFechaNac.Value = dtEmpleado.Rows(0).Item("FechaNacimiento")
+            cboSucursal.SelectedValue = dtEmpleado.Rows(0).Item("SucursalEmpresaID")
+            txtTelefono.Text = dtEmpleado.Rows(0).Item("Telefono")
+            txtDireccion.Text = dtEmpleado.Rows(0).Item("Direccion")
+            Select Case dtEmpleado.Rows(0).Item("EstadoCivil")
+                Case "s"
+                    cboEstadoCivil.Text = "Soltero"
+                Case "c"
+                    cboEstadoCivil.Text = "Casado"
+                Case "v"
+                    cboEstadoCivil.Text = "Viudo"
+                Case "d"
+                    cboEstadoCivil.Text = "Divorciado"
+            End Select
+
+            nudAntiguedad.Value = dtEmpleado.Rows(0).Item("Antiguedad")
+
+            If chkEstado.Checked = True Then
+                Habilitado = 1
+                chkEstado.Checked = dtEmpleado.Rows(0).Item("EstadoSistema")
+                ' Habilitado = dtEmpleado.Rows.Item("EstadoSistema")
+
+            Else
+                Habilitado = 0
+                'Habilitado = dtEmpleado.Rows.Item("EstadoSistema")
+                chkEstado.Checked = dtEmpleado.Rows(0).Item("EstadoSistema")
+
+            End If
+
+            'Para pasar a la primera pestaña (ABM) del tabControl
+            tbcEmpleado.SelectedIndex = 0
+
+            'La bandera que nos permite determinar si un registro es nuevo o no, en este caso como recuperamos datos de la bd asignamos false ya que sabemos el registro no es nuevo.
+            vNuevo = False
+        End If
     End Sub
 End Class

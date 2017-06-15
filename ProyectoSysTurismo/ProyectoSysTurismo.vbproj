@@ -141,6 +141,12 @@
     <Compile Include="registro.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SucursalAlojamiento.Designer.vb">
+      <DependentUpon>SucursalAlojamiento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SucursalAlojamiento.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="registro.resx">
       <DependentUpon>registro.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SucursalAlojamiento.resx">
+      <DependentUpon>SucursalAlojamiento.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

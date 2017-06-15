@@ -24,6 +24,10 @@ Partial Class frmEmpleado
     Private Sub InitializeComponent()
         Me.tbcEmpleado = New System.Windows.Forms.TabControl()
         Me.tbpempleado = New System.Windows.Forms.TabPage()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtBusqueda = New System.Windows.Forms.TextBox()
         Me.chkEstado = New System.Windows.Forms.CheckBox()
         Me.cboEstadoCivil = New System.Windows.Forms.ComboBox()
         Me.dtpFechaNac = New System.Windows.Forms.DateTimePicker()
@@ -77,6 +81,10 @@ Partial Class frmEmpleado
         '
         'tbpempleado
         '
+        Me.tbpempleado.Controls.Add(Me.ComboBox1)
+        Me.tbpempleado.Controls.Add(Me.Button1)
+        Me.tbpempleado.Controls.Add(Me.Label14)
+        Me.tbpempleado.Controls.Add(Me.txtBusqueda)
         Me.tbpempleado.Controls.Add(Me.chkEstado)
         Me.tbpempleado.Controls.Add(Me.cboEstadoCivil)
         Me.tbpempleado.Controls.Add(Me.dtpFechaNac)
@@ -111,6 +119,40 @@ Partial Class frmEmpleado
         Me.tbpempleado.TabIndex = 0
         Me.tbpempleado.Text = "ABMEmpleado"
         Me.tbpempleado.UseVisualStyleBackColor = True
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Codigo", "Nombre", "Apellido"})
+        Me.ComboBox1.Location = New System.Drawing.Point(549, 94)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox1.TabIndex = 57
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(663, 137)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 56
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(650, 45)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(45, 13)
+        Me.Label14.TabIndex = 55
+        Me.Label14.Text = "Label14"
+        '
+        'txtBusqueda
+        '
+        Me.txtBusqueda.Location = New System.Drawing.Point(712, 94)
+        Me.txtBusqueda.Name = "txtBusqueda"
+        Me.txtBusqueda.Size = New System.Drawing.Size(100, 20)
+        Me.txtBusqueda.TabIndex = 54
         '
         'chkEstado
         '
@@ -450,4 +492,8 @@ Partial Class frmEmpleado
     Friend WithEvents dgvConsultaEmp As DataGridView
     Friend WithEvents cboEstadoCivil As ComboBox
     Friend WithEvents chkEstado As CheckBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label14 As Label
+    Friend WithEvents txtBusqueda As TextBox
 End Class

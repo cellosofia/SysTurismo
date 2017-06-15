@@ -49,4 +49,22 @@
         frmClientes.Show()
 
     End Sub
+
+    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles ToolStripButton5.Click
+        Dim f As New SucursalAlojamiento
+        f.MdiParent = Me
+        f.Show()
+    End Sub
+
+    Private Sub SucursalAlojamientoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SucursalAlojamientoToolStripMenuItem.Click
+        Dim f As New SucursalAlojamiento
+        f.MdiParent = Me
+        f.Show()
+    End Sub
+
+    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles ToolStripButton4.Click
+        Dim f As New frmHabitacion
+        f.MdiParent = Me
+        f.Show()
+    End Sub
 End Class

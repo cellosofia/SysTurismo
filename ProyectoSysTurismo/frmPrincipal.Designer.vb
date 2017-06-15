@@ -45,13 +45,13 @@ Partial Class frmPrincipal
         Me.ABMsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasMenoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.tlsPrincipal = New System.Windows.Forms.ToolStrip()
-        Me.lblFechaHora = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.stsPrincipal = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
+        Me.lblFechaHora = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.stsPrincipal = New System.Windows.Forms.StatusStrip()
         Me.mnuPrincipal.SuspendLayout()
         Me.cmsPrincipal.SuspendLayout()
         Me.tlsPrincipal.SuspendLayout()
@@ -201,32 +201,6 @@ Partial Class frmPrincipal
         Me.tlsPrincipal.TabIndex = 4
         Me.tlsPrincipal.Text = "ToolStrip1"
         '
-        'lblFechaHora
-        '
-        Me.lblFechaHora.Name = "lblFechaHora"
-        Me.lblFechaHora.Size = New System.Drawing.Size(70, 17)
-        Me.lblFechaHora.Text = "Fecha: Hora"
-        '
-        'stsPrincipal
-        '
-        Me.stsPrincipal.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.stsPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblFechaHora})
-        Me.stsPrincipal.Location = New System.Drawing.Point(0, 347)
-        Me.stsPrincipal.Name = "stsPrincipal"
-        Me.stsPrincipal.Padding = New System.Windows.Forms.Padding(1, 0, 10, 0)
-        Me.stsPrincipal.Size = New System.Drawing.Size(660, 22)
-        Me.stsPrincipal.TabIndex = 2
-        Me.stsPrincipal.Text = "StatusStrip1"
-        '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(24, 24)
-        Me.ToolStripButton1.Text = "Mantenimiento Empleado"
-        '
         'ToolStripButton2
         '
         Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -245,6 +219,15 @@ Partial Class frmPrincipal
         Me.ToolStripButton3.Size = New System.Drawing.Size(24, 24)
         Me.ToolStripButton3.Text = "Mantenimiento Alojamiento"
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(24, 24)
+        Me.ToolStripButton1.Text = "Mantenimiento Empleado"
+        '
         'ToolStripButton4
         '
         Me.ToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -262,6 +245,23 @@ Partial Class frmPrincipal
         Me.ToolStripButton5.Name = "ToolStripButton5"
         Me.ToolStripButton5.Size = New System.Drawing.Size(24, 24)
         Me.ToolStripButton5.Text = "Mantenimiento Alo Sucursal"
+        '
+        'lblFechaHora
+        '
+        Me.lblFechaHora.Name = "lblFechaHora"
+        Me.lblFechaHora.Size = New System.Drawing.Size(70, 17)
+        Me.lblFechaHora.Text = "Fecha: Hora"
+        '
+        'stsPrincipal
+        '
+        Me.stsPrincipal.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.stsPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblFechaHora})
+        Me.stsPrincipal.Location = New System.Drawing.Point(0, 347)
+        Me.stsPrincipal.Name = "stsPrincipal"
+        Me.stsPrincipal.Padding = New System.Windows.Forms.Padding(1, 0, 10, 0)
+        Me.stsPrincipal.Size = New System.Drawing.Size(660, 22)
+        Me.stsPrincipal.TabIndex = 2
+        Me.stsPrincipal.Text = "StatusStrip1"
         '
         'frmPrincipal
         '
