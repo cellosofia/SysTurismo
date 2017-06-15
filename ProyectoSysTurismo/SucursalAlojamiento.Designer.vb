@@ -47,10 +47,13 @@ Partial Class SucursalAlojamiento
         Me.LblSucursal = New System.Windows.Forms.Label()
         Me.LblAlojamineto = New System.Windows.Forms.Label()
         Me.DgvConsulta = New System.Windows.Forms.TabPage()
+        Me.dgvSucursal = New System.Windows.Forms.DataGridView()
         Me.tbcPrincipal.SuspendLayout()
         Me.TbpSucursalAlojamiento.SuspendLayout()
         Me.GpbBotones.SuspendLayout()
         Me.GpbEstado.SuspendLayout()
+        Me.DgvConsulta.SuspendLayout()
+        CType(Me.dgvSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbcPrincipal
@@ -288,13 +291,23 @@ Partial Class SucursalAlojamiento
         '
         'DgvConsulta
         '
+        Me.DgvConsulta.Controls.Add(Me.dgvSucursal)
         Me.DgvConsulta.Location = New System.Drawing.Point(4, 22)
         Me.DgvConsulta.Name = "DgvConsulta"
         Me.DgvConsulta.Padding = New System.Windows.Forms.Padding(3)
-        Me.DgvConsulta.Size = New System.Drawing.Size(616, 320)
+        Me.DgvConsulta.Size = New System.Drawing.Size(642, 366)
         Me.DgvConsulta.TabIndex = 1
         Me.DgvConsulta.Text = "Conulta"
         Me.DgvConsulta.UseVisualStyleBackColor = True
+        '
+        'dgvSucursal
+        '
+        Me.dgvSucursal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvSucursal.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvSucursal.Location = New System.Drawing.Point(3, 3)
+        Me.dgvSucursal.Name = "dgvSucursal"
+        Me.dgvSucursal.Size = New System.Drawing.Size(636, 360)
+        Me.dgvSucursal.TabIndex = 0
         '
         'SucursalAlojamiento
         '
@@ -310,6 +323,8 @@ Partial Class SucursalAlojamiento
         Me.GpbBotones.ResumeLayout(False)
         Me.GpbEstado.ResumeLayout(False)
         Me.GpbEstado.PerformLayout()
+        Me.DgvConsulta.ResumeLayout(False)
+        CType(Me.dgvSucursal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -339,4 +354,5 @@ Partial Class SucursalAlojamiento
     Friend WithEvents BtnEliminar As Button
     Friend WithEvents BtnCancelar As Button
     Friend WithEvents BtnConfirmar As Button
+    Friend WithEvents dgvSucursal As DataGridView
 End Class

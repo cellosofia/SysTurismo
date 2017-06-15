@@ -26,7 +26,8 @@ Public Class SucursalAlojamiento
     End Sub
     Private Sub TbcPrincipal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbcPrincipal.SelectedIndexChanged
         If tbcPrincipal.SelectedIndex = 1 Then
-            DgvConsulta.DataSource = generar_datatabla("select * from vista_Sucursal_ALojamiento")
+         
+            dgvSucursal.DataSource = generar_datatabla("select * from vista_Sucursal_ALojamiento")
         End If
     End Sub
     Function DatosValidos() As Boolean
@@ -95,9 +96,9 @@ Public Class SucursalAlojamiento
         End If
     End Sub
 
-    Private Sub dgvConsulta_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvConsulta.CellDoubleClick
+    Private Sub dgvSucursal_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSucursal.CellDoubleClick
         Dim dtSucursalAlojamiento As New DataTable
-        dtSucursalAlojamiento = generar_datatabla("select * from SucursalAlojamiento where AlojamientoID=" & DgvConsulta(0, e.RowIndex).Value)
+        dtSucursalAlojamiento = generar_datatabla("select * from SucursalAlojamiento where AlojamientoID=" & dgvSucursal(0, e.RowIndex).Value)
         If dtSucursalAlojamiento.Rows.Count > 0 Then
             TxtALojamientoID.Text = dtSucursalAlojamiento.Rows(0).Item("AlojamientoID")
             TxtSucursalID.Text = dtSucursalAlojamiento.Rows(0).Item("SucursalID")
