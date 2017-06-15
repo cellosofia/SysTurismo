@@ -95,23 +95,7 @@ Public Class SucursalAlojamiento
         End If
     End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
-        LimpiarForm()
-    End Sub
-
-    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
-        If MessageBox.Show("Esta seguro de que desea eliminar el registro?", "SysTurismo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
-            If vNuevo = False Then
-                EjecutarSQL("UPDATE SucursalAlojamiento SET EstadoSistema=0 WHERE AlojamientoID=@1", TxtALojamientoID.Text.Trim)
-                MessageBox.Show("Registro eliminado con exito", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                LimpiarForm()
-            Else
-                LimpiarForm()
-            End If
-        End If
-    End Sub
-
-    Private Sub DgvConsulta_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvConsulta.CellContentClick
+    Private Sub dgvConsulta_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvConsulta.CellDoubleClick
         Dim dtSucursalAlojamiento As New DataTable
         dtSucursalAlojamiento = generar_datatabla("select * from SucursalAlojamiento where AlojamientoID=" & DgvConsulta(0, e.RowIndex).Value)
         If dtSucursalAlojamiento.Rows.Count > 0 Then
@@ -134,6 +118,21 @@ Public Class SucursalAlojamiento
             tbcPrincipal.SelectedIndex = 0
 
             vNuevo = False
+        End If
+    End Sub
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
+        LimpiarForm()
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
+        If MessageBox.Show("Esta seguro de que desea eliminar el registro?", "SysTurismo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
+            If vNuevo = False Then
+                EjecutarSQL("UPDATE SucursalAlojamiento SET EstadoSistema=0 WHERE AlojamientoID=@1", TxtALojamientoID.Text.Trim)
+                MessageBox.Show("Registro eliminado con exito", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                LimpiarForm()
+            Else
+                LimpiarForm()
+            End If
         End If
     End Sub
 End Class

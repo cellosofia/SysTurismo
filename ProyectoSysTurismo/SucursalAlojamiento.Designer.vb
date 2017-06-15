@@ -46,20 +46,17 @@ Partial Class SucursalAlojamiento
         Me.LblNombre = New System.Windows.Forms.Label()
         Me.LblSucursal = New System.Windows.Forms.Label()
         Me.LblAlojamineto = New System.Windows.Forms.Label()
-        Me.TbcConsulta = New System.Windows.Forms.TabPage()
-        Me.DgvConsulta = New System.Windows.Forms.DataGridView()
+        Me.DgvConsulta = New System.Windows.Forms.TabPage()
         Me.tbcPrincipal.SuspendLayout()
         Me.TbpSucursalAlojamiento.SuspendLayout()
         Me.GpbBotones.SuspendLayout()
         Me.GpbEstado.SuspendLayout()
-        Me.TbcConsulta.SuspendLayout()
-        CType(Me.DgvConsulta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbcPrincipal
         '
         Me.tbcPrincipal.Controls.Add(Me.TbpSucursalAlojamiento)
-        Me.tbcPrincipal.Controls.Add(Me.TbcConsulta)
+        Me.tbcPrincipal.Controls.Add(Me.DgvConsulta)
         Me.tbcPrincipal.Location = New System.Drawing.Point(1, 3)
         Me.tbcPrincipal.Name = "tbcPrincipal"
         Me.tbcPrincipal.SelectedIndex = 0
@@ -289,24 +286,15 @@ Partial Class SucursalAlojamiento
         Me.LblAlojamineto.TabIndex = 8
         Me.LblAlojamineto.Text = "Alojamiento"
         '
-        'TbcConsulta
-        '
-        Me.TbcConsulta.Controls.Add(Me.DgvConsulta)
-        Me.TbcConsulta.Location = New System.Drawing.Point(4, 22)
-        Me.TbcConsulta.Name = "TbcConsulta"
-        Me.TbcConsulta.Padding = New System.Windows.Forms.Padding(3)
-        Me.TbcConsulta.Size = New System.Drawing.Size(642, 366)
-        Me.TbcConsulta.TabIndex = 1
-        Me.TbcConsulta.Text = "Conulta"
-        Me.TbcConsulta.UseVisualStyleBackColor = True
-        '
         'DgvConsulta
         '
-        Me.DgvConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvConsulta.Location = New System.Drawing.Point(0, 0)
+        Me.DgvConsulta.Location = New System.Drawing.Point(4, 22)
         Me.DgvConsulta.Name = "DgvConsulta"
-        Me.DgvConsulta.Size = New System.Drawing.Size(642, 363)
-        Me.DgvConsulta.TabIndex = 0
+        Me.DgvConsulta.Padding = New System.Windows.Forms.Padding(3)
+        Me.DgvConsulta.Size = New System.Drawing.Size(616, 320)
+        Me.DgvConsulta.TabIndex = 1
+        Me.DgvConsulta.Text = "Conulta"
+        Me.DgvConsulta.UseVisualStyleBackColor = True
         '
         'SucursalAlojamiento
         '
@@ -322,8 +310,6 @@ Partial Class SucursalAlojamiento
         Me.GpbBotones.ResumeLayout(False)
         Me.GpbEstado.ResumeLayout(False)
         Me.GpbEstado.PerformLayout()
-        Me.TbcConsulta.ResumeLayout(False)
-        CType(Me.DgvConsulta, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -343,7 +329,7 @@ Partial Class SucursalAlojamiento
     Friend WithEvents LblNombre As Label
     Friend WithEvents LblSucursal As Label
     Friend WithEvents LblAlojamineto As Label
-    Friend WithEvents TbcConsulta As TabPage
+    Friend WithEvents DgvConsulta As TabPage
     Friend WithEvents TxtEmail As TextBox
     Friend WithEvents CmbCIudad As ComboBox
     Friend WithEvents GpbEstado As GroupBox
@@ -353,5 +339,4 @@ Partial Class SucursalAlojamiento
     Friend WithEvents BtnEliminar As Button
     Friend WithEvents BtnCancelar As Button
     Friend WithEvents BtnConfirmar As Button
-    Friend WithEvents DgvConsulta As DataGridView
 End Class
