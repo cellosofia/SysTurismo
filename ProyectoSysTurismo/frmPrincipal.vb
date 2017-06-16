@@ -75,4 +75,34 @@
             Me.Close()
         End If
     End Sub
+
+    Private Sub mnuTablasMenores_MouseHover(sender As Object, e As EventArgs) Handles mnuTablasMenores.MouseHover
+        ttHelp.SetToolTip(mnuPrincipal, "Deshabilitado momentaneamente. Aun no se configuraron las tablas menores")
+        ttHelp.ToolTipTitle = "SysTurismo"
+        ttHelp.ToolTipIcon = ToolTipIcon.Info
+    End Sub
+
+    Private Sub CiudadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CiudadToolStripMenuItem.Click
+        MessageBox.Show("Boton no implementado todavia", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub DepartamentoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DepartamentoToolStripMenuItem.Click
+        MessageBox.Show("Boton no implementado todavia", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub PaísToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PaísToolStripMenuItem.Click
+        MessageBox.Show("Boton no implementado todavia", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
+        MessageBox.Show("Boton no implementado todavia", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub mnuAlojamientos_Click(sender As Object, e As EventArgs) Handles mnuAlojamientos.Click
+        MessageBox.Show("Boton no implementado todavia", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub SucursalEmpresaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SucursalEmpresaToolStripMenuItem.Click
+        MessageBox.Show("Boton no implementado todavia", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class

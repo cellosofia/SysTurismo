@@ -53,6 +53,7 @@ Partial Class frmPrincipal
         Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
         Me.lblFechaHora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.stsPrincipal = New System.Windows.Forms.StatusStrip()
+        Me.ttHelp = New System.Windows.Forms.ToolTip(Me.components)
         Me.mnuPrincipal.SuspendLayout()
         Me.cmsPrincipal.SuspendLayout()
         Me.tlsPrincipal.SuspendLayout()
@@ -80,13 +81,13 @@ Partial Class frmPrincipal
         'mnuCerrarSesión
         '
         Me.mnuCerrarSesión.Name = "mnuCerrarSesión"
-        Me.mnuCerrarSesión.Size = New System.Drawing.Size(152, 22)
+        Me.mnuCerrarSesión.Size = New System.Drawing.Size(143, 22)
         Me.mnuCerrarSesión.Text = "&Cerrar Sesión"
         '
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(152, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(143, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'mnuABMs
@@ -134,27 +135,30 @@ Partial Class frmPrincipal
         '
         'mnuTablasMenores
         '
+        Me.mnuTablasMenores.AccessibleDescription = "Deshabilitado momentaneamente. Aun no se configuraron las tablas menores"
+        Me.mnuTablasMenores.AccessibleName = "Deshabilitado momentaneamente. Aun no se configuraron las tablas menores"
         Me.mnuTablasMenores.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CiudadToolStripMenuItem, Me.DepartamentoToolStripMenuItem, Me.PaísToolStripMenuItem})
         Me.mnuTablasMenores.Name = "mnuTablasMenores"
         Me.mnuTablasMenores.Size = New System.Drawing.Size(101, 20)
         Me.mnuTablasMenores.Text = "&Tablas Menores"
+        Me.mnuTablasMenores.ToolTipText = "Deshabilitado momentaneamente. Aun no se configuraron las tablas menores"
         '
         'CiudadToolStripMenuItem
         '
         Me.CiudadToolStripMenuItem.Name = "CiudadToolStripMenuItem"
-        Me.CiudadToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.CiudadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CiudadToolStripMenuItem.Text = "Ciudad"
         '
         'DepartamentoToolStripMenuItem
         '
         Me.DepartamentoToolStripMenuItem.Name = "DepartamentoToolStripMenuItem"
-        Me.DepartamentoToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.DepartamentoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.DepartamentoToolStripMenuItem.Text = "Departamento"
         '
         'PaísToolStripMenuItem
         '
         Me.PaísToolStripMenuItem.Name = "PaísToolStripMenuItem"
-        Me.PaísToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.PaísToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PaísToolStripMenuItem.Text = "País"
         '
         'ntiPrincipal
@@ -326,4 +330,5 @@ Partial Class frmPrincipal
     Friend WithEvents ToolStripButton4 As ToolStripButton
     Friend WithEvents ToolStripButton5 As ToolStripButton
     Friend WithEvents mnuCerrarSesión As ToolStripMenuItem
+    Friend WithEvents ttHelp As ToolTip
 End Class
