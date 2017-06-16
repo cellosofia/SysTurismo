@@ -23,13 +23,14 @@ Partial Class frmLogin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.txtLogin = New System.Windows.Forms.TextBox()
-        Me.txtPass = New System.Windows.Forms.TextBox()
         Me.btnConfirmar = New System.Windows.Forms.Button()
         Me.btnRegistrar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblid = New System.Windows.Forms.Label()
         Me.lblpass = New System.Windows.Forms.Label()
+        Me.txtPass = New System.Windows.Forms.TextBox()
+        Me.btnSalir = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtLogin
@@ -39,15 +40,9 @@ Partial Class frmLogin
         Me.txtLogin.Size = New System.Drawing.Size(100, 20)
         Me.txtLogin.TabIndex = 0
         '
-        'txtPass
-        '
-        Me.txtPass.Location = New System.Drawing.Point(144, 75)
-        Me.txtPass.Name = "txtPass"
-        Me.txtPass.Size = New System.Drawing.Size(100, 20)
-        Me.txtPass.TabIndex = 1
-        '
         'btnConfirmar
         '
+        Me.btnConfirmar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnConfirmar.Location = New System.Drawing.Point(95, 138)
         Me.btnConfirmar.Name = "btnConfirmar"
         Me.btnConfirmar.Size = New System.Drawing.Size(75, 23)
@@ -57,6 +52,7 @@ Partial Class frmLogin
         '
         'btnRegistrar
         '
+        Me.btnRegistrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnRegistrar.Location = New System.Drawing.Point(193, 138)
         Me.btnRegistrar.Name = "btnRegistrar"
         Me.btnRegistrar.Size = New System.Drawing.Size(75, 23)
@@ -104,11 +100,31 @@ Partial Class frmLogin
         Me.lblpass.Text = "Ingrese su contraseña"
         Me.lblpass.Visible = False
         '
+        'txtPass
+        '
+        Me.txtPass.Location = New System.Drawing.Point(144, 75)
+        Me.txtPass.Name = "txtPass"
+        Me.txtPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtPass.Size = New System.Drawing.Size(100, 20)
+        Me.txtPass.TabIndex = 1
+        '
+        'btnSalir
+        '
+        Me.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnSalir.Location = New System.Drawing.Point(144, 186)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 8
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.btnSalir
         Me.ClientSize = New System.Drawing.Size(383, 294)
+        Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.lblpass)
         Me.Controls.Add(Me.lblid)
         Me.Controls.Add(Me.Label2)
@@ -125,11 +141,12 @@ Partial Class frmLogin
     End Sub
 
     Friend WithEvents txtLogin As TextBox
-    Friend WithEvents txtPass As TextBox
     Friend WithEvents btnConfirmar As Button
     Friend WithEvents btnRegistrar As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents lblid As Label
     Friend WithEvents lblpass As Label
+    Friend WithEvents txtPass As TextBox
+    Friend WithEvents btnSalir As Button
 End Class

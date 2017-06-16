@@ -26,6 +26,7 @@ Partial Class frmPrincipal
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
         Me.mnuPrincipal = New System.Windows.Forms.MenuStrip()
         Me.mnuArchivo = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCerrarSesión = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuABMs = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuClientes = New System.Windows.Forms.ToolStripMenuItem()
@@ -71,15 +72,21 @@ Partial Class frmPrincipal
         '
         'mnuArchivo
         '
-        Me.mnuArchivo.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuSalir})
+        Me.mnuArchivo.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCerrarSesión, Me.mnuSalir})
         Me.mnuArchivo.Name = "mnuArchivo"
         Me.mnuArchivo.Size = New System.Drawing.Size(60, 20)
         Me.mnuArchivo.Text = "&Archivo"
         '
+        'mnuCerrarSesión
+        '
+        Me.mnuCerrarSesión.Name = "mnuCerrarSesión"
+        Me.mnuCerrarSesión.Size = New System.Drawing.Size(152, 22)
+        Me.mnuCerrarSesión.Text = "&Cerrar Sesión"
+        '
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(96, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(152, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'mnuABMs
@@ -249,8 +256,8 @@ Partial Class frmPrincipal
         'lblFechaHora
         '
         Me.lblFechaHora.Name = "lblFechaHora"
-        Me.lblFechaHora.Size = New System.Drawing.Size(70, 17)
-        Me.lblFechaHora.Text = "Fecha: Hora"
+        Me.lblFechaHora.Size = New System.Drawing.Size(81, 17)
+        Me.lblFechaHora.Text = "Fecha / Hora: "
         '
         'stsPrincipal
         '
@@ -318,4 +325,5 @@ Partial Class frmPrincipal
     Friend WithEvents ToolStripButton3 As ToolStripButton
     Friend WithEvents ToolStripButton4 As ToolStripButton
     Friend WithEvents ToolStripButton5 As ToolStripButton
+    Friend WithEvents mnuCerrarSesión As ToolStripMenuItem
 End Class

@@ -4,8 +4,8 @@ Module acceso_datos
     'Creamos el objeto de conexión
     'Información de a dónde se conecta nuestra aplicación
     'Dim cadenaConexion As String = "data source=(local); initial catalog=stock; user id=sa; password=@lumno123"
-    Dim cadenaConexion As String = "Data Source=(local);Initial Catalog=SysTurismo;Integrated Security=True;Connect Timeout=30"
-    'Dim cadenaConexion As String = "Data Source=(localdb)\mssqllocaldb;Initial Catalog=SysTurismo;Integrated Security=True;Connect Timeout=30"
+    'Dim cadenaConexion As String = "Data Source=(local);Initial Catalog=SysTurismo;Integrated Security=True;Connect Timeout=30"
+    Dim cadenaConexion As String = "Data Source=(localdb)\mssqllocaldb;Initial Catalog=SysTurismo;Integrated Security=True;Connect Timeout=30"
     'Instanciamos un Objeto de conexión
     Dim conexion As New SqlConnection(cadenaConexion)
 

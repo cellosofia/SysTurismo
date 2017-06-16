@@ -1,7 +1,7 @@
 ﻿Public Class frmPrincipal
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        lblFechaHora.Text = lblFechaHora.Text + DateTime.Now
+        lblFechaHora.Text = lblFechaHora.Text + DateTime.Now + ". Usuario: " + frmLogin.txtLogin.Text
 
         ntiPrincipal.ShowBalloonTip(1000)
     End Sub
@@ -25,15 +25,12 @@
     End Sub
 
     Private Sub mnuSalir_Click(sender As Object, e As EventArgs) Handles mnuSalir.Click
-        If (MessageBox.Show("Desea Salir", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) = vbYes Then
+        If (MessageBox.Show("Desea Salir", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) = DialogResult.Yes Then
             ' MsgBox("Se va a cerrar el formulario y el programa")
             'Me.Close()
-            End
+
             Me.Close()
         End If
-
-
-
     End Sub
 
     Private Sub stsPrincipal_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles stsPrincipal.ItemClicked
@@ -66,5 +63,16 @@
         Dim f As New frmHabitacion
         f.MdiParent = Me
         f.Show()
+    End Sub
+
+    Private Sub mnuCerrarSesión_Click(sender As Object, e As EventArgs) Handles mnuCerrarSesión.Click
+        If (MessageBox.Show("Desea Cerrar Sesión?", "SysTurismo", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) = DialogResult.Yes Then
+
+            frmLogin.Show()
+            frmLogin.txtLogin.Text = ""
+            frmLogin.txtPass.Text = ""
+
+            Me.Close()
+        End If
     End Sub
 End Class

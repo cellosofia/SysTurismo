@@ -13,7 +13,7 @@
     Dim ds As DataSet
     Public Sub conectar()
         conexion = New SqlClient.SqlConnection
-        conexion.ConnectionString = ("Integrated Security = SSPI;Initial Catalog=SysTurismo;Data Source=(local)")
+        conexion.ConnectionString = "Data Source=(localdb)\mssqllocaldb;Initial Catalog=SysTurismo;Integrated Security=True;Connect Timeout=30"
         conexion.Open()
 
     End Sub
@@ -53,15 +53,22 @@
             m4.Visible = True
         Else
             m4.Visible = False
-
-
         End If
-        If txtId.Text <> "" And txtNombre.Text <> "" And txtEmail.Text <> "" And txtContraseña.Text <> "" Then
-            Call Me.register()
+
+        If txtConfirmar.Text = "" Then
+            lblConfirmar.Visible = True
+        Else
+            lblConfirmar.Visible = False
+        End If
+
+        If txtId.Text <> "" And txtNombre.Text <> "" And txtEmail.Text <> "" And txtContraseña.Text <> "" And txtConfirmar.Text <> "" And txtContraseña.Text = txtConfirmar.Text Then
+            Me.register()
             Me.Hide()
             frmLogin.Show()
-
-
+        Else
+            If txtContraseña.Text <> txtConfirmar.Text Then
+                MessageBox.Show("Las contraseñas no coinciden", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         End If
     End Sub
     Private Sub register()

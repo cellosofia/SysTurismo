@@ -6,6 +6,10 @@
     Dim da As SqlClient.SqlDataAdapter, cb As SqlClient.SqlCommandBuilder
     Dim ds As DataSet
 
+    Private Sub txtSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Me.Close()
+    End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
         Call Me.verificar()
 
@@ -14,7 +18,7 @@
 
     Public Sub conectar()
         conexion = New SqlClient.SqlConnection
-        conexion.ConnectionString = ("Integrated Security = SSPI;Initial Catalog=SysTurismo;Data Source=(local)")
+        conexion.ConnectionString = "Data Source=(localdb)\mssqllocaldb;Initial Catalog=SysTurismo;Integrated Security=True;Connect Timeout=30"
         conexion.Open()
 
     End Sub
@@ -49,10 +53,7 @@
                 If id = dr(0) And pass = dr(3) Then
                     'proyecto.lbluser.Text = dr(1)
                     frmPrincipal.Show()
-                    Me.Hide()
-
-
-
+                    Me.Close()
                 Else
                     MsgBox("Constraseña incorrecta", MsgBoxStyle.Exclamation, "Acceso")
 

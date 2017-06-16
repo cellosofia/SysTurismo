@@ -36,6 +36,9 @@ Partial Class registro
         Me.m2 = New System.Windows.Forms.Label()
         Me.m3 = New System.Windows.Forms.Label()
         Me.m4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtConfirmar = New System.Windows.Forms.TextBox()
+        Me.lblConfirmar = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label2
@@ -92,6 +95,7 @@ Partial Class registro
         '
         Me.txtContraseña.Location = New System.Drawing.Point(121, 177)
         Me.txtContraseña.Name = "txtContraseña"
+        Me.txtContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContraseña.Size = New System.Drawing.Size(100, 20)
         Me.txtContraseña.TabIndex = 11
         '
@@ -104,7 +108,7 @@ Partial Class registro
         '
         'btnRegistrar
         '
-        Me.btnRegistrar.Location = New System.Drawing.Point(140, 222)
+        Me.btnRegistrar.Location = New System.Drawing.Point(146, 299)
         Me.btnRegistrar.Name = "btnRegistrar"
         Me.btnRegistrar.Size = New System.Drawing.Size(75, 23)
         Me.btnRegistrar.TabIndex = 15
@@ -113,7 +117,7 @@ Partial Class registro
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(42, 222)
+        Me.btnCancelar.Location = New System.Drawing.Point(48, 299)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelar.TabIndex = 14
@@ -164,11 +168,42 @@ Partial Class registro
         Me.m4.Text = "Obligatorio"
         Me.m4.Visible = False
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(56, 222)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(51, 13)
+        Me.Label5.TabIndex = 21
+        Me.Label5.Text = "Confirmar"
+        '
+        'txtConfirmar
+        '
+        Me.txtConfirmar.Location = New System.Drawing.Point(121, 216)
+        Me.txtConfirmar.Name = "txtConfirmar"
+        Me.txtConfirmar.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtConfirmar.Size = New System.Drawing.Size(100, 20)
+        Me.txtConfirmar.TabIndex = 20
+        '
+        'lblConfirmar
+        '
+        Me.lblConfirmar.AutoSize = True
+        Me.lblConfirmar.ForeColor = System.Drawing.Color.Red
+        Me.lblConfirmar.Location = New System.Drawing.Point(122, 239)
+        Me.lblConfirmar.Name = "lblConfirmar"
+        Me.lblConfirmar.Size = New System.Drawing.Size(57, 13)
+        Me.lblConfirmar.TabIndex = 22
+        Me.lblConfirmar.Text = "Obligatorio"
+        Me.lblConfirmar.Visible = False
+        '
         'registro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.ClientSize = New System.Drawing.Size(284, 358)
+        Me.Controls.Add(Me.lblConfirmar)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.txtConfirmar)
         Me.Controls.Add(Me.m4)
         Me.Controls.Add(Me.m3)
         Me.Controls.Add(Me.m2)
@@ -204,4 +239,7 @@ Partial Class registro
     Friend WithEvents m2 As Label
     Friend WithEvents m3 As Label
     Friend WithEvents m4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txtConfirmar As TextBox
+    Friend WithEvents lblConfirmar As Label
 End Class

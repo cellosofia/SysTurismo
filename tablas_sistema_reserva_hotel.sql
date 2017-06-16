@@ -12,8 +12,8 @@
 --INSERT INTO Moneda VALUES('DOLARES AMERICANOS', 'USD');
 --INSERT INTO Moneda VALUES('PESOS ARGENTINOS', 'ARG');
 use master;
---DROP DATABASE SysTurismo;
---CREATE DATABASE SysTurismo;
+DROP DATABASE SysTurismo;
+CREATE DATABASE SysTurismo;
 
 USE SysTurismo;
 
@@ -666,6 +666,7 @@ CREATE TABLE TipoServicioHabitacionPorHabitacion(
 --                         dbo.SucursalEmpresa ON dbo.Empleado.SucursalEmpresaID = dbo.SucursalEmpresa.SucursalEmpresaID;
 
 --vista habitacion
+--CREATE VIEW vista_habitacion AS
 --SELECT        dbo.Habitacion.HabitacionID, dbo.Habitacion.NroHabitacion, dbo.Habitacion.Precio, dbo.SucursalAlojamiento.Nombre, dbo.TipoHabitacion.Descripcion, dbo.EstadoHabitacion.Descripcion AS Expr1, 
 --                         dbo.TipoServicioHabitacion.Descripcion AS Expr2, dbo.Habitacion.EstadoSistema
 --FROM            dbo.Habitacion INNER JOIN
@@ -675,6 +676,7 @@ CREATE TABLE TipoServicioHabitacionPorHabitacion(
 --                         dbo.TipoServicioHabitacion ON dbo.Habitacion.ServicioHabitacionID = dbo.TipoServicioHabitacion.TipoServicioHabitacionID
 
 --vista sucursalalojamiento
+-- CREATE VIEW vista_sucursal_alojamiento  AS
 --SELECT        dbo.SucursalAlojamiento.SucursalAlojamientoID, dbo.Alojamiento.Nombre, dbo.SucursalAlojamiento.Nombre AS Expr1, dbo.Ciudad.Descripcion, dbo.SucursalAlojamiento.Telefono, 
 --                         dbo.SucursalAlojamiento.Direccion, dbo.SucursalAlojamiento.Email, dbo.TipoServicioAlojamiento.Descripcion AS Expr2, dbo.SucursalAlojamiento.EstadoSistema
 --FROM            dbo.SucursalAlojamiento INNER JOIN
