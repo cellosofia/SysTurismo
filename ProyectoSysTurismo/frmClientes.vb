@@ -215,7 +215,7 @@ Public Class frmClientes
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If MessageBox.Show("Esta seguro de que desea eliminar el registro?", "SysTurismo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
             If vNuevo = False Then
-                'EjecutarSQL("UPDATE Cliente SET EstadoSistema=0 WHERE ClienteID=@1", txtCodigo.Text.Trim)
+
                 EjecutarSQL("delete from Cliente where ClienteID=@1", txtCodigo.Text.Trim)
                 MessageBox.Show("Registro eliminado con exito", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LimpiarFormulario()

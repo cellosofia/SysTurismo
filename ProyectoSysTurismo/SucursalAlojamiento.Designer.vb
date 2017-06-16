@@ -28,17 +28,12 @@ Partial Class SucursalAlojamiento
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnCancelar = New System.Windows.Forms.Button()
         Me.BtnConfirmar = New System.Windows.Forms.Button()
-        Me.GpbEstado = New System.Windows.Forms.GroupBox()
-        Me.RdbDeshabilitado = New System.Windows.Forms.RadioButton()
-        Me.RdbHabilitado = New System.Windows.Forms.RadioButton()
-        Me.CmbCIudad = New System.Windows.Forms.ComboBox()
+        Me.cboCiudad = New System.Windows.Forms.ComboBox()
         Me.TxtEmail = New System.Windows.Forms.TextBox()
         Me.TxtTelefono = New System.Windows.Forms.TextBox()
         Me.TxtDireccion = New System.Windows.Forms.TextBox()
         Me.TxtNombre = New System.Windows.Forms.TextBox()
-        Me.TxtSucursalID = New System.Windows.Forms.TextBox()
-        Me.TxtALojamientoID = New System.Windows.Forms.TextBox()
-        Me.LblEstadoSistema = New System.Windows.Forms.Label()
+        Me.txtSucursal = New System.Windows.Forms.TextBox()
         Me.LblEmail = New System.Windows.Forms.Label()
         Me.LblDireccion = New System.Windows.Forms.Label()
         Me.LblTelefono = New System.Windows.Forms.Label()
@@ -46,20 +41,23 @@ Partial Class SucursalAlojamiento
         Me.LblNombre = New System.Windows.Forms.Label()
         Me.LblSucursal = New System.Windows.Forms.Label()
         Me.LblAlojamineto = New System.Windows.Forms.Label()
-        Me.DgvConsulta = New System.Windows.Forms.TabPage()
+        Me.tbpConsulta = New System.Windows.Forms.TabPage()
         Me.dgvSucursal = New System.Windows.Forms.DataGridView()
+        Me.cboAlojamiento = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cboServicio = New System.Windows.Forms.ComboBox()
+        Me.chkHabilitado = New System.Windows.Forms.CheckBox()
         Me.tbcPrincipal.SuspendLayout()
         Me.TbpSucursalAlojamiento.SuspendLayout()
         Me.GpbBotones.SuspendLayout()
-        Me.GpbEstado.SuspendLayout()
-        Me.DgvConsulta.SuspendLayout()
+        Me.tbpConsulta.SuspendLayout()
         CType(Me.dgvSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbcPrincipal
         '
         Me.tbcPrincipal.Controls.Add(Me.TbpSucursalAlojamiento)
-        Me.tbcPrincipal.Controls.Add(Me.DgvConsulta)
+        Me.tbcPrincipal.Controls.Add(Me.tbpConsulta)
         Me.tbcPrincipal.Location = New System.Drawing.Point(1, 3)
         Me.tbcPrincipal.Name = "tbcPrincipal"
         Me.tbcPrincipal.SelectedIndex = 0
@@ -68,16 +66,17 @@ Partial Class SucursalAlojamiento
         '
         'TbpSucursalAlojamiento
         '
+        Me.TbpSucursalAlojamiento.Controls.Add(Me.chkHabilitado)
+        Me.TbpSucursalAlojamiento.Controls.Add(Me.cboServicio)
+        Me.TbpSucursalAlojamiento.Controls.Add(Me.Label1)
+        Me.TbpSucursalAlojamiento.Controls.Add(Me.cboAlojamiento)
         Me.TbpSucursalAlojamiento.Controls.Add(Me.GpbBotones)
-        Me.TbpSucursalAlojamiento.Controls.Add(Me.GpbEstado)
-        Me.TbpSucursalAlojamiento.Controls.Add(Me.CmbCIudad)
+        Me.TbpSucursalAlojamiento.Controls.Add(Me.cboCiudad)
         Me.TbpSucursalAlojamiento.Controls.Add(Me.TxtEmail)
         Me.TbpSucursalAlojamiento.Controls.Add(Me.TxtTelefono)
         Me.TbpSucursalAlojamiento.Controls.Add(Me.TxtDireccion)
         Me.TbpSucursalAlojamiento.Controls.Add(Me.TxtNombre)
-        Me.TbpSucursalAlojamiento.Controls.Add(Me.TxtSucursalID)
-        Me.TbpSucursalAlojamiento.Controls.Add(Me.TxtALojamientoID)
-        Me.TbpSucursalAlojamiento.Controls.Add(Me.LblEstadoSistema)
+        Me.TbpSucursalAlojamiento.Controls.Add(Me.txtSucursal)
         Me.TbpSucursalAlojamiento.Controls.Add(Me.LblEmail)
         Me.TbpSucursalAlojamiento.Controls.Add(Me.LblDireccion)
         Me.TbpSucursalAlojamiento.Controls.Add(Me.LblTelefono)
@@ -132,50 +131,18 @@ Partial Class SucursalAlojamiento
         Me.BtnConfirmar.Text = "Confirmar"
         Me.BtnConfirmar.UseVisualStyleBackColor = True
         '
-        'GpbEstado
+        'cboCiudad
         '
-        Me.GpbEstado.Controls.Add(Me.RdbDeshabilitado)
-        Me.GpbEstado.Controls.Add(Me.RdbHabilitado)
-        Me.GpbEstado.Location = New System.Drawing.Point(325, 186)
-        Me.GpbEstado.Name = "GpbEstado"
-        Me.GpbEstado.Size = New System.Drawing.Size(209, 29)
-        Me.GpbEstado.TabIndex = 24
-        Me.GpbEstado.TabStop = False
-        '
-        'RdbDeshabilitado
-        '
-        Me.RdbDeshabilitado.AutoSize = True
-        Me.RdbDeshabilitado.Location = New System.Drawing.Point(102, 8)
-        Me.RdbDeshabilitado.Name = "RdbDeshabilitado"
-        Me.RdbDeshabilitado.Size = New System.Drawing.Size(89, 17)
-        Me.RdbDeshabilitado.TabIndex = 1
-        Me.RdbDeshabilitado.TabStop = True
-        Me.RdbDeshabilitado.Text = "Deshabilitado"
-        Me.RdbDeshabilitado.UseVisualStyleBackColor = True
-        '
-        'RdbHabilitado
-        '
-        Me.RdbHabilitado.AutoSize = True
-        Me.RdbHabilitado.Location = New System.Drawing.Point(6, 8)
-        Me.RdbHabilitado.Name = "RdbHabilitado"
-        Me.RdbHabilitado.Size = New System.Drawing.Size(72, 17)
-        Me.RdbHabilitado.TabIndex = 0
-        Me.RdbHabilitado.TabStop = True
-        Me.RdbHabilitado.Text = "Habilitado"
-        Me.RdbHabilitado.UseVisualStyleBackColor = True
-        '
-        'CmbCIudad
-        '
-        Me.CmbCIudad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbCIudad.FormattingEnabled = True
-        Me.CmbCIudad.Location = New System.Drawing.Point(115, 186)
-        Me.CmbCIudad.Name = "CmbCIudad"
-        Me.CmbCIudad.Size = New System.Drawing.Size(121, 21)
-        Me.CmbCIudad.TabIndex = 23
+        Me.cboCiudad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboCiudad.FormattingEnabled = True
+        Me.cboCiudad.Location = New System.Drawing.Point(115, 186)
+        Me.cboCiudad.Name = "cboCiudad"
+        Me.cboCiudad.Size = New System.Drawing.Size(121, 21)
+        Me.cboCiudad.TabIndex = 23
         '
         'TxtEmail
         '
-        Me.TxtEmail.Location = New System.Drawing.Point(354, 136)
+        Me.TxtEmail.Location = New System.Drawing.Point(354, 115)
         Me.TxtEmail.Name = "TxtEmail"
         Me.TxtEmail.Size = New System.Drawing.Size(100, 20)
         Me.TxtEmail.TabIndex = 21
@@ -201,35 +168,18 @@ Partial Class SucursalAlojamiento
         Me.TxtNombre.Size = New System.Drawing.Size(100, 20)
         Me.TxtNombre.TabIndex = 18
         '
-        'TxtSucursalID
+        'txtSucursal
         '
-        Me.TxtSucursalID.Location = New System.Drawing.Point(115, 69)
-        Me.TxtSucursalID.Name = "TxtSucursalID"
-        Me.TxtSucursalID.ReadOnly = True
-        Me.TxtSucursalID.Size = New System.Drawing.Size(100, 20)
-        Me.TxtSucursalID.TabIndex = 17
-        '
-        'TxtALojamientoID
-        '
-        Me.TxtALojamientoID.Location = New System.Drawing.Point(115, 28)
-        Me.TxtALojamientoID.Name = "TxtALojamientoID"
-        Me.TxtALojamientoID.ReadOnly = True
-        Me.TxtALojamientoID.Size = New System.Drawing.Size(100, 20)
-        Me.TxtALojamientoID.TabIndex = 16
-        '
-        'LblEstadoSistema
-        '
-        Me.LblEstadoSistema.AutoSize = True
-        Me.LblEstadoSistema.Location = New System.Drawing.Point(279, 194)
-        Me.LblEstadoSistema.Name = "LblEstadoSistema"
-        Me.LblEstadoSistema.Size = New System.Drawing.Size(40, 13)
-        Me.LblEstadoSistema.TabIndex = 15
-        Me.LblEstadoSistema.Text = "Estado"
+        Me.txtSucursal.Location = New System.Drawing.Point(115, 28)
+        Me.txtSucursal.Name = "txtSucursal"
+        Me.txtSucursal.ReadOnly = True
+        Me.txtSucursal.Size = New System.Drawing.Size(100, 20)
+        Me.txtSucursal.TabIndex = 16
         '
         'LblEmail
         '
         Me.LblEmail.AutoSize = True
-        Me.LblEmail.Location = New System.Drawing.Point(276, 136)
+        Me.LblEmail.Location = New System.Drawing.Point(270, 118)
         Me.LblEmail.Name = "LblEmail"
         Me.LblEmail.Size = New System.Drawing.Size(32, 13)
         Me.LblEmail.TabIndex = 14
@@ -238,7 +188,7 @@ Partial Class SucursalAlojamiento
         'LblDireccion
         '
         Me.LblDireccion.AutoSize = True
-        Me.LblDireccion.Location = New System.Drawing.Point(276, 72)
+        Me.LblDireccion.Location = New System.Drawing.Point(270, 69)
         Me.LblDireccion.Name = "LblDireccion"
         Me.LblDireccion.Size = New System.Drawing.Size(52, 13)
         Me.LblDireccion.TabIndex = 13
@@ -247,7 +197,7 @@ Partial Class SucursalAlojamiento
         'LblTelefono
         '
         Me.LblTelefono.AutoSize = True
-        Me.LblTelefono.Location = New System.Drawing.Point(279, 31)
+        Me.LblTelefono.Location = New System.Drawing.Point(270, 31)
         Me.LblTelefono.Name = "LblTelefono"
         Me.LblTelefono.Size = New System.Drawing.Size(49, 13)
         Me.LblTelefono.TabIndex = 12
@@ -256,7 +206,7 @@ Partial Class SucursalAlojamiento
         'LblCiudad
         '
         Me.LblCiudad.AutoSize = True
-        Me.LblCiudad.Location = New System.Drawing.Point(48, 194)
+        Me.LblCiudad.Location = New System.Drawing.Point(16, 186)
         Me.LblCiudad.Name = "LblCiudad"
         Me.LblCiudad.Size = New System.Drawing.Size(40, 13)
         Me.LblCiudad.TabIndex = 11
@@ -265,40 +215,40 @@ Partial Class SucursalAlojamiento
         'LblNombre
         '
         Me.LblNombre.AutoSize = True
-        Me.LblNombre.Location = New System.Drawing.Point(48, 136)
+        Me.LblNombre.Location = New System.Drawing.Point(16, 132)
         Me.LblNombre.Name = "LblNombre"
-        Me.LblNombre.Size = New System.Drawing.Size(44, 13)
+        Me.LblNombre.Size = New System.Drawing.Size(88, 13)
         Me.LblNombre.TabIndex = 10
-        Me.LblNombre.Text = "Nombre"
+        Me.LblNombre.Text = "Nombre Sucursal"
         '
         'LblSucursal
         '
         Me.LblSucursal.AutoSize = True
-        Me.LblSucursal.Location = New System.Drawing.Point(40, 76)
+        Me.LblSucursal.Location = New System.Drawing.Point(16, 79)
         Me.LblSucursal.Name = "LblSucursal"
-        Me.LblSucursal.Size = New System.Drawing.Size(48, 13)
+        Me.LblSucursal.Size = New System.Drawing.Size(61, 13)
         Me.LblSucursal.TabIndex = 9
-        Me.LblSucursal.Text = "Sucursal"
+        Me.LblSucursal.Text = "Alojamiento"
         '
         'LblAlojamineto
         '
         Me.LblAlojamineto.AutoSize = True
-        Me.LblAlojamineto.Location = New System.Drawing.Point(31, 31)
+        Me.LblAlojamineto.Location = New System.Drawing.Point(15, 31)
         Me.LblAlojamineto.Name = "LblAlojamineto"
-        Me.LblAlojamineto.Size = New System.Drawing.Size(61, 13)
+        Me.LblAlojamineto.Size = New System.Drawing.Size(62, 13)
         Me.LblAlojamineto.TabIndex = 8
-        Me.LblAlojamineto.Text = "Alojamiento"
+        Me.LblAlojamineto.Text = "Sucursal ID"
         '
-        'DgvConsulta
+        'tbpConsulta
         '
-        Me.DgvConsulta.Controls.Add(Me.dgvSucursal)
-        Me.DgvConsulta.Location = New System.Drawing.Point(4, 22)
-        Me.DgvConsulta.Name = "DgvConsulta"
-        Me.DgvConsulta.Padding = New System.Windows.Forms.Padding(3)
-        Me.DgvConsulta.Size = New System.Drawing.Size(642, 366)
-        Me.DgvConsulta.TabIndex = 1
-        Me.DgvConsulta.Text = "Conulta"
-        Me.DgvConsulta.UseVisualStyleBackColor = True
+        Me.tbpConsulta.Controls.Add(Me.dgvSucursal)
+        Me.tbpConsulta.Location = New System.Drawing.Point(4, 22)
+        Me.tbpConsulta.Name = "tbpConsulta"
+        Me.tbpConsulta.Padding = New System.Windows.Forms.Padding(3)
+        Me.tbpConsulta.Size = New System.Drawing.Size(642, 366)
+        Me.tbpConsulta.TabIndex = 1
+        Me.tbpConsulta.Text = "Consulta"
+        Me.tbpConsulta.UseVisualStyleBackColor = True
         '
         'dgvSucursal
         '
@@ -308,6 +258,44 @@ Partial Class SucursalAlojamiento
         Me.dgvSucursal.Name = "dgvSucursal"
         Me.dgvSucursal.Size = New System.Drawing.Size(636, 360)
         Me.dgvSucursal.TabIndex = 0
+        '
+        'cboAlojamiento
+        '
+        Me.cboAlojamiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboAlojamiento.FormattingEnabled = True
+        Me.cboAlojamiento.Location = New System.Drawing.Point(115, 76)
+        Me.cboAlojamiento.Name = "cboAlojamiento"
+        Me.cboAlojamiento.Size = New System.Drawing.Size(121, 21)
+        Me.cboAlojamiento.TabIndex = 26
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(269, 157)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(45, 13)
+        Me.Label1.TabIndex = 27
+        Me.Label1.Text = "Servicio"
+        '
+        'cboServicio
+        '
+        Me.cboServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboServicio.FormattingEnabled = True
+        Me.cboServicio.Location = New System.Drawing.Point(354, 154)
+        Me.cboServicio.Name = "cboServicio"
+        Me.cboServicio.Size = New System.Drawing.Size(121, 21)
+        Me.cboServicio.TabIndex = 28
+        '
+        'chkHabilitado
+        '
+        Me.chkHabilitado.AutoSize = True
+        Me.chkHabilitado.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chkHabilitado.Location = New System.Drawing.Point(269, 190)
+        Me.chkHabilitado.Name = "chkHabilitado"
+        Me.chkHabilitado.Size = New System.Drawing.Size(73, 17)
+        Me.chkHabilitado.TabIndex = 29
+        Me.chkHabilitado.Text = "Habilitado"
+        Me.chkHabilitado.UseVisualStyleBackColor = True
         '
         'SucursalAlojamiento
         '
@@ -321,9 +309,7 @@ Partial Class SucursalAlojamiento
         Me.TbpSucursalAlojamiento.ResumeLayout(False)
         Me.TbpSucursalAlojamiento.PerformLayout()
         Me.GpbBotones.ResumeLayout(False)
-        Me.GpbEstado.ResumeLayout(False)
-        Me.GpbEstado.PerformLayout()
-        Me.DgvConsulta.ResumeLayout(False)
+        Me.tbpConsulta.ResumeLayout(False)
         CType(Me.dgvSucursal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -334,9 +320,7 @@ Partial Class SucursalAlojamiento
     Friend WithEvents TxtTelefono As TextBox
     Friend WithEvents TxtDireccion As TextBox
     Friend WithEvents TxtNombre As TextBox
-    Friend WithEvents TxtSucursalID As TextBox
-    Friend WithEvents TxtALojamientoID As TextBox
-    Friend WithEvents LblEstadoSistema As Label
+    Friend WithEvents txtSucursal As TextBox
     Friend WithEvents LblEmail As Label
     Friend WithEvents LblDireccion As Label
     Friend WithEvents LblTelefono As Label
@@ -344,15 +328,16 @@ Partial Class SucursalAlojamiento
     Friend WithEvents LblNombre As Label
     Friend WithEvents LblSucursal As Label
     Friend WithEvents LblAlojamineto As Label
-    Friend WithEvents DgvConsulta As TabPage
+    Friend WithEvents tbpConsulta As TabPage
     Friend WithEvents TxtEmail As TextBox
-    Friend WithEvents CmbCIudad As ComboBox
-    Friend WithEvents GpbEstado As GroupBox
-    Friend WithEvents RdbDeshabilitado As RadioButton
-    Friend WithEvents RdbHabilitado As RadioButton
+    Friend WithEvents cboCiudad As ComboBox
     Friend WithEvents GpbBotones As GroupBox
     Friend WithEvents BtnEliminar As Button
     Friend WithEvents BtnCancelar As Button
     Friend WithEvents BtnConfirmar As Button
     Friend WithEvents dgvSucursal As DataGridView
+    Friend WithEvents cboAlojamiento As ComboBox
+    Friend WithEvents cboServicio As ComboBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents chkHabilitado As CheckBox
 End Class

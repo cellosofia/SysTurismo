@@ -12,8 +12,8 @@
 --INSERT INTO Moneda VALUES('DOLARES AMERICANOS', 'USD');
 --INSERT INTO Moneda VALUES('PESOS ARGENTINOS', 'ARG');
 use master;
-DROP DATABASE SysTurismo;
-CREATE DATABASE SysTurismo;
+--DROP DATABASE SysTurismo;
+--CREATE DATABASE SysTurismo;
 
 USE SysTurismo;
 
@@ -24,7 +24,7 @@ email varchar(50) not null,
 pass varchar(20) not null,
 CONSTRAINT PK_users PRIMARY KEY (id));
 
-CREATE procedure [dbo].[alta_users](
+CREATE PROCEDURE [dbo].[alta_users](
 @id varchar(10),
 @nom varchar(30),
 @email varchar(50),
@@ -501,6 +501,11 @@ CREATE TABLE Alojamiento (
 	CONSTRAINT FK_Alojamiento_TipoAlojamiento FOREIGN KEY (TipoAlojamientoID) REFERENCES TipoAlojamiento(TipoAlojamientoID),
 );
 
+INSERT INTO TipoAlojamiento values ('Hotel');
+
+INSERT INTO Alojamiento (TipoAlojamientoID, Nombre, Direccion, Telefono, PaginaWeb, Estrellas, EstadoSistema )
+ values (1, 'Sheraton', 'Asuncion', '0991546888', 'sheraton@hotmail.com', 4, 1);
+
 CREATE TABLE SucursalAlojamiento (
 	SucursalAlojamientoID INT NOT NULL IDENTITY(1,1),
 	AlojamientoID INT NOT NULL,
@@ -509,10 +514,12 @@ CREATE TABLE SucursalAlojamiento (
 	Telefono VARCHAR (30),
 	Direccion VARCHAR (100),
 	Email VARCHAR (50),
+	ServicioID INT NOT NULL,
 	EstadoSistema BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_SucursalAlojamiento PRIMARY KEY (SucursalAlojamientoID),
 	CONSTRAINT FK_SucursalAlojamiento_Alojamiento FOREIGN KEY (AlojamientoID) REFERENCES Alojamiento(AlojamientoID),
 	CONSTRAINT FK_SucursalAlojamiento_Ciudad FOREIGN KEY (CiudadID) REFERENCES Ciudad(CiudadID),
+	CONSTRAINT FK_SucursalAlojamiento_Servicio FOREIGN KEY (ServicioID) REFERENCES TipoServicioAlojamiento(TipoServicioAlojamientoID)
 );
 
 CREATE TABLE Cliente (
@@ -543,10 +550,13 @@ CREATE TABLE Habitacion (
 	Precio MONEY NOT NULL,          -- en guaranies
 	TipoHabitacionID INT NOT NULL,
 	EstadoHabitacionID INT NOT NULL,
+	ServicioHabitacionID int NOT NULL,
 	EstadoSistema BIT NOT NULL DEFAULT 1,
+
 	CONSTRAINT PK_Habitacion PRIMARY KEY (HabitacionID),
 	CONSTRAINT FK_Habitacion_SucursalAlojamiento FOREIGN KEY (SucursalAlojamientoID) REFERENCES SucursalAlojamiento(SucursalAlojamientoID),
 	CONSTRAINT FK_Habitacion_TipoHabitacion FOREIGN KEY (TipoHabitacionID) REFERENCES TipoHabitacion(TipoHabitacionID),
+	CONSTRAINT FK_Habitacion_ServicioHabitacion FOREIGN KEY (ServicioHabitacionID) REFERENCES TipoServicioHabitacion(TipoServicioHabitacionID),
 	CONSTRAINT FK_Habitacion_EstadoHabitacion FOREIGN KEY (EstadoHabitacionID) REFERENCES EstadoHabitacion(EstadoHabitacionID),
 );
 
@@ -654,3 +664,20 @@ CREATE TABLE TipoServicioHabitacionPorHabitacion(
 --                         dbo.CargoEmpleado ON dbo.Empleado.CargoEmpleadoID = dbo.CargoEmpleado.CargoEmpleadoID INNER JOIN
 --                         dbo.TipoDocumento ON dbo.Empleado.TipoDocumentoID = dbo.TipoDocumento.TipoDocumentoID INNER JOIN
 --                         dbo.SucursalEmpresa ON dbo.Empleado.SucursalEmpresaID = dbo.SucursalEmpresa.SucursalEmpresaID;
+
+--vista habitacion
+--SELECT        dbo.Habitacion.HabitacionID, dbo.Habitacion.NroHabitacion, dbo.Habitacion.Precio, dbo.SucursalAlojamiento.Nombre, dbo.TipoHabitacion.Descripcion, dbo.EstadoHabitacion.Descripcion AS Expr1, 
+--                         dbo.TipoServicioHabitacion.Descripcion AS Expr2, dbo.Habitacion.EstadoSistema
+--FROM            dbo.Habitacion INNER JOIN
+--                         dbo.SucursalAlojamiento ON dbo.Habitacion.SucursalAlojamientoID = dbo.SucursalAlojamiento.SucursalAlojamientoID INNER JOIN
+--                         dbo.TipoHabitacion ON dbo.Habitacion.TipoHabitacionID = dbo.TipoHabitacion.TipoHabitacionID INNER JOIN
+--                         dbo.EstadoHabitacion ON dbo.Habitacion.EstadoHabitacionID = dbo.EstadoHabitacion.EstadoHabitacionID INNER JOIN
+--                         dbo.TipoServicioHabitacion ON dbo.Habitacion.ServicioHabitacionID = dbo.TipoServicioHabitacion.TipoServicioHabitacionID
+
+--vista sucursalalojamiento
+--SELECT        dbo.SucursalAlojamiento.SucursalAlojamientoID, dbo.Alojamiento.Nombre, dbo.SucursalAlojamiento.Nombre AS Expr1, dbo.Ciudad.Descripcion, dbo.SucursalAlojamiento.Telefono, 
+--                         dbo.SucursalAlojamiento.Direccion, dbo.SucursalAlojamiento.Email, dbo.TipoServicioAlojamiento.Descripcion AS Expr2, dbo.SucursalAlojamiento.EstadoSistema
+--FROM            dbo.SucursalAlojamiento INNER JOIN
+--                         dbo.Alojamiento ON dbo.SucursalAlojamiento.AlojamientoID = dbo.Alojamiento.AlojamientoID INNER JOIN
+--                         dbo.Ciudad ON dbo.SucursalAlojamiento.CiudadID = dbo.Ciudad.CiudadID INNER JOIN
+--                         dbo.TipoServicioAlojamiento ON dbo.SucursalAlojamiento.ServicioID = dbo.TipoServicioAlojamiento.TipoServicioAlojamientoID

@@ -30,7 +30,6 @@ Partial Class frmHabitacion
         Me.lblTipo = New System.Windows.Forms.Label()
         Me.nudPrecio = New System.Windows.Forms.NumericUpDown()
         Me.lblPrecio = New System.Windows.Forms.Label()
-        Me.txtSucursal = New System.Windows.Forms.TextBox()
         Me.lblSucursal = New System.Windows.Forms.Label()
         Me.txtNroHabitacion = New System.Windows.Forms.TextBox()
         Me.lblNroHabitacion = New System.Windows.Forms.Label()
@@ -43,6 +42,9 @@ Partial Class frmHabitacion
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.tbpConsulta = New System.Windows.Forms.TabPage()
         Me.dgvConsulta = New System.Windows.Forms.DataGridView()
+        Me.cboSucursal = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cboServicio = New System.Windows.Forms.ComboBox()
         Me.tbcPrincipal.SuspendLayout()
         Me.tbpABM.SuspendLayout()
         CType(Me.nudPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,13 +65,15 @@ Partial Class frmHabitacion
         '
         'tbpABM
         '
+        Me.tbpABM.Controls.Add(Me.cboServicio)
+        Me.tbpABM.Controls.Add(Me.Label1)
+        Me.tbpABM.Controls.Add(Me.cboSucursal)
         Me.tbpABM.Controls.Add(Me.cboEstadoHabitacion)
         Me.tbpABM.Controls.Add(Me.cboTipoHabitacion)
         Me.tbpABM.Controls.Add(Me.lblEstado)
         Me.tbpABM.Controls.Add(Me.lblTipo)
         Me.tbpABM.Controls.Add(Me.nudPrecio)
         Me.tbpABM.Controls.Add(Me.lblPrecio)
-        Me.tbpABM.Controls.Add(Me.txtSucursal)
         Me.tbpABM.Controls.Add(Me.lblSucursal)
         Me.tbpABM.Controls.Add(Me.txtNroHabitacion)
         Me.tbpABM.Controls.Add(Me.lblNroHabitacion)
@@ -137,14 +141,6 @@ Partial Class frmHabitacion
         Me.lblPrecio.TabIndex = 42
         Me.lblPrecio.Text = "Precio"
         '
-        'txtSucursal
-        '
-        Me.txtSucursal.Location = New System.Drawing.Point(132, 74)
-        Me.txtSucursal.Name = "txtSucursal"
-        Me.txtSucursal.ReadOnly = True
-        Me.txtSucursal.Size = New System.Drawing.Size(185, 20)
-        Me.txtSucursal.TabIndex = 41
-        '
         'lblSucursal
         '
         Me.lblSucursal.AutoSize = True
@@ -190,9 +186,10 @@ Partial Class frmHabitacion
         'chkHabilitado
         '
         Me.chkHabilitado.AutoSize = True
+        Me.chkHabilitado.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.chkHabilitado.Checked = True
         Me.chkHabilitado.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkHabilitado.Location = New System.Drawing.Point(324, 18)
+        Me.chkHabilitado.Location = New System.Drawing.Point(319, 48)
         Me.chkHabilitado.Name = "chkHabilitado"
         Me.chkHabilitado.Size = New System.Drawing.Size(73, 17)
         Me.chkHabilitado.TabIndex = 26
@@ -257,11 +254,38 @@ Partial Class frmHabitacion
         Me.dgvConsulta.Size = New System.Drawing.Size(694, 293)
         Me.dgvConsulta.TabIndex = 0
         '
+        'cboSucursal
+        '
+        Me.cboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboSucursal.FormattingEnabled = True
+        Me.cboSucursal.Location = New System.Drawing.Point(132, 75)
+        Me.cboSucursal.Name = "cboSucursal"
+        Me.cboSucursal.Size = New System.Drawing.Size(121, 21)
+        Me.cboSucursal.TabIndex = 48
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(320, 19)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(45, 13)
+        Me.Label1.TabIndex = 49
+        Me.Label1.Text = "Servicio"
+        '
+        'cboServicio
+        '
+        Me.cboServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboServicio.FormattingEnabled = True
+        Me.cboServicio.Location = New System.Drawing.Point(371, 14)
+        Me.cboServicio.Name = "cboServicio"
+        Me.cboServicio.Size = New System.Drawing.Size(121, 21)
+        Me.cboServicio.TabIndex = 50
+        '
         'frmHabitacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(728, 348)
+        Me.ClientSize = New System.Drawing.Size(735, 334)
         Me.Controls.Add(Me.tbcPrincipal)
         Me.Name = "frmHabitacion"
         Me.Text = "Habitacion - SysTurismo"
@@ -290,10 +314,12 @@ Partial Class frmHabitacion
     Friend WithEvents lblTipo As Label
     Friend WithEvents nudPrecio As NumericUpDown
     Friend WithEvents lblPrecio As Label
-    Friend WithEvents txtSucursal As TextBox
     Friend WithEvents lblSucursal As Label
     Friend WithEvents txtNroHabitacion As TextBox
     Friend WithEvents lblNroHabitacion As Label
     Friend WithEvents lblCodigo As Label
     Friend WithEvents txtCodigo As TextBox
+    Friend WithEvents cboSucursal As ComboBox
+    Friend WithEvents cboServicio As ComboBox
+    Friend WithEvents Label1 As Label
 End Class

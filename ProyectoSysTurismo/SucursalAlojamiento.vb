@@ -2,42 +2,46 @@
 Imports ProyectoSysTurismo.acceso_datos
 Public Class SucursalAlojamiento
     Dim vNuevo As Boolean = True
-    Private Sub SucursalAlojamiento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CmbCIudad.DataSource = generar_datatabla("Select * From Ciudad ")
-        CmbCIudad.DisplayMember = "Nombre"
-        CmbCIudad.ValueMember = "CiudadID"
+    Dim Habilitado As Boolean = True
 
-        LimpiarForm()
+    Private Sub SucursalAlojamiento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cboCiudad.DataSource = generar_datatabla("Select * From Ciudad ")
+        cboCiudad.DisplayMember = "Descripcion"
+        cboCiudad.ValueMember = "CiudadID"
+
+        cboAlojamiento.DataSource = generar_datatabla("select * from Alojamiento")
+        cboAlojamiento.DisplayMember = "Nombre"
+        cboAlojamiento.ValueMember = "AlojamientoID"
+
+        cboServicio.DataSource = generar_datatabla("select * from TipoServicioAlojamiento")
+        cboServicio.DisplayMember = "Descripcion"
+        cboServicio.ValueMember = "TipoServicioAlojamientoID"
+
 
         TxtNombre.Focus()
 
     End Sub
     Private Sub LimpiarForm()
-        TxtALojamientoID.Text = ""
-        TxtSucursalID.Text = ""
+        txtSucursal.Text = ""
+        cboAlojamiento.SelectedIndex = -1
         TxtNombre.Text = ""
+        cboCiudad.SelectedIndex = -1
         TxtDireccion.Text = ""
         TxtTelefono.Text = ""
-        CmbCIudad.SelectedIndex = -1
-        RdbDeshabilitado.Checked = False
-        RdbHabilitado.Checked = False
+        TxtEmail.Text = ""
+        cboServicio.SelectedIndex = -1
+        chkHabilitado.Checked = True
+
 
 
     End Sub
     Private Sub TbcPrincipal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbcPrincipal.SelectedIndexChanged
         If tbcPrincipal.SelectedIndex = 1 Then
-         
+
             dgvSucursal.DataSource = generar_datatabla("select * from vista_Sucursal_ALojamiento")
         End If
     End Sub
     Function DatosValidos() As Boolean
-
-        If TxtEmail.Text.Trim = "" Then
-            TxtNombre.Focus()
-            MessageBox.Show("Debe insertar su Email", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return False
-        End If
-
 
         If TxtNombre.Text.Trim = "" Then
             TxtNombre.Focus()
@@ -45,8 +49,14 @@ Public Class SucursalAlojamiento
             Return False
         End If
 
-        If CmbCIudad.SelectedIndex = -1 Then
-            CmbCIudad.Focus()
+        If cboAlojamiento.SelectedIndex = -1 Then
+            cboAlojamiento.Focus()
+            MessageBox.Show("Debe seleccionar el Alojamiento", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+
+        If cboCiudad.SelectedIndex = -1 Then
+            cboCiudad.Focus()
             MessageBox.Show("Debe seleccionar su Ciudad", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
@@ -63,57 +73,74 @@ Public Class SucursalAlojamiento
             Return False
         End If
 
-        If RdbDeshabilitado.Checked = False And RdbHabilitado.Checked = False Then
-            RdbHabilitado.Checked = True
-            RdbDeshabilitado.Focus()
-            MessageBox.Show("Debe seleccionar el Estado de la Sucursal", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If TxtEmail.Text.Trim = "" Then
+            TxtNombre.Focus()
+            MessageBox.Show("Debe insertar su Email", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
+
+        If cboServicio.SelectedIndex = -1 Then
+            cboServicio.Focus()
+            MessageBox.Show("Debe seleccionar su Servicio", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+
 
         Return True
     End Function
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles BtnConfirmar.Click
-        If DatosValidos() Then
-            Dim comando As New SqlCommand
-            Dim Estado As Integer
+        Try
 
-            If RdbHabilitado.Checked Then
-                Estado = 1
-            Else
-                Estado = 0
+
+            If DatosValidos() Then
+                Dim comando As New SqlCommand
+                Dim Estado As Integer
+
+
+
+                If vNuevo = True Then
+                    EjecutarSQL("INSERT INTO SucursalAlojamiento VALUES(@1,@2,@3,@4,@5,@6,@7,@8)", cboAlojamiento.SelectedValue, TxtNombre.Text.Trim, cboCiudad.SelectedValue, TxtTelefono.Text.Trim, TxtDireccion.Text.Trim, TxtEmail.Text.Trim, cboServicio.SelectedValue, chkHabilitado.Checked)
+                Else
+                    EjecutarSQL("UPDATE SucursalAlojamiento SET AlojamientoID=@1,Nombre=@2,CiudadID=@3,Telefono=@4,Direccion=@5,Email=@6,ServicioID=@7,EstadoSistema=@8 where SucursalAlojamientoID=@9", cboAlojamiento.SelectedValue, TxtNombre.Text.Trim, cboCiudad.SelectedValue, TxtTelefono.Text.Trim, TxtDireccion.Text.Trim, TxtEmail.Text.Trim, cboServicio.SelectedValue, chkHabilitado.Checked, txtSucursal.Text.Trim)
+                    vNuevo = True
+                End If
+
+                MessageBox.Show("Registro guardado con éxito")
+                LimpiarForm()
+
             End If
-
-            If vNuevo = True Then
-                EjecutarSQL("INSERT INTO SucursalAlojamiento VALUES(@1,@2,@3,@4,@5,@6,@7,@8,@9)", TxtALojamientoID.Text.Trim, TxtSucursalID.Text.Trim, TxtNombre.Text.Trim, TxtTelefono.Text.Trim, CmbCIudad.SelectedValue, TxtSucursalID.Text.Trim, TxtTelefono.Text.Trim, TxtDireccion.Text.Trim, TxtEmail.Text.Trim, Estado)
-            Else
-                EjecutarSQL("UPDATE SucursalAlojamiento SET Alojamineto=@1,Sucursal=@2,Nombre=@3,Ciudad=@4,Telefono=@5,=@6,Direccion=@7,Email=@8", TxtALojamientoID.Text.Trim, TxtSucursalID.Text.Trim, TxtNombre.Text.Trim, TxtTelefono.Text.Trim, CmbCIudad.SelectedValue, TxtSucursalID.Text.Trim, TxtTelefono.Text.Trim, TxtDireccion.Text.Trim, TxtEmail.Text.Trim, Estado)
-                vNuevo = True
-            End If
-
-            MessageBox.Show("Registro guardado con éxito")
-            LimpiarForm()
-
-        End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Private Sub dgvSucursal_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSucursal.CellDoubleClick
-        Dim dtSucursalAlojamiento As New DataTable
-        dtSucursalAlojamiento = generar_datatabla("select * from SucursalAlojamiento where AlojamientoID=" & dgvSucursal(0, e.RowIndex).Value)
-        If dtSucursalAlojamiento.Rows.Count > 0 Then
-            TxtALojamientoID.Text = dtSucursalAlojamiento.Rows(0).Item("AlojamientoID")
-            TxtSucursalID.Text = dtSucursalAlojamiento.Rows(0).Item("SucursalID")
-            TxtNombre.Text = dtSucursalAlojamiento.Rows(0).Item("Nombre")
-            CmbCIudad.SelectedValue = dtSucursalAlojamiento.Rows(0).Item("CiudadID")
-            TxtTelefono.Text = dtSucursalAlojamiento.Rows(0).Item("NroDocumento")
 
+        Dim dtSucursalAlojamiento As New DataTable
+
+
+        dtSucursalAlojamiento = generar_datatabla("select * from SucursalAlojamiento where SucursalAlojamientoID=" & dgvSucursal(0, e.RowIndex).Value)
+        If dtSucursalAlojamiento.Rows.Count > 0 Then
+
+            txtSucursal.Text = dtSucursalAlojamiento.Rows(0).Item("SucursalAlojamientoID")
+            cboAlojamiento.SelectedValue = dtSucursalAlojamiento.Rows(0).Item("AlojamientoID")
+            TxtNombre.Text = dtSucursalAlojamiento.Rows(0).Item("Nombre")
+            cboCiudad.SelectedValue = dtSucursalAlojamiento.Rows(0).Item("CiudadID")
             TxtTelefono.Text = dtSucursalAlojamiento.Rows(0).Item("Telefono")
             TxtDireccion.Text = dtSucursalAlojamiento.Rows(0).Item("Direccion")
+            cboServicio.SelectedValue = dtSucursalAlojamiento.Rows(0).Item("ServicioID")
             TxtEmail.Text = dtSucursalAlojamiento.Rows(0).Item("Email")
 
-            If dtSucursalAlojamiento.Rows(0).Item("Estado") = True Then
-                RdbHabilitado.Checked = True
+            If chkHabilitado.Checked = True Then
+                Habilitado = 1
+                chkHabilitado.Checked = dtSucursalAlojamiento.Rows(0).Item("EstadoSistema")
+                ' Habilitado = dtEmpleado.Rows.Item("EstadoSistema")
+
             Else
-                RdbDeshabilitado.Checked = True
+                Habilitado = 0
+                'Habilitado = dtEmpleado.Rows.Item("EstadoSistema")
+                chkHabilitado.Checked = dtSucursalAlojamiento.Rows(0).Item("EstadoSistema")
+
             End If
 
             tbcPrincipal.SelectedIndex = 0
@@ -128,12 +155,16 @@ Public Class SucursalAlojamiento
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
         If MessageBox.Show("Esta seguro de que desea eliminar el registro?", "SysTurismo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
             If vNuevo = False Then
-                EjecutarSQL("UPDATE SucursalAlojamiento SET EstadoSistema=0 WHERE AlojamientoID=@1", TxtALojamientoID.Text.Trim)
+                EjecutarSQL("delete from SucursalAlojamiento where EmpleadoID=@1", txtSucursal.Text.Trim)
                 MessageBox.Show("Registro eliminado con exito", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LimpiarForm()
             Else
                 LimpiarForm()
             End If
         End If
+    End Sub
+
+    Private Sub LblAlojamineto_Click(sender As Object, e As EventArgs) Handles LblAlojamineto.Click
+
     End Sub
 End Class
