@@ -155,7 +155,7 @@ Public Class SucursalAlojamiento
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
         If MessageBox.Show("Esta seguro de que desea eliminar el registro?", "SysTurismo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
             If vNuevo = False Then
-                EjecutarSQL("delete from SucursalAlojamiento where EmpleadoID=@1", txtSucursal.Text.Trim)
+                EjecutarSQL("delete from SucursalAlojamiento where SucursalAlojamientoID=@1", txtSucursal.Text.Trim)
                 MessageBox.Show("Registro eliminado con exito", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LimpiarForm()
             Else

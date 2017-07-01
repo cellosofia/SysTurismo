@@ -24,22 +24,22 @@ email varchar(50) not null,
 pass varchar(20) not null,
 CONSTRAINT PK_users PRIMARY KEY (id));
 
-CREATE PROCEDURE [dbo].[alta_users](
-@id varchar(10),
-@nom varchar(30),
-@email varchar(50),
-@pass varchar(20)
-)
-as
-insert into users
-values(@id, @nom, @email, @pass);
+--CREATE PROCEDURE [dbo].[alta_users](
+--@id varchar(10),
+--@nom varchar(30),
+--@email varchar(50),
+--@pass varchar(20)
+--)
+--as
+--insert into users
+--values(@id, @nom, @email, @pass);
 
-CREATE procedure [dbo].[ver_users](
-@id varchar(10)
-)
-as 
-select * from users
-where id=@id;
+--CREATE procedure [dbo].[ver_users](
+--@id varchar(10)
+--)
+--as 
+--select * from users
+--where id=@id;
 
 INSERT INTO users VALUES ('admin', 'Administrador', 'admin@hotmail.com', '1234');
 

@@ -104,7 +104,7 @@ Public Class frmHabitacion
                 If vNuevo = True Then
                     EjecutarSQL("INSERT INTO Habitacion VALUES(@1,@2,@3,@4,@5,@6,@7)", txtNroHabitacion.Text.Trim, cboSucursal.SelectedValue, nudPrecio.Value, cboTipoHabitacion.SelectedValue, cboEstadoHabitacion.SelectedValue, cboServicio.SelectedValue, chkHabilitado.Checked)
                 Else
-                    EjecutarSQL("UPDATE Empleado SET NroHabitacion=@1,SucursalAlojamiento=@2,Precio=@3,TipoHabitacionID=@4,EstadoHabitacionID=@5,ServicioHabitacionID=@6,EstadoSistema=@7 where HabitacionID=@8", txtNroHabitacion.Text.Trim, cboSucursal.SelectedValue, nudPrecio.Value, cboTipoHabitacion.SelectedValue, cboEstadoHabitacion.SelectedValue, cboServicio.SelectedValue, chkHabilitado.Checked, txtCodigo.Text.Trim)
+                    EjecutarSQL("UPDATE Habitacion SET NroHabitacion=@1,SucursalAlojamientoID=@2,Precio=@3,TipoHabitacionID=@4,EstadoHabitacionID=@5,ServicioHabitacionID=@6,EstadoSistema=@7 where HabitacionID=@8", txtNroHabitacion.Text.Trim, cboSucursal.SelectedValue, nudPrecio.Value, cboTipoHabitacion.SelectedValue, cboEstadoHabitacion.SelectedValue, cboServicio.SelectedValue, chkHabilitado.Checked, txtCodigo.Text.Trim)
                     vNuevo = True
                 End If
 

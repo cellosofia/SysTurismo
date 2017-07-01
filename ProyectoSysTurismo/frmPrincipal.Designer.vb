@@ -146,19 +146,19 @@ Partial Class frmPrincipal
         'CiudadToolStripMenuItem
         '
         Me.CiudadToolStripMenuItem.Name = "CiudadToolStripMenuItem"
-        Me.CiudadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CiudadToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
         Me.CiudadToolStripMenuItem.Text = "Ciudad"
         '
         'DepartamentoToolStripMenuItem
         '
         Me.DepartamentoToolStripMenuItem.Name = "DepartamentoToolStripMenuItem"
-        Me.DepartamentoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DepartamentoToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
         Me.DepartamentoToolStripMenuItem.Text = "Departamento"
         '
         'PaísToolStripMenuItem
         '
         Me.PaísToolStripMenuItem.Name = "PaísToolStripMenuItem"
-        Me.PaísToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PaísToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
         Me.PaísToolStripMenuItem.Text = "País"
         '
         'ntiPrincipal
