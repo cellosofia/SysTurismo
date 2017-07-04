@@ -24,6 +24,7 @@ Partial Class frmHabitacion
     Private Sub InitializeComponent()
         Me.tbcPrincipal = New System.Windows.Forms.TabControl()
         Me.tbpABM = New System.Windows.Forms.TabPage()
+        Me.cboSucursal = New System.Windows.Forms.ComboBox()
         Me.cboEstadoHabitacion = New System.Windows.Forms.ComboBox()
         Me.cboTipoHabitacion = New System.Windows.Forms.ComboBox()
         Me.lblEstado = New System.Windows.Forms.Label()
@@ -42,9 +43,6 @@ Partial Class frmHabitacion
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.tbpConsulta = New System.Windows.Forms.TabPage()
         Me.dgvConsulta = New System.Windows.Forms.DataGridView()
-        Me.cboSucursal = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.cboServicio = New System.Windows.Forms.ComboBox()
         Me.tbcPrincipal.SuspendLayout()
         Me.tbpABM.SuspendLayout()
         CType(Me.nudPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,13 +58,11 @@ Partial Class frmHabitacion
         Me.tbcPrincipal.Location = New System.Drawing.Point(10, 13)
         Me.tbcPrincipal.Name = "tbcPrincipal"
         Me.tbcPrincipal.SelectedIndex = 0
-        Me.tbcPrincipal.Size = New System.Drawing.Size(708, 325)
+        Me.tbcPrincipal.Size = New System.Drawing.Size(708, 291)
         Me.tbcPrincipal.TabIndex = 1
         '
         'tbpABM
         '
-        Me.tbpABM.Controls.Add(Me.cboServicio)
-        Me.tbpABM.Controls.Add(Me.Label1)
         Me.tbpABM.Controls.Add(Me.cboSucursal)
         Me.tbpABM.Controls.Add(Me.cboEstadoHabitacion)
         Me.tbpABM.Controls.Add(Me.cboTipoHabitacion)
@@ -84,16 +80,25 @@ Partial Class frmHabitacion
         Me.tbpABM.Location = New System.Drawing.Point(4, 22)
         Me.tbpABM.Name = "tbpABM"
         Me.tbpABM.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbpABM.Size = New System.Drawing.Size(700, 299)
+        Me.tbpABM.Size = New System.Drawing.Size(700, 265)
         Me.tbpABM.TabIndex = 0
         Me.tbpABM.Text = "ABM"
         Me.tbpABM.UseVisualStyleBackColor = True
+        '
+        'cboSucursal
+        '
+        Me.cboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboSucursal.FormattingEnabled = True
+        Me.cboSucursal.Location = New System.Drawing.Point(132, 75)
+        Me.cboSucursal.Name = "cboSucursal"
+        Me.cboSucursal.Size = New System.Drawing.Size(121, 21)
+        Me.cboSucursal.TabIndex = 48
         '
         'cboEstadoHabitacion
         '
         Me.cboEstadoHabitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboEstadoHabitacion.FormattingEnabled = True
-        Me.cboEstadoHabitacion.Location = New System.Drawing.Point(132, 160)
+        Me.cboEstadoHabitacion.Location = New System.Drawing.Point(425, 22)
         Me.cboEstadoHabitacion.Name = "cboEstadoHabitacion"
         Me.cboEstadoHabitacion.Size = New System.Drawing.Size(121, 21)
         Me.cboEstadoHabitacion.TabIndex = 47
@@ -110,7 +115,7 @@ Partial Class frmHabitacion
         'lblEstado
         '
         Me.lblEstado.AutoSize = True
-        Me.lblEstado.Location = New System.Drawing.Point(28, 160)
+        Me.lblEstado.Location = New System.Drawing.Point(321, 22)
         Me.lblEstado.Name = "lblEstado"
         Me.lblEstado.Size = New System.Drawing.Size(40, 13)
         Me.lblEstado.TabIndex = 45
@@ -201,7 +206,7 @@ Partial Class frmHabitacion
         Me.gbxBotones.Controls.Add(Me.btnConfirmar)
         Me.gbxBotones.Controls.Add(Me.btnEliminar)
         Me.gbxBotones.Controls.Add(Me.btnCancelar)
-        Me.gbxBotones.Location = New System.Drawing.Point(148, 211)
+        Me.gbxBotones.Location = New System.Drawing.Point(148, 181)
         Me.gbxBotones.Name = "gbxBotones"
         Me.gbxBotones.Size = New System.Drawing.Size(427, 65)
         Me.gbxBotones.TabIndex = 25
@@ -240,7 +245,7 @@ Partial Class frmHabitacion
         Me.tbpConsulta.Location = New System.Drawing.Point(4, 22)
         Me.tbpConsulta.Name = "tbpConsulta"
         Me.tbpConsulta.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbpConsulta.Size = New System.Drawing.Size(700, 299)
+        Me.tbpConsulta.Size = New System.Drawing.Size(700, 265)
         Me.tbpConsulta.TabIndex = 1
         Me.tbpConsulta.Text = "Consulta"
         Me.tbpConsulta.UseVisualStyleBackColor = True
@@ -251,41 +256,14 @@ Partial Class frmHabitacion
         Me.dgvConsulta.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvConsulta.Location = New System.Drawing.Point(3, 3)
         Me.dgvConsulta.Name = "dgvConsulta"
-        Me.dgvConsulta.Size = New System.Drawing.Size(694, 293)
+        Me.dgvConsulta.Size = New System.Drawing.Size(694, 259)
         Me.dgvConsulta.TabIndex = 0
-        '
-        'cboSucursal
-        '
-        Me.cboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboSucursal.FormattingEnabled = True
-        Me.cboSucursal.Location = New System.Drawing.Point(132, 75)
-        Me.cboSucursal.Name = "cboSucursal"
-        Me.cboSucursal.Size = New System.Drawing.Size(121, 21)
-        Me.cboSucursal.TabIndex = 48
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(320, 19)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(45, 13)
-        Me.Label1.TabIndex = 49
-        Me.Label1.Text = "Servicio"
-        '
-        'cboServicio
-        '
-        Me.cboServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboServicio.FormattingEnabled = True
-        Me.cboServicio.Location = New System.Drawing.Point(371, 14)
-        Me.cboServicio.Name = "cboServicio"
-        Me.cboServicio.Size = New System.Drawing.Size(121, 21)
-        Me.cboServicio.TabIndex = 50
         '
         'frmHabitacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(735, 334)
+        Me.ClientSize = New System.Drawing.Size(735, 315)
         Me.Controls.Add(Me.tbcPrincipal)
         Me.Name = "frmHabitacion"
         Me.Text = "Habitacion - SysTurismo"
@@ -320,6 +298,4 @@ Partial Class frmHabitacion
     Friend WithEvents lblCodigo As Label
     Friend WithEvents txtCodigo As TextBox
     Friend WithEvents cboSucursal As ComboBox
-    Friend WithEvents cboServicio As ComboBox
-    Friend WithEvents Label1 As Label
 End Class

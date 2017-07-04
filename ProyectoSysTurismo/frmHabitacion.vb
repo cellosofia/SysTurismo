@@ -4,7 +4,6 @@ Public Class frmHabitacion
     Dim vNuevo As Boolean = True
     Dim Habilitado As Boolean = True
 
-
     Private Sub tbcPrincipal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbcPrincipal.SelectedIndexChanged
         If tbcPrincipal.SelectedIndex = 1 Then
             dgvConsulta.DataSource = generar_datatabla("select * from vista_habitacion")
@@ -32,12 +31,6 @@ Public Class frmHabitacion
             MessageBox.Show("Debe insertar estado de la habitacion", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
-        If cboServicio.SelectedIndex = -1 Then
-            cboServicio.Focus()
-            MessageBox.Show("Debe insertar el servicio", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return False
-
-        End If
 
         If nudPrecio.Value = 0 Then
             nudPrecio.Focus()
@@ -57,15 +50,11 @@ Public Class frmHabitacion
         cboSucursal.SelectedIndex = -1
         cboTipoHabitacion.SelectedIndex = -1
         cboEstadoHabitacion.SelectedIndex = -1
-        cboServicio.SelectedIndex = -1
         nudPrecio.Value = 0
         chkHabilitado.Checked = True
 
 
     End Sub
-
-
-
 
     Private Sub frmHabitacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboEstadoHabitacion.DataSource = generar_datatabla("select * from EstadoHabitacion")
@@ -79,10 +68,6 @@ Public Class frmHabitacion
         cboSucursal.DataSource = generar_datatabla("select * from SucursalAlojamiento")
         cboSucursal.ValueMember = "SucursalAlojamientoID"
         cboSucursal.DisplayMember = "Nombre"
-
-        cboServicio.DataSource = generar_datatabla("select * from TipoServicioHabitacion")
-        cboServicio.ValueMember = "TipoServicioHabitacionID"
-        cboServicio.DisplayMember = "Descripcion"
 
         txtNroHabitacion.Focus()
     End Sub
@@ -102,9 +87,9 @@ Public Class frmHabitacion
                 End If
 
                 If vNuevo = True Then
-                    EjecutarSQL("INSERT INTO Habitacion VALUES(@1,@2,@3,@4,@5,@6,@7)", txtNroHabitacion.Text.Trim, cboSucursal.SelectedValue, nudPrecio.Value, cboTipoHabitacion.SelectedValue, cboEstadoHabitacion.SelectedValue, cboServicio.SelectedValue, chkHabilitado.Checked)
+                    EjecutarSQL("INSERT INTO Habitacion VALUES(@1,@2,@3,@4,@5,@6)", txtNroHabitacion.Text.Trim, cboSucursal.SelectedValue, nudPrecio.Value, cboTipoHabitacion.SelectedValue, cboEstadoHabitacion.SelectedValue, chkHabilitado.Checked)
                 Else
-                    EjecutarSQL("UPDATE Habitacion SET NroHabitacion=@1,SucursalAlojamientoID=@2,Precio=@3,TipoHabitacionID=@4,EstadoHabitacionID=@5,ServicioHabitacionID=@6,EstadoSistema=@7 where HabitacionID=@8", txtNroHabitacion.Text.Trim, cboSucursal.SelectedValue, nudPrecio.Value, cboTipoHabitacion.SelectedValue, cboEstadoHabitacion.SelectedValue, cboServicio.SelectedValue, chkHabilitado.Checked, txtCodigo.Text.Trim)
+                    EjecutarSQL("UPDATE Habitacion SET NroHabitacion=@1,SucursalAlojamientoID=@2,Precio=@3,TipoHabitacionID=@4,EstadoHabitacionID=@5,EstadoSistema=@6 where HabitacionID=@7", txtNroHabitacion.Text.Trim, cboSucursal.SelectedValue, nudPrecio.Value, cboTipoHabitacion.SelectedValue, cboEstadoHabitacion.SelectedValue, chkHabilitado.Checked, txtCodigo.Text.Trim)
                     vNuevo = True
                 End If
 

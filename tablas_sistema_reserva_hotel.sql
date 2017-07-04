@@ -11,7 +11,9 @@
 --INSERT INTO Moneda VALUES('GUARANIES', 'PYG');
 --INSERT INTO Moneda VALUES('DOLARES AMERICANOS', 'USD');
 --INSERT INTO Moneda VALUES('PESOS ARGENTINOS', 'ARG');
+
 use master;
+alter database SysTurismo set single_user with rollback immediate;
 DROP DATABASE SysTurismo;
 CREATE DATABASE SysTurismo;
 
@@ -24,24 +26,8 @@ email varchar(50) not null,
 pass varchar(20) not null,
 CONSTRAINT PK_users PRIMARY KEY (id));
 
---CREATE PROCEDURE [dbo].[alta_users](
---@id varchar(10),
---@nom varchar(30),
---@email varchar(50),
---@pass varchar(20)
---)
---as
---insert into users
---values(@id, @nom, @email, @pass);
-
---CREATE procedure [dbo].[ver_users](
---@id varchar(10)
---)
---as 
---select * from users
---where id=@id;
-
-INSERT INTO users VALUES ('admin', 'Administrador', 'admin@hotmail.com', '1234');
+INSERT INTO users VALUES ('admin', 'Administrador', 'admin@turipar.com', '1234');
+INSERT INTO users VALUES ('operador', 'Operador', 'operador@turipar.com', 'ope');
 
 CREATE TABLE TipoCliente(
 	TipoClienteID INT NOT NULL IDENTITY(1,1),
@@ -460,15 +446,15 @@ INSERT INTO TipoServicioAlojamiento VALUES ('SERVICIO DE LIMPIEZA DIARIA DEL CUA
 CREATE TABLE TipoServicioHabitacion(
 	TipoServicioHabitacionID INT NOT NULL IDENTITY (1,1),
 	Descripcion VARCHAR(100) NOT NULL,
+	Precio MONEY NOT NULL,
 	CONSTRAINT PK_TipoServicioHabitacion PRIMARY KEY (TipoServicioHabitacionID),
 );
 
-INSERT INTO TipoServicioHabitacion VALUES ('DESAYUNO');
-INSERT INTO TipoServicioHabitacion VALUES ('COCINA');
-INSERT INTO TipoServicioHabitacion VALUES ('TELEVISION POR CABLE');
-INSERT INTO TipoServicioHabitacion VALUES ('FRIGOBAR');
-INSERT INTO TipoServicioHabitacion VALUES ('NETFLIX');
-INSERT INTO TipoServicioHabitacion VALUES ('WIFI EMPRESARIAL');
+INSERT INTO TipoServicioHabitacion VALUES ('DESAYUNO', 100000);
+INSERT INTO TipoServicioHabitacion VALUES ('COCINA', 250000);
+INSERT INTO TipoServicioHabitacion VALUES ('TELEVISION POR CABLE', 50000);
+INSERT INTO TipoServicioHabitacion VALUES ('NETFLIX', 200000);
+INSERT INTO TipoServicioHabitacion VALUES ('WIFI EMPRESARIAL', 250000);
 
 -- Tablas Mayores
 
@@ -522,6 +508,9 @@ CREATE TABLE SucursalAlojamiento (
 	CONSTRAINT FK_SucursalAlojamiento_Servicio FOREIGN KEY (ServicioID) REFERENCES TipoServicioAlojamiento(TipoServicioAlojamientoID)
 );
 
+INSERT INTO SucursalAlojamiento VALUES (1,	'ASU',	1,	'1235456',	'asdfasf',	'asdf@asdf.com',	1,	1)
+INSERT INTO SucursalAlojamiento VALUES (1,	'CDE',	1,	'1235456',	'asdfasf',	'asdf@asdf.com',	1,	1)
+
 CREATE TABLE Cliente (
 	ClienteID INT NOT NULL IDENTITY (1,1),
 	Nombre VARCHAR(50) NOT NULL,
@@ -550,13 +539,13 @@ CREATE TABLE Habitacion (
 	Precio MONEY NOT NULL,          -- en guaranies
 	TipoHabitacionID INT NOT NULL,
 	EstadoHabitacionID INT NOT NULL,
-	ServicioHabitacionID int NOT NULL,
+	--ServicioHabitacionID int NOT NULL,
 	EstadoSistema BIT NOT NULL DEFAULT 1,
 
 	CONSTRAINT PK_Habitacion PRIMARY KEY (HabitacionID),
 	CONSTRAINT FK_Habitacion_SucursalAlojamiento FOREIGN KEY (SucursalAlojamientoID) REFERENCES SucursalAlojamiento(SucursalAlojamientoID),
 	CONSTRAINT FK_Habitacion_TipoHabitacion FOREIGN KEY (TipoHabitacionID) REFERENCES TipoHabitacion(TipoHabitacionID),
-	CONSTRAINT FK_Habitacion_ServicioHabitacion FOREIGN KEY (ServicioHabitacionID) REFERENCES TipoServicioHabitacion(TipoServicioHabitacionID),
+	--CONSTRAINT FK_Habitacion_ServicioHabitacion FOREIGN KEY (ServicioHabitacionID) REFERENCES TipoServicioHabitacion(TipoServicioHabitacionID),
 	CONSTRAINT FK_Habitacion_EstadoHabitacion FOREIGN KEY (EstadoHabitacionID) REFERENCES EstadoHabitacion(EstadoHabitacionID),
 );
 
@@ -598,88 +587,122 @@ CREATE TABLE TipoServicioHabitacionPorHabitacion(
 
 -- cabecera detalle
 
---CREATE TABLE Reserva (
---	ReservaID INT NOT NULL IDENTITY (1,1),
---	ClienteID INT NOT NULL,
---	AlojamientoID INT NOT NULL,
---	SucursalID INT NOT NULL,
---	HabitacionID INT NOT NULL,
---	PrecioReserva MONEY NOT NULL,
---	MonedaReservaID INT NOT NULL,
---	FechaReserva DATETIME NOT NULL,
---	FechaCheckIn DATETIME NOT NULL,
---	FechaCheckOut DATETIME NOT NULL,
---	Pagado BIT NOT NULL,
---	MedioDePagoID INT NOT NULL,
---	CONSTRAINT PK_Reserva PRIMARY KEY (ReservaID),
---	CONSTRAINT FK_Reserva_Cliente FOREIGN KEY (ClienteID) REFERENCES Cliente (ClienteID),
---	CONSTRAINT FK_Reserva_AlojamientoID FOREIGN KEY (AlojamientoID) REFERENCES Alojamiento(AlojamientoID),
---	CONSTRAINT FK_Reserva_Sucursal FOREIGN KEY (SucursalID) REFERENCES Sucursal(SucursalID),
---	CONSTRAINT FK_Reserva_Habitacion FOREIGN KEY (HabitacionID) REFERENCES Habitacion(HabitacionID),
---	CONSTRAINT FK_Reserva_Moneda FOREIGN KEY (MonedaReservaID) REFERENCES Moneda(MonedaID),
---);
+CREATE TABLE Reserva (
+	ReservaID INT NOT NULL IDENTITY (1,1),
+	ClienteID INT NOT NULL,
+	AlojamientoID INT NOT NULL,
+	SucursalAlojamientoID INT NOT NULL,
+	PrecioReserva MONEY NOT NULL,
+	FechaReserva DATETIME NOT NULL,
+	FechaCheckIn DATETIME NOT NULL,
+	FechaCheckOut DATETIME NOT NULL,
+	Pagado BIT NOT NULL,
+	MedioDePagoID INT NOT NULL,
+	CONSTRAINT PK_Reserva PRIMARY KEY (ReservaID),
+	CONSTRAINT FK_Reserva_Cliente FOREIGN KEY (ClienteID) REFERENCES Cliente (ClienteID),
+	CONSTRAINT FK_Reserva_AlojamientoID FOREIGN KEY (AlojamientoID) REFERENCES Alojamiento(AlojamientoID),
+	CONSTRAINT FK_Reserva_Sucursal FOREIGN KEY (SucursalAlojamientoID) REFERENCES SucursalAlojamiento(SucursalAlojamientoID),
+);
 
+CREATE TABLE ReservaDetalle (
+	ReservaDetalleID INT NOT NULL IDENTITY (1,1),
+	ReservaID INT NOT NULL,
+	HabitacionID INT NOT NULL,
+	TipoServicioHabitacionID INT NOT NULL,
+	Precio MONEY NOT NULL,
+	CONSTRAINT PK_ReservaDetalle PRIMARY KEY (ReservaDetalleID),
+	CONSTRAINT UQ_ReservaDetalle UNIQUE (ReservaID, HabitacionID, TipoServicioHabitacionID),
+	CONSTRAINT FK_ReservaDetalle_Reserva FOREIGN KEY (ReservaID) REFERENCES Reserva(ReservaID),
+	CONSTRAINT FK_ReservaDetalle_Habitacion FOREIGN KEY (HabitacionID) REFERENCES Habitacion(HabitacionID),
+	CONSTRAINT FK_ReservaDetalle_ServicioHabitacion FOREIGN KEY (TipoServicioHabitacionID) REFERENCES TipoServicioHabitacion(TipoServicioHabitacionID),
+);
 
--- Vistas. Se deben crear de a uno descomentando y seleccionando el codigo correspondiente.
- --CREATE VIEW vista_cliente AS
- -- SELECT
-	--c.ClienteID as Codigo,
-	--c.Nombre,
-	--c.Apellido,
-	--td.Descripcion as [Tipo Documento],
-	--c.NroDocumento as [Numero Documento],
-	--case c.EstadoCivil
-	--	when 's' then 'Soltero'
-	--	when 'c' then 'Casado'
-	--	when 'v' then 'Viudo'
-	--	when 'd' then 'Divorciado'
-	--end as [Estado Civil],
-	--c.Telefono,
-	--c.Direccion,
-	--c.Email,
-	--c.FechaNacimiento as [Fecha Nacimiento],
-	--p.Descripcion as Profesion,
-	--case c.Sexo
-	--	when 1 then 'Masculino'
-	--	when 0 then 'Femenino'
- --   end as Sexo,
-	--tc.Descripcion as [Tipo Cliente],
-	--case c.EstadoSistema
-	--	when 1 then 'Habilitado'
-	--	when 0 then 'Deshabilitado'
-	--end as [Estado Sistema]
- -- FROM Cliente c JOIN
- -- TipoDocumento td ON td.TipoDocumentoID = c.TipoDocumentoID JOIN
- -- TipoCliente tc on tc.TipoClienteID = c.TipoClienteID JOIN
- -- Profesion p on p.ProfesionID = c.ProfesionID
+GO
+
+-- Vistas.
+
+ CREATE VIEW vista_cliente AS
+  SELECT
+	c.ClienteID as Codigo,
+	c.Nombre,
+	c.Apellido,
+	td.Descripcion as [Tipo Documento],
+	c.NroDocumento as [Numero Documento],
+	case c.EstadoCivil
+		when 's' then 'Soltero'
+		when 'c' then 'Casado'
+		when 'v' then 'Viudo'
+		when 'd' then 'Divorciado'
+	end as [Estado Civil],
+	c.Telefono,
+	c.Direccion,
+	c.Email,
+	c.FechaNacimiento as [Fecha Nacimiento],
+	p.Descripcion as Profesion,
+	case c.Sexo
+		when 1 then 'Masculino'
+		when 0 then 'Femenino'
+    end as Sexo,
+	tc.Descripcion as [Tipo Cliente],
+	case c.EstadoSistema
+		when 1 then 'Habilitado'
+		when 0 then 'Deshabilitado'
+	end as [Estado Sistema]
+  FROM Cliente c JOIN
+  TipoDocumento td ON td.TipoDocumentoID = c.TipoDocumentoID JOIN
+  TipoCliente tc on tc.TipoClienteID = c.TipoClienteID JOIN
+  Profesion p on p.ProfesionID = c.ProfesionID
+
+GO
 
  -- Vista de Empleado
--- CREATE VIEW vista_Empleado AS
- 
--- SELECT        dbo.Empleado.EmpleadoID, dbo.Empleado.Nombre, dbo.Empleado.Apellido, dbo.CargoEmpleado.Nombre AS Cargo, dbo.TipoDocumento.Descripcion, dbo.Empleado.NroDocumento, 
---                         dbo.Empleado.FechaNacimiento, dbo.SucursalEmpresa.Nombre AS Sucursal, dbo.Empleado.Telefono, dbo.Empleado.Direccion, 
---                         CASE dbo.Empleado.EstadoCivil WHEN 's' THEN 'Soltero' WHEN 'c' THEN 'Casado' WHEN 'v' THEN 'Viudo' WHEN 'd' THEN 'Divorciado' END AS [Estado Civil], dbo.Empleado.Antiguedad, 
---                         dbo.Empleado.EstadoSistema
---FROM            dbo.Empleado INNER JOIN
---                         dbo.CargoEmpleado ON dbo.Empleado.CargoEmpleadoID = dbo.CargoEmpleado.CargoEmpleadoID INNER JOIN
---                         dbo.TipoDocumento ON dbo.Empleado.TipoDocumentoID = dbo.TipoDocumento.TipoDocumentoID INNER JOIN
---                         dbo.SucursalEmpresa ON dbo.Empleado.SucursalEmpresaID = dbo.SucursalEmpresa.SucursalEmpresaID;
+ CREATE VIEW vista_Empleado AS
+ SELECT        dbo.Empleado.EmpleadoID, dbo.Empleado.Nombre, dbo.Empleado.Apellido, dbo.CargoEmpleado.Nombre AS Cargo, dbo.TipoDocumento.Descripcion, dbo.Empleado.NroDocumento, 
+                         dbo.Empleado.FechaNacimiento, dbo.SucursalEmpresa.Nombre AS Sucursal, dbo.Empleado.Telefono, dbo.Empleado.Direccion, 
+                         CASE dbo.Empleado.EstadoCivil WHEN 's' THEN 'Soltero' WHEN 'c' THEN 'Casado' WHEN 'v' THEN 'Viudo' WHEN 'd' THEN 'Divorciado' END AS [Estado Civil], dbo.Empleado.Antiguedad, 
+                         dbo.Empleado.EstadoSistema
+FROM            dbo.Empleado INNER JOIN
+                         dbo.CargoEmpleado ON dbo.Empleado.CargoEmpleadoID = dbo.CargoEmpleado.CargoEmpleadoID INNER JOIN
+                         dbo.TipoDocumento ON dbo.Empleado.TipoDocumentoID = dbo.TipoDocumento.TipoDocumentoID INNER JOIN
+                         dbo.SucursalEmpresa ON dbo.Empleado.SucursalEmpresaID = dbo.SucursalEmpresa.SucursalEmpresaID;
+GO
 
 --vista habitacion
---CREATE VIEW vista_habitacion AS
---SELECT        dbo.Habitacion.HabitacionID, dbo.Habitacion.NroHabitacion, dbo.Habitacion.Precio, dbo.SucursalAlojamiento.Nombre, dbo.TipoHabitacion.Descripcion, dbo.EstadoHabitacion.Descripcion AS Expr1, 
---                         dbo.TipoServicioHabitacion.Descripcion AS Expr2, dbo.Habitacion.EstadoSistema
---FROM            dbo.Habitacion INNER JOIN
---                         dbo.SucursalAlojamiento ON dbo.Habitacion.SucursalAlojamientoID = dbo.SucursalAlojamiento.SucursalAlojamientoID INNER JOIN
---                         dbo.TipoHabitacion ON dbo.Habitacion.TipoHabitacionID = dbo.TipoHabitacion.TipoHabitacionID INNER JOIN
---                         dbo.EstadoHabitacion ON dbo.Habitacion.EstadoHabitacionID = dbo.EstadoHabitacion.EstadoHabitacionID INNER JOIN
---                         dbo.TipoServicioHabitacion ON dbo.Habitacion.ServicioHabitacionID = dbo.TipoServicioHabitacion.TipoServicioHabitacionID
+CREATE VIEW vista_habitacion AS
+SELECT        dbo.Habitacion.HabitacionID, dbo.Habitacion.NroHabitacion, dbo.Habitacion.Precio, dbo.SucursalAlojamiento.Nombre, dbo.TipoHabitacion.Descripcion, dbo.EstadoHabitacion.Descripcion AS EstadoHabitacion, dbo.Habitacion.EstadoSistema
+FROM            dbo.Habitacion INNER JOIN
+                         dbo.SucursalAlojamiento ON dbo.Habitacion.SucursalAlojamientoID = dbo.SucursalAlojamiento.SucursalAlojamientoID INNER JOIN
+                         dbo.TipoHabitacion ON dbo.Habitacion.TipoHabitacionID = dbo.TipoHabitacion.TipoHabitacionID INNER JOIN
+                         dbo.EstadoHabitacion ON dbo.Habitacion.EstadoHabitacionID = dbo.EstadoHabitacion.EstadoHabitacionID;
+GO
 
 --vista sucursalalojamiento
--- CREATE VIEW vista_sucursal_alojamiento  AS
---SELECT        dbo.SucursalAlojamiento.SucursalAlojamientoID, dbo.Alojamiento.Nombre, dbo.SucursalAlojamiento.Nombre AS Expr1, dbo.Ciudad.Descripcion, dbo.SucursalAlojamiento.Telefono, 
---                         dbo.SucursalAlojamiento.Direccion, dbo.SucursalAlojamiento.Email, dbo.TipoServicioAlojamiento.Descripcion AS Expr2, dbo.SucursalAlojamiento.EstadoSistema
---FROM            dbo.SucursalAlojamiento INNER JOIN
---                         dbo.Alojamiento ON dbo.SucursalAlojamiento.AlojamientoID = dbo.Alojamiento.AlojamientoID INNER JOIN
---                         dbo.Ciudad ON dbo.SucursalAlojamiento.CiudadID = dbo.Ciudad.CiudadID INNER JOIN
---                         dbo.TipoServicioAlojamiento ON dbo.SucursalAlojamiento.ServicioID = dbo.TipoServicioAlojamiento.TipoServicioAlojamientoID
+ CREATE VIEW vista_sucursal_alojamiento  AS
+SELECT        dbo.SucursalAlojamiento.SucursalAlojamientoID, dbo.Alojamiento.Nombre, dbo.SucursalAlojamiento.Nombre AS Expr1, dbo.Ciudad.Descripcion, dbo.SucursalAlojamiento.Telefono, 
+                         dbo.SucursalAlojamiento.Direccion, dbo.SucursalAlojamiento.Email, dbo.TipoServicioAlojamiento.Descripcion AS Expr2, dbo.SucursalAlojamiento.EstadoSistema
+FROM            dbo.SucursalAlojamiento INNER JOIN
+                         dbo.Alojamiento ON dbo.SucursalAlojamiento.AlojamientoID = dbo.Alojamiento.AlojamientoID INNER JOIN
+                         dbo.Ciudad ON dbo.SucursalAlojamiento.CiudadID = dbo.Ciudad.CiudadID INNER JOIN
+                         dbo.TipoServicioAlojamiento ON dbo.SucursalAlojamiento.ServicioID = dbo.TipoServicioAlojamiento.TipoServicioAlojamientoID
+GO
+
+CREATE PROCEDURE [dbo].[alta_users](
+@id varchar(10),
+@nom varchar(30),
+@email varchar(50),
+@pass varchar(20)
+)
+as
+insert into users
+values(@id, @nom, @email, @pass);
+
+GO
+
+CREATE procedure [dbo].[ver_users](
+@id varchar(10)
+)
+as 
+select * from users
+where id=@id;
+
+GO

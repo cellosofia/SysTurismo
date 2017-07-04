@@ -163,8 +163,4 @@ Public Class SucursalAlojamiento
             End If
         End If
     End Sub
-
-    Private Sub LblAlojamineto_Click(sender As Object, e As EventArgs) Handles LblAlojamineto.Click
-
-    End Sub
 End Class
