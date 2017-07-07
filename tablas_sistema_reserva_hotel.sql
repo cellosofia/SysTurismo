@@ -546,7 +546,7 @@ CREATE TABLE Cliente (
 INSERT INTO Cliente VALUES('Pablo', 'Peralta', 1, '3630894', 'c', '0992249619', 'General Caballero 557', 'cellosofia1@gmail.com', '1993-12-21', 3, 1, 3, 1);
 INSERT INTO Cliente VALUES('Axel', 'Fleitas', 1, '1234567', 'd', '0991235465', 'General Burguez 557', 'axelfleitas@gmail.com', '1994-09-23', 2, 1, 2, 1);
 INSERT INTO Cliente VALUES('Matias', 'Gonzalez', 1, '7654321', 's', '0968561651', 'Mariscal Lopez 557', 'matiasgonzalez@gmail.com', '1995-11-02', 1, 1, 1, 1);
-INSERT INTO Cliente VALUES('Nathalia', 'Ciancio De Peralta', 1, '3630894', 'c', '09965421654', 'General Caballero 557', 'cellosofia1@gmail.com', '1993-12-21', 3, 0, 3, 1);
+INSERT INTO Cliente VALUES('Nathalia', 'Ciancio De Peralta', 1, '4856453', 'c', '09965421654', 'General Caballero 557', 'cellosofia1@gmail.com', '1993-12-21', 3, 0, 3, 1);
 
 CREATE TABLE Habitacion (
 	HabitacionID INT NOT NULL IDENTITY (1,1),
