@@ -448,6 +448,7 @@ CREATE TABLE TipoServicioHabitacion(
 	Descripcion VARCHAR(100) NOT NULL,
 	Precio MONEY NOT NULL,
 	CONSTRAINT PK_TipoServicioHabitacion PRIMARY KEY (TipoServicioHabitacionID),
+	CONSTRAINT UQ_TipoServicioHabitacion UNIQUE (Descripcion),
 );
 
 INSERT INTO TipoServicioHabitacion VALUES ('DESAYUNO', 100000);
@@ -488,9 +489,14 @@ CREATE TABLE Alojamiento (
 );
 
 INSERT INTO TipoAlojamiento values ('Hotel');
+INSERT INTO TipoAlojamiento values ('Alquiler');
 
 INSERT INTO Alojamiento (TipoAlojamientoID, Nombre, Direccion, Telefono, PaginaWeb, Estrellas, EstadoSistema )
- values (1, 'Sheraton', 'Asuncion', '0991546888', 'sheraton@hotmail.com', 4, 1);
+ VALUES (1, 'Sheraton', 'Asuncion', '0991546888', 'www.sheraton.com', 5, 1);
+INSERT INTO Alojamiento (TipoAlojamientoID, Nombre, Direccion, Telefono, PaginaWeb, Estrellas, EstadoSistema )
+ VALUES (1, 'Dazzler', 'Asuncion', '0991546888', 'www.dazzler.com', 4, 1);
+ INSERT INTO Alojamiento (TipoAlojamientoID, Nombre, Direccion, Telefono, PaginaWeb, Estrellas, EstadoSistema )
+ VALUES (2, 'Mi Casa Tu Casa Papá', 'Asuncion', '12345678', 'www.micasatucasa.com', 3, 1);
 
 CREATE TABLE SucursalAlojamiento (
 	SucursalAlojamientoID INT NOT NULL IDENTITY(1,1),
@@ -509,7 +515,11 @@ CREATE TABLE SucursalAlojamiento (
 );
 
 INSERT INTO SucursalAlojamiento VALUES (1,	'ASU',	1,	'1235456',	'asdfasf',	'asdf@asdf.com',	1,	1)
-INSERT INTO SucursalAlojamiento VALUES (1,	'CDE',	1,	'1235456',	'asdfasf',	'asdf@asdf.com',	1,	1)
+INSERT INTO SucursalAlojamiento VALUES (1,	'CDE',	5,	'1235456',	'asdfasf',	'asdf@asdf.com',	1,	1)
+INSERT INTO SucursalAlojamiento VALUES (2,	'somewhere',	1,	'1235456',	'asdfasf',	'asdf@asdf.com',	2,	1)
+INSERT INTO SucursalAlojamiento VALUES (2, 'somewhere else', 1, '6752342', 'asdfasdf', 'asdf@sdf.com', 3, 1)
+INSERT INTO SucursalAlojamiento VALUES (3, 'hello', 2, '6752342', 'asdfasdf', 'asdf@sdf.com', 2, 1)
+INSERT INTO SucursalAlojamiento VALUES (3, 'world', 3, '6752342', 'asdfasdf', 'asdf@sdf.com', 3, 1)
 
 CREATE TABLE Cliente (
 	ClienteID INT NOT NULL IDENTITY (1,1),
@@ -530,7 +540,13 @@ CREATE TABLE Cliente (
 	CONSTRAINT FK_Cliente_TipoDocumento FOREIGN KEY (TipoDocumentoID) REFERENCES TipoDocumento(TipoDocumentoID),
 	CONSTRAINT FK_Cliente_Profesion FOREIGN KEY (ProfesionID) REFERENCES Profesion(ProfesionID),
 	CONSTRAINT FK_Cliente_TipoCliente FOREIGN KEY (TipoClienteID) REFERENCES TipoCliente(TipoClienteID),
+	CONSTRAINT UQ_Cliente UNIQUE (TipoDocumentoID, NroDocumento),
 );
+
+INSERT INTO Cliente VALUES('Pablo', 'Peralta', 1, '3630894', 'c', '0992249619', 'General Caballero 557', 'cellosofia1@gmail.com', '1993-12-21', 3, 1, 3, 1);
+INSERT INTO Cliente VALUES('Axel', 'Fleitas', 1, '1234567', 'd', '0991235465', 'General Burguez 557', 'axelfleitas@gmail.com', '1994-09-23', 2, 1, 2, 1);
+INSERT INTO Cliente VALUES('Matias', 'Gonzalez', 1, '7654321', 's', '0968561651', 'Mariscal Lopez 557', 'matiasgonzalez@gmail.com', '1995-11-02', 1, 1, 1, 1);
+INSERT INTO Cliente VALUES('Nathalia', 'Ciancio De Peralta', 1, '3630894', 'c', '09965421654', 'General Caballero 557', 'cellosofia1@gmail.com', '1993-12-21', 3, 0, 3, 1);
 
 CREATE TABLE Habitacion (
 	HabitacionID INT NOT NULL IDENTITY (1,1),
@@ -547,7 +563,17 @@ CREATE TABLE Habitacion (
 	CONSTRAINT FK_Habitacion_TipoHabitacion FOREIGN KEY (TipoHabitacionID) REFERENCES TipoHabitacion(TipoHabitacionID),
 	--CONSTRAINT FK_Habitacion_ServicioHabitacion FOREIGN KEY (ServicioHabitacionID) REFERENCES TipoServicioHabitacion(TipoServicioHabitacionID),
 	CONSTRAINT FK_Habitacion_EstadoHabitacion FOREIGN KEY (EstadoHabitacionID) REFERENCES EstadoHabitacion(EstadoHabitacionID),
+	CONSTRAINT UQ_Habitacion UNIQUE (NroHabitacion, SucursalAlojamientoID)
 );
+
+INSERT INTO Habitacion VALUES (101, 1, 500000, 1, 1, 1);
+INSERT INTO Habitacion VALUES (102, 1, 500000, 2, 2, 1);
+INSERT INTO Habitacion VALUES (201, 1, 400000, 1, 1, 1);
+INSERT INTO Habitacion VALUES (101, 2, 990000, 3, 3, 1);
+INSERT INTO Habitacion VALUES (102, 2, 900000, 4, 1, 1);
+INSERT INTO Habitacion VALUES (104, 2, 1000000, 4, 1, 1);
+INSERT INTO Habitacion VALUES (205, 3, 200000, 5, 1, 1);
+INSERT INTO Habitacion VALUES (206, 3, 300000, 3, 1, 1);
 
 CREATE TABLE Empleado (
 	EmpleadoID INT NOT NULL IDENTITY (1,1),
@@ -594,10 +620,7 @@ CREATE TABLE Reserva (
 	SucursalAlojamientoID INT NOT NULL,
 	PrecioReserva MONEY NOT NULL,
 	FechaReserva DATETIME NOT NULL,
-	FechaCheckIn DATETIME NOT NULL,
-	FechaCheckOut DATETIME NOT NULL,
 	Pagado BIT NOT NULL,
-	MedioDePagoID INT NOT NULL,
 	CONSTRAINT PK_Reserva PRIMARY KEY (ReservaID),
 	CONSTRAINT FK_Reserva_Cliente FOREIGN KEY (ClienteID) REFERENCES Cliente (ClienteID),
 	CONSTRAINT FK_Reserva_AlojamientoID FOREIGN KEY (AlojamientoID) REFERENCES Alojamiento(AlojamientoID),
@@ -609,7 +632,9 @@ CREATE TABLE ReservaDetalle (
 	ReservaID INT NOT NULL,
 	HabitacionID INT NOT NULL,
 	TipoServicioHabitacionID INT NOT NULL,
-	Precio MONEY NOT NULL,
+	PrecioServicio MONEY NOT NULL,
+	PrecioHabitacion MONEY NOT NULL,
+	PrecioDetalle MONEY NOT NULL,
 	CONSTRAINT PK_ReservaDetalle PRIMARY KEY (ReservaDetalleID),
 	CONSTRAINT UQ_ReservaDetalle UNIQUE (ReservaID, HabitacionID, TipoServicioHabitacionID),
 	CONSTRAINT FK_ReservaDetalle_Reserva FOREIGN KEY (ReservaID) REFERENCES Reserva(ReservaID),

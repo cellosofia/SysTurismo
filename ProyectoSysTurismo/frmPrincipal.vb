@@ -105,4 +105,10 @@
     Private Sub SucursalEmpresaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SucursalEmpresaToolStripMenuItem.Click
         MessageBox.Show("Boton no implementado todavia", "SysTurismo", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
+    Private Sub ReservaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReservaToolStripMenuItem.Click
+        Dim f As New frmReserva
+        f.MdiParent = Me
+        f.Show()
+    End Sub
 End Class

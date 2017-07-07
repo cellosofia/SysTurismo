@@ -54,6 +54,8 @@ Partial Class frmPrincipal
         Me.lblFechaHora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.stsPrincipal = New System.Windows.Forms.StatusStrip()
         Me.ttHelp = New System.Windows.Forms.ToolTip(Me.components)
+        Me.CabeceraDetalleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReservaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPrincipal.SuspendLayout()
         Me.cmsPrincipal.SuspendLayout()
         Me.tlsPrincipal.SuspendLayout()
@@ -63,7 +65,7 @@ Partial Class frmPrincipal
         'mnuPrincipal
         '
         Me.mnuPrincipal.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.mnuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuArchivo, Me.mnuABMs, Me.mnuTablasMenores})
+        Me.mnuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuArchivo, Me.mnuABMs, Me.CabeceraDetalleToolStripMenuItem, Me.mnuTablasMenores})
         Me.mnuPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.mnuPrincipal.Name = "mnuPrincipal"
         Me.mnuPrincipal.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
@@ -274,6 +276,19 @@ Partial Class frmPrincipal
         Me.stsPrincipal.TabIndex = 2
         Me.stsPrincipal.Text = "StatusStrip1"
         '
+        'CabeceraDetalleToolStripMenuItem
+        '
+        Me.CabeceraDetalleToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReservaToolStripMenuItem})
+        Me.CabeceraDetalleToolStripMenuItem.Name = "CabeceraDetalleToolStripMenuItem"
+        Me.CabeceraDetalleToolStripMenuItem.Size = New System.Drawing.Size(85, 20)
+        Me.CabeceraDetalleToolStripMenuItem.Text = "Operaciones"
+        '
+        'ReservaToolStripMenuItem
+        '
+        Me.ReservaToolStripMenuItem.Name = "ReservaToolStripMenuItem"
+        Me.ReservaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ReservaToolStripMenuItem.Text = "Reservas"
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -332,4 +347,6 @@ Partial Class frmPrincipal
     Friend WithEvents ToolStripButton5 As ToolStripButton
     Friend WithEvents mnuCerrarSesión As ToolStripMenuItem
     Friend WithEvents ttHelp As ToolTip
+    Friend WithEvents CabeceraDetalleToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReservaToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -22,14 +22,13 @@ Partial Class frmReserva
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.lblTotalCompra = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnHabilitarDetalle = New System.Windows.Forms.Button()
         Me.gbxDetalle = New System.Windows.Forms.GroupBox()
-        Me.txtHabitacion = New System.Windows.Forms.TextBox()
         Me.cboServicio = New System.Windows.Forms.ComboBox()
         Me.lblServicio = New System.Windows.Forms.Label()
         Me.nudPrecio = New System.Windows.Forms.NumericUpDown()
@@ -38,9 +37,6 @@ Partial Class frmReserva
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.dgvDetalle = New System.Windows.Forms.DataGridView()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cboSucursalAlojamiento = New System.Windows.Forms.ComboBox()
         Me.lblSucursalAlojamiento = New System.Windows.Forms.Label()
         Me.lblAlojamiento = New System.Windows.Forms.Label()
@@ -49,6 +45,13 @@ Partial Class frmReserva
         Me.lblFechaReserva = New System.Windows.Forms.Label()
         Me.lblCliente = New System.Windows.Forms.Label()
         Me.txtCliente = New System.Windows.Forms.TextBox()
+        Me.cboHabitacion = New System.Windows.Forms.ComboBox()
+        Me.Habitacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Servicio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioHabitacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioServicio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SubTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lblPrecioHabitacion = New System.Windows.Forms.Label()
         Me.gbxDetalle.SuspendLayout()
         CType(Me.nudPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,15 +67,15 @@ Partial Class frmReserva
         Me.Label8.TabIndex = 10
         Me.Label8.Text = "Total Reserva"
         '
-        'lblTotalCompra
+        'lblTotal
         '
-        Me.lblTotalCompra.AutoSize = True
-        Me.lblTotalCompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalCompra.Location = New System.Drawing.Point(611, 391)
-        Me.lblTotalCompra.Name = "lblTotalCompra"
-        Me.lblTotalCompra.Size = New System.Drawing.Size(16, 18)
-        Me.lblTotalCompra.TabIndex = 11
-        Me.lblTotalCompra.Text = "0"
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Location = New System.Drawing.Point(611, 391)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(16, 18)
+        Me.lblTotal.TabIndex = 11
+        Me.lblTotal.Text = "0"
         '
         'btnAceptar
         '
@@ -103,7 +106,8 @@ Partial Class frmReserva
         '
         'gbxDetalle
         '
-        Me.gbxDetalle.Controls.Add(Me.txtHabitacion)
+        Me.gbxDetalle.Controls.Add(Me.lblPrecioHabitacion)
+        Me.gbxDetalle.Controls.Add(Me.cboHabitacion)
         Me.gbxDetalle.Controls.Add(Me.cboServicio)
         Me.gbxDetalle.Controls.Add(Me.lblServicio)
         Me.gbxDetalle.Controls.Add(Me.nudPrecio)
@@ -119,20 +123,13 @@ Partial Class frmReserva
         Me.gbxDetalle.TabStop = False
         Me.gbxDetalle.Text = "Detalle Reserva"
         '
-        'txtHabitacion
-        '
-        Me.txtHabitacion.Location = New System.Drawing.Point(78, 257)
-        Me.txtHabitacion.Name = "txtHabitacion"
-        Me.txtHabitacion.Size = New System.Drawing.Size(132, 20)
-        Me.txtHabitacion.TabIndex = 4
-        '
         'cboServicio
         '
         Me.cboServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboServicio.FormattingEnabled = True
         Me.cboServicio.Location = New System.Drawing.Point(78, 229)
         Me.cboServicio.Name = "cboServicio"
-        Me.cboServicio.Size = New System.Drawing.Size(260, 21)
+        Me.cboServicio.Size = New System.Drawing.Size(340, 21)
         Me.cboServicio.TabIndex = 2
         '
         'lblServicio
@@ -147,9 +144,9 @@ Partial Class frmReserva
         'nudPrecio
         '
         Me.nudPrecio.Location = New System.Drawing.Point(259, 256)
-        Me.nudPrecio.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
+        Me.nudPrecio.Maximum = New Decimal(New Integer() {1000000000, 0, 0, 0})
         Me.nudPrecio.Name = "nudPrecio"
-        Me.nudPrecio.Size = New System.Drawing.Size(79, 20)
+        Me.nudPrecio.Size = New System.Drawing.Size(159, 20)
         Me.nudPrecio.TabIndex = 6
         '
         'Label6
@@ -192,33 +189,11 @@ Partial Class frmReserva
         '
         Me.dgvDetalle.AllowUserToAddRows = False
         Me.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDetalle.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Descripcion, Me.Cantidad, Me.Precio})
+        Me.dgvDetalle.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Habitacion, Me.Servicio, Me.PrecioHabitacion, Me.PrecioServicio, Me.SubTotal})
         Me.dgvDetalle.Location = New System.Drawing.Point(17, 29)
         Me.dgvDetalle.Name = "dgvDetalle"
         Me.dgvDetalle.Size = New System.Drawing.Size(735, 180)
         Me.dgvDetalle.TabIndex = 0
-        '
-        'Descripcion
-        '
-        Me.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Descripcion.HeaderText = "Servicio"
-        Me.Descripcion.Name = "Descripcion"
-        '
-        'Cantidad
-        '
-        Me.Cantidad.HeaderText = "Habitacion"
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.Width = 200
-        '
-        'Precio
-        '
-        Me.Precio.DataPropertyName = "Precio"
-        DataGridViewCellStyle4.Format = "N0"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Precio.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Precio.HeaderText = "Precio"
-        Me.Precio.Name = "Precio"
-        Me.Precio.Width = 150
         '
         'cboSucursalAlojamiento
         '
@@ -290,13 +265,71 @@ Partial Class frmReserva
         Me.txtCliente.Size = New System.Drawing.Size(166, 20)
         Me.txtCliente.TabIndex = 1
         '
+        'cboHabitacion
+        '
+        Me.cboHabitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboHabitacion.FormattingEnabled = True
+        Me.cboHabitacion.Location = New System.Drawing.Point(78, 256)
+        Me.cboHabitacion.Name = "cboHabitacion"
+        Me.cboHabitacion.Size = New System.Drawing.Size(132, 21)
+        Me.cboHabitacion.TabIndex = 9
+        '
+        'Habitacion
+        '
+        Me.Habitacion.DataPropertyName = "Habitacion"
+        Me.Habitacion.HeaderText = "Habitacion"
+        Me.Habitacion.Name = "Habitacion"
+        Me.Habitacion.ReadOnly = True
+        '
+        'Servicio
+        '
+        Me.Servicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Servicio.DataPropertyName = "Servicio"
+        Me.Servicio.HeaderText = "Servicio"
+        Me.Servicio.Name = "Servicio"
+        Me.Servicio.ReadOnly = True
+        '
+        'PrecioHabitacion
+        '
+        Me.PrecioHabitacion.DataPropertyName = "PrecioHabitacion"
+        Me.PrecioHabitacion.HeaderText = "PrecioHabitacion"
+        Me.PrecioHabitacion.Name = "PrecioHabitacion"
+        Me.PrecioHabitacion.ReadOnly = True
+        '
+        'PrecioServicio
+        '
+        Me.PrecioServicio.DataPropertyName = "PrecioServicio"
+        DataGridViewCellStyle2.Format = "N0"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.PrecioServicio.DefaultCellStyle = DataGridViewCellStyle2
+        Me.PrecioServicio.HeaderText = "PrecioServicio"
+        Me.PrecioServicio.Name = "PrecioServicio"
+        Me.PrecioServicio.ReadOnly = True
+        Me.PrecioServicio.Width = 150
+        '
+        'SubTotal
+        '
+        Me.SubTotal.DataPropertyName = "SubTotal"
+        Me.SubTotal.HeaderText = "SubTotal"
+        Me.SubTotal.Name = "SubTotal"
+        Me.SubTotal.ReadOnly = True
+        '
+        'lblPrecioHabitacion
+        '
+        Me.lblPrecioHabitacion.AutoSize = True
+        Me.lblPrecioHabitacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrecioHabitacion.Location = New System.Drawing.Point(424, 229)
+        Me.lblPrecioHabitacion.Name = "lblPrecioHabitacion"
+        Me.lblPrecioHabitacion.Size = New System.Drawing.Size(0, 13)
+        Me.lblPrecioHabitacion.TabIndex = 14
+        '
         'frmReserva
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(798, 468)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.lblTotalCompra)
+        Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnHabilitarDetalle)
@@ -321,7 +354,7 @@ Partial Class frmReserva
     End Sub
 
     Friend WithEvents Label8 As Label
-    Friend WithEvents lblTotalCompra As Label
+    Friend WithEvents lblTotal As Label
     Friend WithEvents btnAceptar As Button
     Friend WithEvents btnCancelar As Button
     Friend WithEvents btnHabilitarDetalle As Button
@@ -342,8 +375,11 @@ Partial Class frmReserva
     Friend WithEvents lblFechaReserva As Label
     Friend WithEvents lblCliente As Label
     Friend WithEvents txtCliente As TextBox
-    Friend WithEvents Descripcion As DataGridViewTextBoxColumn
-    Friend WithEvents Cantidad As DataGridViewTextBoxColumn
-    Friend WithEvents Precio As DataGridViewTextBoxColumn
-    Friend WithEvents txtHabitacion As TextBox
+    Friend WithEvents cboHabitacion As ComboBox
+    Friend WithEvents Habitacion As DataGridViewTextBoxColumn
+    Friend WithEvents Servicio As DataGridViewTextBoxColumn
+    Friend WithEvents PrecioHabitacion As DataGridViewTextBoxColumn
+    Friend WithEvents PrecioServicio As DataGridViewTextBoxColumn
+    Friend WithEvents SubTotal As DataGridViewTextBoxColumn
+    Friend WithEvents lblPrecioHabitacion As Label
 End Class

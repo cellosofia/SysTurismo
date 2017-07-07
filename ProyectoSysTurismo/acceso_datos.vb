@@ -15,6 +15,10 @@ Module acceso_datos
         'para guardar el resultado del comando sql
         Dim tabla As New DataTable
         Try
+            'Vericamos si la conexión actual esta cerrada
+            If conexion.State = ConnectionState.Closed Then
+                conexion.Open()
+            End If
             'Creamos el objeto para el comando sql
             Dim cmd As New SqlCommand(comando_sql, conexion)
             'Creamos el objeto para el adaptador de datos
@@ -73,6 +77,10 @@ Module acceso_datos
 
     Public Sub EjecutarSQL(instruccion_SQL As String, ByRef dbtransac As SqlTransaction, ParamArray parametros() As Object)
         Try
+            'Vericamos si la conexión actual esta cerrada
+            If conexion.State = ConnectionState.Closed Then
+                conexion.Open()
+            End If
             Dim comando As New SqlCommand(instruccion_SQL, conexion, dbtransac)
             'cargar parámetros desde el array hacia la instrucción SQL
             For i As Integer = 1 To parametros.Length
@@ -113,6 +121,10 @@ Module acceso_datos
     End Sub
     Public Function TraerValor(comando_sql As String) As Object
         Try
+            'Vericamos si la conexión actual esta cerrada
+            If conexion.State = ConnectionState.Closed Then
+                conexion.Open()
+            End If
             Dim cmd As New SqlCommand(comando_sql, conexion)
             Return cmd.ExecuteScalar
         Catch ex As Exception
@@ -122,6 +134,10 @@ Module acceso_datos
 
     Public Function TraerValor(instruccionSQL As String, ByRef dbtransac As SqlTransaction) As Object
         Try
+            'Vericamos si la conexión actual esta cerrada
+            If conexion.State = ConnectionState.Closed Then
+                conexion.Open()
+            End If
             Dim UAA As New SqlCommand(instruccionSQL, conexion, dbtransac)
             'ExecuteScalar retorna el valor de la primera celda devuelta por la consulta.
             Return UAA.ExecuteScalar
